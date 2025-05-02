@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +18,13 @@ public class KioskFrame extends JFrame {
     private final CategoryPanel categoryPanel;
     private final MenuPanel menuPanel;
     private final OrderPanel orderPanel;
+    private final JFrame parent;
+    public KioskFrame(JFrame parent) throws Exception {
 
-    public KioskFrame() throws Exception {
+        this.parent = parent;
         dataModel = CSVDataLoader.loadData();
         setTitle("카페 키오스크 시스템");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(1700, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(5, 5));
 
@@ -29,7 +33,7 @@ public class KioskFrame extends JFrame {
         orderPanel = new OrderPanel(dataModel, selectedItems);
 
         //상단 카테고리 패널 생성(버튼 클릭 시 해당 카테고리 반환)
-        categoryPanel = new CategoryPanel(dataModel.getMenuData().keySet(), e -> {
+        categoryPanel = new CategoryPanel(this, parent, dataModel.getMenuData().keySet(), e -> {
             String category = ((JButton) e.getSource()).getText();
             menuPanel.displayCategory(category, dataModel, menu -> {
                 //메뉴 선택 시 주문 수량 증가
@@ -52,7 +56,7 @@ public class KioskFrame extends JFrame {
         JButton paymentBtn = new JButton("결제하기");
         paymentBtn.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         paymentBtn.setBackground(new Color(100, 180, 100));
-        paymentBtn.setForeground(Color.WHITE);
+        paymentBtn.setForeground(Color.BLACK);
         paymentBtn.setPreferredSize(new Dimension(0, 50));
         paymentBtn.addActionListener(e -> processPayment());
 
