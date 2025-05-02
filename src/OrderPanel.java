@@ -1,127 +1,168 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.Map;
 
 public class OrderPanel extends JPanel {
-    private final JTable orderTable;
-    private final JLabel totalPriceLabel;
-    private final DefaultTableModel tableModel;
-    private final DataModel dataModel;
-    private final Map<String, Integer> selectedItems;
-
+    private DataModel dataModel;
+    private Map<String, Integer> selectedItems;
+    private DefaultTableModel tableModel;
+    private JTable selectedTable;
+    private JLabel totalPriceLabel;
 
     public OrderPanel(DataModel dataModel, Map<String, Integer> selectedItems) {
-        //전달받은 데이터 모델 및 선택된 아이템 맵 저장
         this.dataModel = dataModel;
         this.selectedItems = selectedItems;
-
-        //레이아웃 기본설정
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(350, 0));
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(new Color(245, 245, 245));
 
-        //테이블 모델 생성 컬럼명 ["메뉴","수량","금액"]
-        tableModel = new DefaultTableModel(new String[]{"메뉴", "수량", "금액"}, 0) {
+        // 테이블 컬럼: 메뉴, 수량, 합계, -, X(삭제)
+        tableModel = new DefaultTableModel(new String[]{"메뉴", "수량", "합계", "", ""}, 0) {
             @Override
-            public boolean isCellEditable(int row, int col) {
-                // 모든 셀 편집 불가 처리
-                return false;
+            public boolean isCellEditable(int row, int column) {
+                return column >= 3;
+            }
+
+            @Override
+            public void setValueAt(Object aValue, int row, int column) {
+                // 버튼 컬럼은 모델에 반영하지 않음
+                if (column >= 3) return;
+                super.setValueAt(aValue, row, column);
             }
         };
+        selectedTable = new JTable(tableModel);
+        selectedTable.setRowHeight(30);
 
-        //모델 생성 및 기본설정
-        orderTable = new JTable(tableModel);
-        orderTable.setRowHeight(30);
-        orderTable.setShowGrid(true);
-        orderTable.setGridColor(new Color(220, 220, 220));
+        // 컬럼 너비 설정
+        TableColumnModel colModel = selectedTable.getColumnModel();
+        colModel.getColumn(0).setPreferredWidth(120);
+        colModel.getColumn(1).setPreferredWidth(40);
+        colModel.getColumn(2).setPreferredWidth(75);
+        colModel.getColumn(3).setPreferredWidth(50);
+        colModel.getColumn(4).setPreferredWidth(50);
+
+
+        selectedTable.getTableHeader().setReorderingAllowed(false);
+        // 컬럼 크기 조정 비활성화
+        selectedTable.getTableHeader().setResizingAllowed(false);
+
+        // 선택 및 포커스 비활성화
+        selectedTable.setRowSelectionAllowed(false);
+        selectedTable.setColumnSelectionAllowed(false);
+        selectedTable.setCellSelectionEnabled(false);
+        selectedTable.setFocusable(false);
+
+        // 헤더 가운데 정렬 설정
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) selectedTable.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        selectedTable.getTableHeader().setReorderingAllowed(false);
+
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        orderTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        selectedTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 
-        //스크롤 설정
-        JScrollPane tableScroll = new JScrollPane(orderTable);
-        add(tableScroll, BorderLayout.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
+        selectedTable.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
 
-        //총 가격 레이블 생성 및 기본설정
-        totalPriceLabel = new JLabel("총 가격: 0 원", JLabel.RIGHT);
-        totalPriceLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        totalPriceLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+        selectedTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer("-"));
+        selectedTable.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor("-"));
+        selectedTable.getColumnModel().getColumn(4).setCellRenderer(new ButtonRenderer("X"));
+        selectedTable.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor("X"));
+
+        add(new JScrollPane(selectedTable), BorderLayout.CENTER);
+
+        totalPriceLabel = new JLabel("총 가격: 0 원");
+        totalPriceLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(totalPriceLabel, BorderLayout.SOUTH);
 
-        //더블클릭 이벤트: 수량 차감 또는 항목 제거 처리
-        orderTable.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                //클릭 수가 2번일 때만 동작
-                if (e.getClickCount() == 2) {
-                    int row = orderTable.getSelectedRow();
-                    if (row >= 0) {
-                        //선택된 행의 메뉴명 가져오기
-                        String menu = (String) orderTable.getValueAt(row, 0);
-                        //현재 맵에 저장된 수량 조회
-                        int currentQuantity = selectedItems.getOrDefault(menu, 0);
-                        if (currentQuantity > 1) {
-                            //수량 1초과 시 1 감소
-                            selectedItems.put(menu, currentQuantity - 1);
-                        } else {
-                            //수량 1이거나 없으면 맵에서 제거
-                            selectedItems.remove(menu);
-                        }
-                        //테이블 및 총 가격 갱신
-                        updateOrderTable();
-                    }
-                }
-            }
-        });
+        updateOrderTable();
     }
 
-
-    // 주문 내역 테이블을 새로 고침하는 메서드
+    // 주문 내역 테이블 갱신
     public void updateOrderTable() {
-        //기존 테이블 모델의 모든 행 삭제
         tableModel.setRowCount(0);
-
-        //총합 변수 초기화
         int total = 0;
-
-        //선택된 아이템 맵을 순회하며 테이블에 각 항목 추가
         for (Map.Entry<String, Integer> entry : selectedItems.entrySet()) {
-            //선택된 메뉴 이름, 수량, 총 가격 설정
             String menu = entry.getKey();
-            int quantity = entry.getValue();
+            int qty = entry.getValue();
             int price = dataModel.getPriceData().get(menu);
-            int sum = price * quantity;
-
-            //테이블 모델에 새 행 추가(메뉴 이름, 수량, 총 가격)
-            tableModel.addRow(new Object[]{
-                    menu,
-                    quantity,
-                    String.format("%,d 원", sum)
-            });
-
-            //전체 합계에 더하기
+            int sum = price * qty;
+            tableModel.addRow(new Object[]{menu, qty, String.format("%,d 원", sum), "-", "X"});
             total += sum;
         }
-
-        //총 가격 레이블에 전체 합계 반영 (천 단위 구분 쉼표 포함)
         totalPriceLabel.setText("총 가격: " + String.format("%,d 원", total));
     }
 
-
-    // 결제 처리(아래의 saveOrderHistory 추가하면 여기에서 사용하면 됩니다.)
+    /**
+     * 결제 처리 후 주문 초기화
+     * @return 항상 true 반환
+     */
     public boolean processPayment() {
-        if (selectedItems.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "주문한 메뉴가 없습니다", "경고", JOptionPane.WARNING_MESSAGE);
-            return false;
+        int total = 0;
+        for (Map.Entry<String, Integer> entry : selectedItems.entrySet()) {
+            total += dataModel.getPriceData().get(entry.getKey()) * entry.getValue();
         }
-        int option = JOptionPane.showConfirmDialog(this,
-                totalPriceLabel.getText() + "\n결제하시겠습니까?",
-                "결제 확인", JOptionPane.YES_NO_OPTION);
-        return option == JOptionPane.YES_OPTION;
+        JOptionPane.showMessageDialog(this, String.format("총 %,d원 결제 완료되었습니다.", total));
+        selectedItems.clear();
+        updateOrderTable();
+        return true;
+    }
+
+    // 버튼 렌더러
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+        public ButtonRenderer(String text) {
+            setText(text);
+        }
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            return this;
+        }
+    }
+
+    // 버튼 에디터: -, X 동작 처리
+    class ButtonEditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
+        private JButton button;
+        private String actionType;
+        private String currentMenu;
+
+        public ButtonEditor(String actionType) {
+            this.actionType = actionType;
+            button = new JButton(actionType);
+            button.addActionListener(this);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (currentMenu != null) {
+                int qty = selectedItems.getOrDefault(currentMenu, 0);
+                switch (actionType) {
+                    case "-":
+                        if (qty > 1) selectedItems.put(currentMenu, qty - 1);
+                        else selectedItems.remove(currentMenu);
+                        break;
+                    case "X":
+                        selectedItems.remove(currentMenu);
+                        break;
+                }
+                updateOrderTable();
+            }
+            fireEditingStopped();
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value,
+                                                     boolean isSelected, int row, int column) {
+            currentMenu = (String) table.getValueAt(row, 0);
+            return button;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return actionType;
+        }
     }
 }
