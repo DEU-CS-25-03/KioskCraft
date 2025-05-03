@@ -7,7 +7,8 @@ public class CSVDataLoader {
     public static DataModel loadData() throws IOException {
         DataModel dataModel = new DataModel();
         //경로 설정, 일단 바탕화면\kiosk_data.csv로 해놨습니다.
-        Path path = Paths.get(System.getProperty("user.home"), "Desktop", "kiosk_data.csv");
+        //        Path path = Paths.get(System.getProperty("user.home"), "Desktop", "kiosk_data.csv");
+        Path path = Paths.get("C:\\Users\\jyj36\\github_IdeaProjects\\KioskCraft\\kiosk_data.csv");
         if (!Files.exists(path)) {
             throw new FileNotFoundException("CSV 파일을 찾을 수 없습니다: " + path);
         }
