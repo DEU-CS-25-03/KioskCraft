@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CSVDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSVDataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CSVDataLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CategoryPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KioskFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderPanel.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +23,7 @@
   </component>
   <component name="DatabaseLocalColorSettings">
     <colors>
-      <entry key="4f5a7f57-3fdb-4b6a-bee4-57c76eff7bfe" value="Blue" />
+      <entry key="fc6e7977-6dac-4408-9821-ed9422717ef5" value="Blue" />
     </colors>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -30,12 +36,28 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Grrrrra&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://Grrrrra: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@github.com/Grrrrra/https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
+    &quot;accountId&quot;: &quot;b7612f82-750f-461a-a563-39d1508daf9e&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -48,31 +70,40 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "NewDevelop",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jyj36/github_IdeaProjects",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/J/Desktop/KioskPackage/src/Main.java",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true",
     "애플리케이션.Main.executor": "Run"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mysql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 파생 언어": [
+      "MySQL"
     ]
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="payments.sql" type="DatabaseScript" editBeforeRun="true">
-      <script-file value="$APPLICATION_CONFIG_DIR$/consoles/db/fc6e7977-6dac-4408-9821-ed9422717ef5/console.sql" />
-      <script-mode>FILE</script-mode>
-      <method v="2" />
-    </configuration>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,7 +113,56 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744370047599</updated>
+      <workItem from="1747369802909" duration="9210000" />
+      <workItem from="1747543568974" duration="1013000" />
+      <workItem from="1747613677526" duration="4244000" />
+      <workItem from="1747883920748" duration="2093000" />
+      <workItem from="1747886401910" duration="1837000" />
+      <workItem from="1747969859005" duration="114000" />
     </task>
+    <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
+      <option name="closed" value="true" />
+      <created>1746294190371</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746294190371</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="5f8e91c2-1c06-46c9-8222-070ada2b150a" value="TOOL_WINDOW" />
+        <entry key="267dd895-64c6-418f-b1c1-5079c66570fe" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="267dd895-64c6-418f-b1c1-5079c66570fe">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="5f8e91c2-1c06-46c9-8222-070ada2b150a">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
   </component>
 </project>
