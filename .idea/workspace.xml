@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CSVDataLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CategoryPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderPanel.java" beforeDir="false" />
-    </list>
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : 기존 데이터 clear" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +29,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -118,7 +106,7 @@
       <workItem from="1747613677526" duration="4244000" />
       <workItem from="1747883920748" duration="2093000" />
       <workItem from="1747886401910" duration="1837000" />
-      <workItem from="1747969859005" duration="114000" />
+      <workItem from="1747969859005" duration="356000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -128,7 +116,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746294190371</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="EDIT : 기존 데이터 clear">
+      <option name="closed" value="true" />
+      <created>1747970039753</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747970039753</updated>
+    </task>
+    <task id="LOCAL-00003" summary="EDIT : 기존 데이터 clear">
+      <option name="closed" value="true" />
+      <created>1747970050603</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747970050603</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +166,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="EDIT :" />
     <MESSAGE value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
+    <MESSAGE value="EDIT : 기존 데이터 clear" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDIT : 기존 데이터 clear" />
   </component>
 </project>
