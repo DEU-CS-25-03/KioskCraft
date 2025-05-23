@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : 기존 데이터 clear" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : 기존 데이터 clear">
+      <change afterPath="$PROJECT_DIR$/src/AdminFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BackgroundPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StartFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "NewDevelop",
+    "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jyj36/github_IdeaProjects",
