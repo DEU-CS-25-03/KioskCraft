@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PaymentDB">
+  <database-model serializer="dbm" dbms="TIDB" family-id="TIDB" format-version="4.53">
+    <root id="1">
+      <Dbms>TIDB</Dbms>
+      <DefaultCasing>mixed/mixed</DefaultCasing>
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <Grants>|root||3omx2ePWtYvkrMx.cloud_admin||ALTER|G
+|root||3omx2ePWtYvkrMx.root||ALTER|G
+|root||role_admin||ALTER|G
+|root||3omx2ePWtYvkrMx.root||ALTER ROUTINE|G
+|root||role_admin||ALTER ROUTINE|G
+|root||3omx2ePWtYvkrMx.cloud_admin||BACKUP_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||CONFIG|G
+|root||3omx2ePWtYvkrMx.cloud_admin||CONNECTION_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||CREATE|G
+|root||3omx2ePWtYvkrMx.root||CREATE|G
+|root||role_admin||CREATE|G
+|root||3omx2ePWtYvkrMx.cloud_admin||CREATE ROLE|G
+|root||3omx2ePWtYvkrMx.root||CREATE ROLE|G
+|root||role_admin||CREATE ROLE|G
+|root||3omx2ePWtYvkrMx.root||CREATE ROUTINE|G
+|root||role_admin||CREATE ROUTINE|G
+|root||3omx2ePWtYvkrMx.root||CREATE TABLESPACE|G
+|root||role_admin||CREATE TABLESPACE|G
+|root||3omx2ePWtYvkrMx.root||CREATE TEMPORARY TABLES|G
+|root||role_admin||CREATE TEMPORARY TABLES|G
+|root||3omx2ePWtYvkrMx.cloud_admin||CREATE USER|G
+|root||3omx2ePWtYvkrMx.root||CREATE USER|G
+|root||role_admin||CREATE USER|G
+|root||3omx2ePWtYvkrMx.cloud_admin||CREATE VIEW|G
+|root||3omx2ePWtYvkrMx.root||CREATE VIEW|G
+|root||role_admin||CREATE VIEW|G
+|root||3omx2ePWtYvkrMx.cloud_admin||DASHBOARD_CLIENT|G
+|root||3omx2ePWtYvkrMx.cloud_admin||DELETE|G
+|root||3omx2ePWtYvkrMx.root||DELETE|G
+|root||role_admin||DELETE|G
+|root||3omx2ePWtYvkrMx.cloud_admin||DROP|G
+|root||3omx2ePWtYvkrMx.root||DROP|G
+|root||role_admin||DROP|G
+|root||3omx2ePWtYvkrMx.root||DROP ROLE|G
+|root||role_admin||DROP ROLE|G
+|root||3omx2ePWtYvkrMx.root||EVENT|G
+|root||role_admin||EVENT|G
+|root||3omx2ePWtYvkrMx.root||EXECUTE|G
+|root||role_admin||EXECUTE|G
+|root||3omx2ePWtYvkrMx.root||FILE|G
+|root||role_admin||FILE|G
+|root||3omx2ePWtYvkrMx.cloud_admin||INDEX|G
+|root||3omx2ePWtYvkrMx.root||INDEX|G
+|root||role_admin||INDEX|G
+|root||3omx2ePWtYvkrMx.cloud_admin||INSERT|G
+|root||3omx2ePWtYvkrMx.root||INSERT|G
+|root||role_admin||INSERT|G
+|root||3omx2ePWtYvkrMx.root||LOCK TABLES|G
+|root||role_admin||LOCK TABLES|G
+|root||3omx2ePWtYvkrMx.cloud_admin||PROCESS|G
+|root||3omx2ePWtYvkrMx.root||PROCESS|G
+|root||role_admin||PROCESS|G
+|root||3omx2ePWtYvkrMx.cloud_admin||REFERENCES|G
+|root||3omx2ePWtYvkrMx.root||REFERENCES|G
+|root||role_admin||REFERENCES|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RELOAD|G
+|root||3omx2ePWtYvkrMx.root||RELOAD|G
+|root||role_admin||RELOAD|G
+|root||3omx2ePWtYvkrMx.root||REPLICATION CLIENT|G
+|root||role_admin||REPLICATION CLIENT|G
+|root||3omx2ePWtYvkrMx.root||REPLICATION SLAVE|G
+|root||role_admin||REPLICATION SLAVE|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTORE_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_CONNECTION_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_REPLICA_WRITER_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_STATUS_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_TABLES_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_USER_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_VARIABLES_ADMIN|G
+|root||role_admin||ROLE_ADMIN|G
+|root||3omx2ePWtYvkrMx.cloud_admin||SELECT|G
+|root||3omx2ePWtYvkrMx.root||SELECT|G
+|root||role_admin||SELECT|G
+|root||3omx2ePWtYvkrMx.cloud_admin||SHOW DATABASES|G
+|root||3omx2ePWtYvkrMx.root||SHOW DATABASES|G
+|root||role_admin||SHOW DATABASES|G
+|root||3omx2ePWtYvkrMx.root||SHOW VIEW|G
+|root||role_admin||SHOW VIEW|G
+|root||3omx2ePWtYvkrMx.cloud_admin||SHUTDOWN|G
+|root||3omx2ePWtYvkrMx.root||SUPER|G
+|root||role_admin||SUPER|G
+|root||3omx2ePWtYvkrMx.cloud_admin||SYSTEM_USER|G
+|root||3omx2ePWtYvkrMx.cloud_admin||SYSTEM_VARIABLES_ADMIN|G
+|root||3omx2ePWtYvkrMx.root||TRIGGER|G
+|root||role_admin||TRIGGER|G
+|root||3omx2ePWtYvkrMx.cloud_admin||UPDATE|G
+|root||3omx2ePWtYvkrMx.root||UPDATE|G
+|root||role_admin||UPDATE|G
+|root||3omx2ePWtYvkrMx.cloud_admin||grant option|G
+|root||3omx2ePWtYvkrMx.root||grant option|G
+|root||role_admin||grant option|G</Grants>
+      <ServerVersion>7.5.2</ServerVersion>
+    </root>
+    <collation id="2" parent="1" name="ascii_bin">
+      <Charset>ascii</Charset>
+      <DefaultForCharset>1</DefaultForCharset>
+    </collation>
+    <collation id="3" parent="1" name="binary">
+      <Charset>binary</Charset>
+      <DefaultForCharset>1</DefaultForCharset>
+    </collation>
+    <collation id="4" parent="1" name="gbk_bin">
+      <Charset>gbk</Charset>
+    </collation>
+    <collation id="5" parent="1" name="gbk_chinese_ci">
+      <Charset>gbk</Charset>
+      <DefaultForCharset>1</DefaultForCharset>
+    </collation>
+    <collation id="6" parent="1" name="latin1_bin">
+      <Charset>latin1</Charset>
+      <DefaultForCharset>1</DefaultForCharset>
+    </collation>
+    <collation id="7" parent="1" name="utf8_bin">
+      <Charset>utf8</Charset>
+      <DefaultForCharset>1</DefaultForCharset>
+    </collation>
+    <collation id="8" parent="1" name="utf8_general_ci">
+      <Charset>utf8</Charset>
+    </collation>
+    <collation id="9" parent="1" name="utf8_unicode_ci">
+      <Charset>utf8</Charset>
+    </collation>
+    <collation id="10" parent="1" name="utf8mb4_0900_ai_ci">
+      <Charset>utf8mb4</Charset>
+    </collation>
+    <collation id="11" parent="1" name="utf8mb4_0900_bin">
+      <Charset>utf8mb4</Charset>
+    </collation>
+    <collation id="12" parent="1" name="utf8mb4_bin">
+      <Charset>utf8mb4</Charset>
+      <DefaultForCharset>1</DefaultForCharset>
+    </collation>
+    <collation id="13" parent="1" name="utf8mb4_general_ci">
+      <Charset>utf8mb4</Charset>
+    </collation>
+    <collation id="14" parent="1" name="utf8mb4_unicode_ci">
+      <Charset>utf8mb4</Charset>
+    </collation>
+    <schema id="15" parent="1" name="INFORMATION_SCHEMA">
+      <CollationName>utf8mb4_bin</CollationName>
+    </schema>
+    <schema id="16" parent="1" name="PERFORMANCE_SCHEMA">
+      <CollationName>utf8mb4_bin</CollationName>
+    </schema>
+    <schema id="17" parent="1" name="mydb">
+      <Current>1</Current>
+      <LastIntrospectionLocalTimestamp>2025-05-19.00:31:36</LastIntrospectionLocalTimestamp>
+      <CollationName>utf8mb4_bin</CollationName>
+    </schema>
+    <schema id="18" parent="1" name="mysql">
+      <CollationName>utf8mb4_bin</CollationName>
+    </schema>
+    <schema id="19" parent="1" name="test">
+      <CollationName>utf8mb4_bin</CollationName>
+    </schema>
+    <user id="20" parent="1" name="3omx2ePWtYvkrMx.cloud_admin"/>
+    <user id="21" parent="1" name="3omx2ePWtYvkrMx.cloud_ai"/>
+    <user id="22" parent="1" name="3omx2ePWtYvkrMx.jyj369_3cfzgmTi">
+      <Plugin>tidb_auth_token</Plugin>
+    </user>
+    <user id="23" parent="1" name="3omx2ePWtYvkrMx.root"/>
+    <user id="24" parent="1" name="role_admin"/>
+    <table id="25" parent="17" name="payment_log">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_bin</CollationName>
+    </table>
+    <column id="26" parent="25" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint(20)|0s</StoredType>
+    </column>
+    <column id="27" parent="25" name="user_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>bigint(20)|0s</StoredType>
+    </column>
+    <column id="28" parent="25" name="amount">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>decimal(12,2 digit)|0s</StoredType>
+    </column>
+    <column id="29" parent="25" name="payment_method">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="30" parent="25" name="payment_date">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>datetime|0s</StoredType>
+    </column>
+    <column id="31" parent="25" name="status">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>varchar(20)|0s</StoredType>
+    </column>
+    <column id="32" parent="25" name="description">
+      <Position>7</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="33" parent="25" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>8</Position>
+      <StoredType>datetime|0s</StoredType>
+    </column>
+    <column id="34" parent="25" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>9</Position>
+      <StoredType>datetime|0s</StoredType>
+    </column>
+    <index id="35" parent="25" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="36" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
