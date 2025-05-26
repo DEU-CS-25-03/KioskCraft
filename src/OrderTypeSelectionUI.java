@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class StartFrame extends JFrame {
+public class OrderTypeSelectionUI extends JFrame {
     private long keyPressedTime = 0L;
     private final int TRIGGER_KEY = KeyEvent.VK_F10; // 원하는 키 지정
     private Timer holdTimer;
     public boolean isTakeOut;
 
-    public StartFrame() {
+    public OrderTypeSelectionUI() {
         setTitle("키오스크 시스템");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1280, 720);
@@ -24,8 +24,8 @@ public class StartFrame extends JFrame {
         JButton eatInBtn = new JButton("매장");
         eatInBtn.setPreferredSize(new Dimension(200, 100));
 
-        eatInBtn.addActionListener(e -> {
-            new MainFrame().setVisible(true); // 새 창 띄움
+        eatInBtn.addActionListener(_ -> {
+            new KioskUI().setVisible(true); // 새 창 띄움
             isTakeOut = false;
             dispose(); // StartFrame 닫음
         });
@@ -33,8 +33,8 @@ public class StartFrame extends JFrame {
         JButton takeOutBtn = new JButton("포장");
         takeOutBtn.setPreferredSize(new Dimension(200, 100));
 
-        takeOutBtn.addActionListener(e -> {
-            new MainFrame().setVisible(true); // 새 창 띄움
+        takeOutBtn.addActionListener(_ -> {
+            new KioskUI().setVisible(true); // 새 창 띄움
             isTakeOut = true;
             dispose(); // StartFrame 닫음
         });
@@ -54,8 +54,9 @@ public class StartFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == TRIGGER_KEY && keyPressedTime == 0L) {
                     keyPressedTime = System.currentTimeMillis();
-                    holdTimer = new Timer(3000, evt -> {
-                        if ((System.currentTimeMillis() - keyPressedTime) >= 3000) {
+                    //테스트 때문에 딜레이 100ms로 줄여놓음 나중에 3000ms으로 변경 예정
+                    holdTimer = new Timer(100, _ -> {
+                        if ((System.currentTimeMillis() - keyPressedTime) >= 100) {
                             openAdminFrame();
                         }
                     });
@@ -82,7 +83,7 @@ public class StartFrame extends JFrame {
     }
 
     private void openAdminFrame() {
-        new AdminFrame().setVisible(true);
+        new AdminUI().setVisible(true);
         dispose();
     }
 }

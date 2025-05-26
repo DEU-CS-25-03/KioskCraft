@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BackgroundPanel extends JPanel {
-    private Image backgroundImage;
+    private final Image backgroundImage;
 
     public BackgroundPanel(String imagePath) {
         backgroundImage = new ImageIcon(imagePath).getImage();
