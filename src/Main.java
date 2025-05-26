@@ -5,7 +5,7 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                new StartFrame().setVisible(true);
+                new OrderTypeSelectionUI().setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "프로그램 시작 오류:\n" + e.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
