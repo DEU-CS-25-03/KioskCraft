@@ -29,10 +29,10 @@ public class DesignUI extends JFrame{
         setDesignBtn.addActionListener(_ -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1) {
-                String selectedLang = table.getValueAt(selectedRow, 0).toString();
+                String selectedDesign = table.getValueAt(selectedRow, 0).toString();
                 JOptionPane.showMessageDialog(
                         null,
-                        "기본 디자인이 " + selectedLang + "으로 변경되었습니다.",
+                        "기본 디자인이 " + selectedDesign + "으로 변경되었습니다.",
                         "알림",
                         JOptionPane.INFORMATION_MESSAGE
                 );
