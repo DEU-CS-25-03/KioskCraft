@@ -46,20 +46,23 @@ public class AdminUI extends JFrame{
         deleteCategoryBtn.setBounds(570, 580, 270, 50);
         deleteCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         add(deleteCategoryBtn);
-        
-        //테이블 선언
-        JTable table = getJTable();
+
+        //테이블 선언 + 모델 따로 분리해서 받음
+        DefaultTableModel model = getTableModel();
+        JTable table = new JTable(model);
 
         //폰트 지정
         table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 
-        // 버튼 렌더러, 에디터 추가
+        //열 크기 지정
         table.getColumn("카테고리").setPreferredWidth(150);
         table.getColumn("메뉴").setPreferredWidth(290);
         table.getColumn("가격").setPreferredWidth(30);
         table.getColumn("").setPreferredWidth(30);
+
+        // 버튼 렌더러, 에디터 추가 (여기서 model 넘겨줌)
         table.getColumn("").setCellRenderer(new ButtonRenderer());
-        table.getColumn("").setCellEditor(new ButtonEditor(new JCheckBox()));
+        table.getColumn("").setCellEditor(new ButtonEditor(new JCheckBox(), model));
 
         //스크롤 추가
         JScrollPane scrollPane = new JScrollPane(table);
@@ -77,25 +80,15 @@ public class AdminUI extends JFrame{
 
         //모니터 중앙에 위치
         setLocationRelativeTo(null);
-        
+
         //크기 변경 기능 해제
         setResizable(false);
     }
 
-    //테이블 데이터 설정
-    private static JTable getJTable() {
+    // 테이블 모델을 반환 (버튼 에디터에 넘길 목적)
+    private static DefaultTableModel getTableModel() {
         Object[][] rowData = {
                 {"커피", "아메리카노", "4,000원", "X"},
-                {"커피", "카푸치노", "6,000원", "X"},
-                {"논커피", "딸기라떼", "7,000원", "X"},
-                {"커피", "아메리카노", "4,000원", "X"},
-                {"커피", "카푸치노", "6,000원", "X"},
-                {"논커피", "딸기라떼", "7,000원", "X"},
-                {"커피", "아메리카노", "4,000원", "X"},
-                {"커피", "카푸치노", "6,000원", "X"},
-                {"논커피", "딸기라떼", "7,000원", "X"},
-                {"커피", "아메리카노", "4,000원", "X"},
-                {"커피", "카푸치노", "6,000원", "X"},
                 {"논커피", "딸기라떼", "7,000원", "X"},
                 {"커피", "아메리카노", "4,000원", "X"},
                 {"커피", "카푸치노", "6,000원", "X"},
@@ -113,14 +106,12 @@ public class AdminUI extends JFrame{
         String[] columnNames = {"카테고리", "메뉴", "가격", ""};
 
         // 테이블 모델 생성
-        DefaultTableModel model = new DefaultTableModel(rowData, columnNames) {
-            // 마지막 열만 버튼 표시
+        return new DefaultTableModel(rowData, columnNames) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return column == 3; // 4번째 열(작업)만 수정 가능(=버튼 클릭 가능)
             }
         };
-        return new JTable(model);
     }
 
     // JTable 셀에 버튼을 보이게 하는 스윙 내부 렌더러 클래스
@@ -140,18 +131,26 @@ public class AdminUI extends JFrame{
     static class ButtonEditor extends DefaultCellEditor {
         protected JButton button; // 실제로 눌릴 삭제 버튼
         private int selectedRow;  // 현재 클릭된 행 번호
+        private final DefaultTableModel model; // 테이블 모델 (행 삭제용)
 
-        public ButtonEditor(JCheckBox checkBox) {
-            super(checkBox); // DefaultCellEditor는 JCheckBox 필요(안 써도 됨)
+        public ButtonEditor(JCheckBox checkBox, DefaultTableModel model) {
+            super(checkBox);
+            this.model = model;
             button = new JButton();
-            button.setOpaque(true); // 배경 불투명
-            // 버튼 클릭 이벤트 리스너
+            button.setOpaque(true);
+
             button.addActionListener(_ -> {
-                fireEditingStopped(); // 에디터 종료(포커스 반환)
-                // 버튼 클릭 시 실행할 코드 (여기선 메시지 박스)
-                JOptionPane.showMessageDialog(button, (selectedRow+1) + "버튼 이벤트");
+                // 선택 메뉴 행 삭제
+                int rowToDelete = selectedRow; // 반드시 사본으로 저장 selectedRow 바로 사용 시 마지막 행 삭제 시 에러남
+                fireEditingStopped(); // 먼저 편집 종료(이벤트 루프에서 나감)
+                SwingUtilities.invokeLater(() -> {
+                    if(rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
+                        model.removeRow(rowToDelete); // 그 다음에 행 삭제
+                    }
+                });
             });
         }
+
 
         // 셀이 편집(클릭)될 때 호출됨
         @Override
@@ -174,4 +173,3 @@ public class AdminUI extends JFrame{
         }
     }
 }
-
