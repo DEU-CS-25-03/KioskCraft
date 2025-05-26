@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : 기존 데이터 clear">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="데이터 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,13 +38,8 @@
     &quot;assignee&quot;: &quot;Grrrrra&quot;
   }
 }</component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="develop" />
-        <option value="master" />
-      </list>
-    </option>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="e00a5b0d-6e7f-4e85-a686-3b022dd17dc2" />
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
@@ -188,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747973336315</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="데이터 추가">
+      <option name="closed" value="true" />
+      <created>1748246400741</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748246400741</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +228,8 @@
     <MESSAGE value="EDIT :" />
     <MESSAGE value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
     <MESSAGE value="EDIT : 기존 데이터 clear" />
-    <option name="LAST_COMMIT_MESSAGE" value="EDIT : 기존 데이터 clear" />
+    <MESSAGE value="데이터 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="데이터 추가" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/KioskCraft$Main.ic" NAME="Main 커버리지 결과" MODIFIED="1748246051108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
