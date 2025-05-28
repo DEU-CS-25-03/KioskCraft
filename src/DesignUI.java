@@ -4,11 +4,12 @@ import java.awt.*;
 
 public class DesignUI extends JDialog{
     public DesignUI(JFrame owner, String title, boolean modal){
-        //모달 설정
         super(owner, title, modal);
-        setSize(284, 450);
         setLayout(null);
+        setSize(284, 450);
         SwingUtilities.invokeLater(this::requestFocusInWindow);
+        setLocationRelativeTo(null);
+        setResizable(false);
 
         DefaultTableModel model = getTableModel();
         JTable table = new JTable(model);
