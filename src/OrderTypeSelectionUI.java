@@ -11,9 +11,9 @@ public class OrderTypeSelectionUI extends JFrame {
     public OrderTypeSelectionUI() {
         setTitle("키오스크 시스템");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1280, 720);
+        setSize(520, 720);
 
-        BackgroundPanel bgPanel = new BackgroundPanel("background.jpg");
+        BackgroundPanel bgPanel = new BackgroundPanel("background.png");
         bgPanel.setLayout(new BorderLayout());
 
         // 버튼 패널 (아래쪽)

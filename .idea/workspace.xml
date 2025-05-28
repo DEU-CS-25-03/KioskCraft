@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="데이터 추가">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴삭제 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuControlUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuControlUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +40,18 @@
     &quot;assignee&quot;: &quot;Grrrrra&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="e00a5b0d-6e7f-4e85-a686-3b022dd17dc2" />
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="develop" />
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://Grrrrra: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@github.com/Grrrrra/https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
-    &quot;accountId&quot;: &quot;b7612f82-750f-461a-a563-39d1508daf9e&quot;
+    &quot;url&quot;: &quot;https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
+    &quot;accountId&quot;: &quot;50ee990d-d72a-4bee-911d-2b9bb64dcfc1&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -55,6 +62,7 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2va4r0GX5fbNVrGkjX8S5WsXgYa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -77,8 +85,9 @@
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "File.Encoding",
     "vue.rearranger.settings.migration": "true",
-    "애플리케이션.Main.executor": "Coverage"
+    "애플리케이션.Main.executor": "Run"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -89,52 +98,19 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="untitled" />
+  <component name="RunManager" selected="애플리케이션.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="KioskPackage" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="untitled" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="untitled" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="untitled" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -183,15 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747973336315</updated>
     </task>
-    <task id="LOCAL-00005" summary="데이터 추가">
+    <task id="LOCAL-00005" summary="관리자 UI 틀 만듦">
       <option name="closed" value="true" />
-      <created>1748246400741</created>
+      <created>1748224484777</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1748246400741</updated>
+      <updated>1748224484777</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="메뉴삭제 추가">
+      <option name="closed" value="true" />
+      <created>1748225471943</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748225471943</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,10 +212,18 @@
     <MESSAGE value="EDIT :" />
     <MESSAGE value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
     <MESSAGE value="EDIT : 기존 데이터 clear" />
-    <MESSAGE value="데이터 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="데이터 추가" />
+    <MESSAGE value="관리자 UI 틀 만듦" />
+    <MESSAGE value="메뉴삭제 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="메뉴삭제 추가" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/KioskCraft$Main.ic" NAME="Main 커버리지 결과" MODIFIED="1748246051108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
