@@ -1,11 +1,7 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 
 public class MenuControlUI extends JDialog {
     private String btnText = "수정";
-    private String title = "메뉴 수정 시스템";
-    private JTable menuControlTable;
 
     public MenuControlUI(boolean isRegist, JTable table, JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -21,16 +17,18 @@ public class MenuControlUI extends JDialog {
         JLabel menuLabel = new JLabel("메뉴명: ");
         menuLabel.setBounds(10, 10,100, 10);
         add(menuLabel);
+
         JLabel cateogoryLabel = new JLabel("카테고리: ");
         menuLabel.setBounds(10, 30,100, 10);
         add(cateogoryLabel);
+
         JLabel priceLabel = new JLabel("가격: ");
         menuLabel.setBounds(10, 50,100, 10);
         add(priceLabel);
+
         JLabel imgPathLabel = new JLabel("이미지 경로: ");
         menuLabel.setBounds(10, 70,100, 10);
         add(imgPathLabel);
-
 
         JButton menuControlBtn = new JButton(btnText);
         menuControlBtn.addActionListener(_ -> JOptionPane.showMessageDialog(null, "메뉴가 " + btnText + " 되었습니다."));
