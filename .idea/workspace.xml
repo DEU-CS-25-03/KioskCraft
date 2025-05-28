@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴삭제 추가">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="이미지 변경">
+      <change afterPath="$PROJECT_DIR$/src/CategoryControlUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegistCategoryUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DesignUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MenuControlUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuControlUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748225471943</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="이미지 변경">
+      <option name="closed" value="true" />
+      <created>1748397795644</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748397795644</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +225,8 @@
     <MESSAGE value="EDIT : 기존 데이터 clear" />
     <MESSAGE value="관리자 UI 틀 만듦" />
     <MESSAGE value="메뉴삭제 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="메뉴삭제 추가" />
+    <MESSAGE value="이미지 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="이미지 변경" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

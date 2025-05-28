@@ -2,9 +2,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class DesignUI extends JFrame{
-    public DesignUI(){
-        setTitle("디자인 선택 페이지");
+public class DesignUI extends JDialog{
+    public DesignUI(JFrame owner, String title, boolean modal){
+        //모달 설정
+        super(owner, title, modal);
         setSize(284, 450);
         setLayout(null);
         SwingUtilities.invokeLater(this::requestFocusInWindow);
