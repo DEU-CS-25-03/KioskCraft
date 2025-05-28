@@ -2,12 +2,13 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class MenuControlUI extends JFrame {
+public class MenuControlUI extends JDialog {
     private String btnText = "수정";
     private String title = "메뉴 수정 시스템";
     private JTable menuControlTable;
 
-    public MenuControlUI(boolean isRegist, JTable table) {
+    public MenuControlUI(boolean isRegist, JTable table, JFrame owner, String title, boolean modal) {
+        super(owner, title, modal);
         if (isRegist) {
             btnText = "등록";
             title = "메뉴 등록 시스템";
@@ -16,7 +17,6 @@ public class MenuControlUI extends JFrame {
         setTitle(title);
         setLayout(null);
         setSize(1280, 720);
-
 
         JLabel menuLabel = new JLabel("메뉴명: ");
         menuLabel.setBounds(10, 10,100, 10);

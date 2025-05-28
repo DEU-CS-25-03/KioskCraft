@@ -2,8 +2,14 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AdminUI extends JFrame{
+    private long keyPressedTime = 0L;
+    private final int TRIGGER_KEY = KeyEvent.VK_F10; // 원하는 키 지정
+    private Timer holdTimer;
+    public boolean isTakeOut;
     public AdminUI(){
         setTitle("관리자 페이지");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,49 +52,88 @@ public class AdminUI extends JFrame{
         JButton registMenuBtn = new JButton("메뉴 등록");
         registMenuBtn.setBounds(10, 10, 200, 50);
         registMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        registMenuBtn.addActionListener(_ -> { new MenuControlUI(true, table).setVisible(true); });
+        registMenuBtn.addActionListener(_ -> new MenuControlUI(true, table, this, "", true).setVisible(true));
         add(registMenuBtn);
 
         JButton modifyMenuBtn = new JButton("메뉴 수정");
         modifyMenuBtn.setBounds(220, 10, 200, 50);
         modifyMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyMenuBtn.addActionListener(_ -> { new MenuControlUI(false, table).setVisible(true); });
+        modifyMenuBtn.addActionListener(_ -> new MenuControlUI(false, table, this, "", true).setVisible(true));
         add(modifyMenuBtn);
 
         JButton orderedCheckBtn = new JButton("매출 분석");
         orderedCheckBtn.setBounds(430, 10, 200, 50);
         orderedCheckBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        orderedCheckBtn.addActionListener(_ -> new DesignUI(this, "", true).setVisible(true));
         add(orderedCheckBtn);
 
         JButton setDefaultDesignBtn = new JButton("디자인 변경");
         setDefaultDesignBtn.setBounds(640, 10, 200, 50);
         setDefaultDesignBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        setDefaultDesignBtn.addActionListener(_ -> new DesignUI(this, "", true).setVisible(true));
         add(setDefaultDesignBtn);
-        setDefaultDesignBtn.addActionListener(_ -> { new DesignUI().setVisible(true); });
 
         JButton registCategoryBtn = new JButton("카테고리 등록");
         registCategoryBtn.setBounds(10, 580, 200, 50);
         registCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        registCategoryBtn.addActionListener(_ -> new RegistCategoryUI(this, "", true).setVisible(true));
         add(registCategoryBtn);
 
         JButton modifyCategoryBtn = new JButton("카테고리 수정");
         modifyCategoryBtn.setBounds(220, 580, 200, 50);
         modifyCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        modifyCategoryBtn.addActionListener(_ -> new CategoryControlUI(this, "", true).setVisible(true));
         add(modifyCategoryBtn);
 
         JButton deleteCategoryBtn = new JButton("카테고리 삭제");
         deleteCategoryBtn.setBounds(430, 580, 200, 50);
         deleteCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        deleteCategoryBtn.addActionListener(_ -> new CategoryControlUI(this, "", true).setVisible(true));
         add(deleteCategoryBtn);
 
         JButton showOrderedListBtn = new JButton("주문현황 확인");
         showOrderedListBtn.setBounds(640, 580, 200, 50);
         showOrderedListBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        showOrderedListBtn.addActionListener(_ -> new DesignUI(this, "", true).setVisible(true));
         add(showOrderedListBtn);
 
         //모니터 중앙에 위치, 크기 변경 비활성화
         setLocationRelativeTo(null);
         setResizable(false);
+
+
+        // -------------- 여기에 키 리스너 추가 --------------
+        setFocusable(true);
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == TRIGGER_KEY && keyPressedTime == 0L) {
+                    keyPressedTime = System.currentTimeMillis();
+                    //테스트 때문에 딜레이 100ms로 줄여놓음 나중에 3000ms으로 변경 예정
+                    holdTimer = new Timer(100, _ -> {
+                        if ((System.currentTimeMillis() - keyPressedTime) >= 100) {
+                            openOrderTypeSelectionUI();
+                        }
+                    });
+                    holdTimer.setRepeats(false);
+                    holdTimer.start();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == TRIGGER_KEY) {
+                    keyPressedTime = 0L;
+                    if (holdTimer != null) holdTimer.stop();
+                }
+            }
+
+            private void openOrderTypeSelectionUI() {
+                new OrderTypeSelectionUI().setVisible(true);
+                dispose();
+            }
+        });
+        // -------------- 키 리스너 끝 --------------
     }
 
     // 테이블 모델을 반환 (버튼 에디터에 넘길 목적)
