@@ -166,10 +166,10 @@ public class AdminUI extends JFrame{
                 int rowToDelete = selectedRow; // 반드시 사본으로 저장 selectedRow 바로 사용 시 마지막 행 삭제 시 에러남
                 fireEditingStopped(); // 먼저 편집 종료(이벤트 루프에서 나감)
                 SwingUtilities.invokeLater(() -> {
-                    if(rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
+                    if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
                         model.removeRow(rowToDelete); // 그 다음에 행 삭제
                         JOptionPane.showMessageDialog(
-                        null, "메뉴가 삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE
+                                null, "메뉴가 삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE
                         );
                     }
                 });
@@ -183,6 +183,12 @@ public class AdminUI extends JFrame{
             button.setText("X");   // 버튼에 표시될 텍스트
             selectedRow = row;     // 현재 행 번호 저장
             return button;         // 버튼 반환 (셀에 표시됨)
+        }
+        // 메뉴 목록을 DB에서 가져오기
+
+        public DefaultTableModel getTableModel() {
+            // List<Menu> menuList = dbManager.getMenuDAO().selectAllMenus();
+            // DB 커넥 필요 (아직 DB 연결 안됨)
         }
 
         // 편집 종료 후 값 반환 (여기선 따로 의미 없음)
