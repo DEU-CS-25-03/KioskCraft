@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 페이지 구현">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="디자인 기능 완전 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KioskUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748494066906</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="디자인 기능 완전 구현">
+      <option name="closed" value="true" />
+      <created>1748505002013</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748505002013</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +273,8 @@
     <MESSAGE value="메뉴 등록 추가" />
     <MESSAGE value="디자인 추가" />
     <MESSAGE value="메뉴 페이지 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="메뉴 페이지 구현" />
+    <MESSAGE value="디자인 기능 완전 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="디자인 기능 완전 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -163,7 +163,7 @@ public class DataSet {
     static Object[] categories = { "커피", "논커피", "디저트", "스무디", "에이드" };
 
     static String[] designs = {
-            "FlatAllIJThemes", "FlatArcDarkIJTheme", "FlatArcDarkOrangeIJTheme", "FlatArcIJTheme",
+            "FlatArcDarkIJTheme", "FlatArcDarkOrangeIJTheme", "FlatArcIJTheme",
             "FlatArcOrangeIJTheme", "FlatCarbonIJTheme", "FlatCobalt2IJTheme", "FlatCyanLightIJTheme",
             "FlatDarkFlatIJTheme", "FlatDarkPurpleIJTheme", "FlatDraculaIJTheme",
             "FlatGradiantoDarkFuchsiaIJTheme", "FlatGradiantoDeepOceanIJTheme", "FlatGradiantoMidnightBlueIJTheme",
