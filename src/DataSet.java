@@ -1,5 +1,5 @@
 public class DataSet {
-    Object[][] Menus = {
+    Object[][] menus = {
             // 커피 (30개)
             {"커피", "아메리카노", "4,000원", "O"},
             {"커피", "카페라떼", "4,500원", "X"},
@@ -161,4 +161,16 @@ public class DataSet {
             {"에이드", "허니레몬에이드", "6,000원", "O"},
     };
     static Object[] categories = { "커피", "논커피", "디저트", "스무디", "에이드" };
+
+    static String[] designs = {
+            "FlatAllIJThemes", "FlatArcDarkIJTheme", "FlatArcDarkOrangeIJTheme", "FlatArcIJTheme",
+            "FlatArcOrangeIJTheme", "FlatCarbonIJTheme", "FlatCobalt2IJTheme", "FlatCyanLightIJTheme",
+            "FlatDarkFlatIJTheme", "FlatDarkPurpleIJTheme", "FlatDraculaIJTheme",
+            "FlatGradiantoDarkFuchsiaIJTheme", "FlatGradiantoDeepOceanIJTheme", "FlatGradiantoMidnightBlueIJTheme",
+            "FlatGradiantoNatureGreenIJTheme", "FlatGrayIJTheme", "FlatGruvboxDarkHardIJTheme",
+            "FlatHiberbeeDarkIJTheme", "FlatHighContrastIJTheme", "FlatLightFlatIJTheme",
+            "FlatMaterialDesignDarkIJTheme", "FlatMonocaiIJTheme", "FlatMonokaiProIJTheme",
+            "FlatNordIJTheme", "FlatOneDarkIJTheme", "FlatSolarizedDarkIJTheme",
+            "FlatSolarizedLightIJTheme", "FlatSpacegrayIJTheme", "FlatVuesionIJTheme"
+    };
 }
