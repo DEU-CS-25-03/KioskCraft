@@ -1,6 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -30,7 +30,7 @@ public class KioskUI extends JFrame {
             add(categoryBtn);
         }
 
-        // 메뉴 패널 (스크롤 내부에 gridPanel)
+        // 메뉴 패널
         gridPanel = new JPanel(new GridLayout(0, 5, 10, 10));
         JPanel menuPanel = new JPanel(new BorderLayout());
         menuPanel.add(gridPanel, BorderLayout.CENTER);
@@ -43,11 +43,11 @@ public class KioskUI extends JFrame {
         add(scrollPane);
 
         // 장바구니 테이블
-        String[] columns = {"메뉴명", "수량", "단가", "총액"};
+        String[] columns = {"메뉴명", "수량", "총액", "", ""};
         cartModel = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // 어떤 셀도 편집 못 함
+                return column >= 3;
             }
         };
 
@@ -56,15 +56,25 @@ public class KioskUI extends JFrame {
         cartTable.getTableHeader().setFont(new Font("맑은 고딕", Font.BOLD, 16));
         cartTable.setRowHeight(30);
         cartTable.setRowSelectionAllowed(false);
-        cartTable.setColumnSelectionAllowed(false);
-        cartTable.setCellSelectionEnabled(false);
-        cartTable.setFocusable(false);
+
+        // 버튼 렌더러/에디터
+        cartTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer("-"));
+        cartTable.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new JCheckBox(), "-", true));
+        cartTable.getColumnModel().getColumn(4).setCellRenderer(new ButtonRenderer("x"));
+        cartTable.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor(new JCheckBox(), "x", false));
+        cartTable.getColumnModel().getColumn(0).setPreferredWidth(250);
+        cartTable.getColumnModel().getColumn(1).setPreferredWidth(60);
+        cartTable.getColumnModel().getColumn(2).setPreferredWidth(130);
+        cartTable.getColumnModel().getColumn(3).setPreferredWidth(40);
+        cartTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+
         JScrollPane cartScrollPane = new JScrollPane(cartTable);
-        cartScrollPane.setBounds(1100, 60, 320, 620);
+        cartScrollPane.setBounds(1100, 60, 380, 620);
         add(cartScrollPane);
 
-        // 결제하기 버튼
+        // 결제 버튼
         JButton payBtn = new JButton("결제하기");
+        payBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         payBtn.setBounds(1100, 690, 320, 60);
         payBtn.addActionListener(e -> JOptionPane.showMessageDialog(this, "결제 완료!"));
         add(payBtn);
@@ -76,7 +86,7 @@ public class KioskUI extends JFrame {
     private void showMenuByCategory(String category) {
         gridPanel.removeAll();
 
-        for (Object[] item : new DataSet().Menus) {
+        for (Object[] item : new DataSet().menus) {
             String cat = (String) item[0];
             String name = (String) item[1];
             String priceStr = (String) item[2];
@@ -105,7 +115,7 @@ public class KioskUI extends JFrame {
             if (existingName.equals(name)) {
                 int quantity = (int) cartModel.getValueAt(i, 1) + 1;
                 cartModel.setValueAt(quantity, i, 1);
-                cartModel.setValueAt(quantity * price, i, 3);
+                cartModel.setValueAt(quantity * price, i, 2);
                 found = true;
                 break;
             }
@@ -116,8 +126,64 @@ public class KioskUI extends JFrame {
             row.add(name);
             row.add(1);
             row.add(price);
-            row.add(price);
+            row.add("-");
+            row.add("x");
             cartModel.addRow(row);
+        }
+    }
+
+    private int getUnitPriceByName(String name) {
+        for (Object[] item : new DataSet().menus) {
+            if (item[1].equals(name)) {
+                return Integer.parseInt(((String) item[2]).replace(",", "").replace("원", ""));
+            }
+        }
+        return 0;
+    }
+
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+        public ButtonRenderer(String label) {
+            setText(label);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            return this;
+        }
+    }
+
+    class ButtonEditor extends DefaultCellEditor {
+        private JButton button;
+        private boolean isDecrease;
+        private int editingRow;
+
+        public ButtonEditor(JCheckBox checkBox, String label, boolean isDecrease) {
+            super(checkBox);
+            this.isDecrease = isDecrease;
+            button = new JButton(label);
+            button.addActionListener(e -> handleClick());
+        }
+
+        private void handleClick() {
+            if (isDecrease) {
+                int quantity = (int) cartModel.getValueAt(editingRow, 1);
+                String name = (String) cartModel.getValueAt(editingRow, 0);
+                int unitPrice = getUnitPriceByName(name);
+
+                if (quantity > 1) {
+                    cartModel.setValueAt(quantity - 1, editingRow, 1);
+                    cartModel.setValueAt((quantity - 1) * unitPrice, editingRow, 2);
+                } else {
+                    cartModel.removeRow(editingRow);
+                }
+            } else {
+                cartModel.removeRow(editingRow);
+            }
+        }
+
+        public Component getTableCellEditorComponent(JTable table, Object value,
+                                                     boolean isSelected, int row, int column) {
+            this.editingRow = row;
+            return button;
         }
     }
 
@@ -126,6 +192,8 @@ public class KioskUI extends JFrame {
     }
 }
 
+
+// 메뉴 카드 클래스는 그대로 유지
 class MenuCardPanel extends JPanel {
     public MenuCardPanel(String name, String price, String imagePath, boolean isDefault, boolean soldOut, Runnable onClick) {
         setLayout(new BorderLayout());
@@ -140,9 +208,8 @@ class MenuCardPanel extends JPanel {
             g2.fillRect(0, 0, 60, 60);
             g2.setColor(Color.BLACK);
             g2.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-            g2.drawString("기본 이미지", 2, 35);
+            g2.drawString("Default Img", 2, 35);
             g2.dispose();
-
             imgLabel = new JLabel(new ImageIcon(placeholder));
         } else {
             ImageIcon icon = new ImageIcon(imagePath);
@@ -153,7 +220,6 @@ class MenuCardPanel extends JPanel {
 
         JLabel nameLabel = new JLabel(name, SwingConstants.CENTER);
         nameLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-
         JLabel priceLabel = new JLabel(price + (soldOut ? " (품절)" : ""), SwingConstants.CENTER);
         priceLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 
