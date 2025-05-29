@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="modal 설정">
-      <change afterPath="$PROJECT_DIR$/src/DataSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RegistMenuUI.java" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 등록 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KioskUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuControlUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuControlUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KioskPackage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/KioskPackage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistMenuUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,16 +81,16 @@
     "git-widget-placeholder": "develop에 #4개",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jyj36/github_IdeaProjects",
+    "last_opened_file_path": "C:/Users/whals/OneDrive/바탕 화면/KioskCraft/flatlaf-demo-3.6.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/J/Desktop/KioskPackage/src/Main.java",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "라이브러리",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true",
     "애플리케이션.Main.executor": "Run"
@@ -110,10 +108,14 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="KioskPackage" />
+      <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="애플리케이션.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="애플리케이션.Main" />
@@ -199,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748400231473</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="메뉴 등록 추가">
+      <option name="closed" value="true" />
+      <created>1748415070381</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1748415070381</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +250,8 @@
     <MESSAGE value="메뉴삭제 추가" />
     <MESSAGE value="이미지 변경" />
     <MESSAGE value="modal 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="modal 설정" />
+    <MESSAGE value="메뉴 등록 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="메뉴 등록 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -61,6 +61,7 @@ public class RegistMenuUI extends JDialog {
 
         JButton confirmBtn = new JButton("등록");
         confirmBtn.setBounds(10, 170, 130, 40);
+        //빈 칸 확인
         confirmBtn.addActionListener(_ -> {
             if (Objects.equals(menueField.getText(), "") ||
                     Objects.equals(categoryField.getText(), "") ||
