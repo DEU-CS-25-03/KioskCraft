@@ -60,27 +60,24 @@ public class KioskUIUtils {
          * - 등록 후 해당 키를 꾹 누르면 콜백이 실행됨
          */
         public void register() {
-            dispatcher = new KeyEventDispatcher() {
-                @Override
-                public boolean dispatchKeyEvent(KeyEvent e) {
-                    if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == triggerKey && !keyHeld) {
-                        keyHeld = true;
-                        keyPressedTime = System.currentTimeMillis();
-                        holdTimer = new Timer(holdMillis, _ -> {
-                            // 꾹 누른 시간 체크
-                            if ((System.currentTimeMillis() - keyPressedTime) >= holdMillis) {
-                                SwingUtilities.invokeLater(action);
-                            }
-                        });
-                        holdTimer.setRepeats(false);
-                        holdTimer.start();
-                    } else if (e.getID() == KeyEvent.KEY_RELEASED && e.getKeyCode() == triggerKey) {
-                        keyHeld = false;
-                        keyPressedTime = 0L;
-                        if (holdTimer != null) holdTimer.stop();
-                    }
-                    return false;
+            dispatcher = e -> {
+                if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == triggerKey && !keyHeld) {
+                    keyHeld = true;
+                    keyPressedTime = System.currentTimeMillis();
+                    holdTimer = new Timer(holdMillis, _ -> {
+                        // 꾹 누른 시간 체크
+                        if ((System.currentTimeMillis() - keyPressedTime) >= holdMillis) {
+                            SwingUtilities.invokeLater(action);
+                        }
+                    });
+                    holdTimer.setRepeats(false);
+                    holdTimer.start();
+                } else if (e.getID() == KeyEvent.KEY_RELEASED && e.getKeyCode() == triggerKey) {
+                    keyHeld = false;
+                    keyPressedTime = 0L;
+                    if (holdTimer != null) holdTimer.stop();
                 }
+                return false;
             };
             KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(dispatcher);
         }
