@@ -1,4 +1,3 @@
-// ✅ AdminUI.java (F10 키 리스너 해제 보완 포함)
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -6,12 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class AdminUI extends JFrame {
-    private long keyPressedTime = 0L;
-    private final int TRIGGER_KEY = KeyEvent.VK_F10;
-    private Timer holdTimer;
-    private boolean homeOpened = false;
-    private KeyEventDispatcher dispatcher;
-
+    // 홈으로 화면 전환할 때 쓰는 디스패쳐
+    private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher;
     public AdminUI() {
         setTitle("관리자 페이지");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -20,6 +15,7 @@ public class AdminUI extends JFrame {
         setResizable(false);
         setLayout(null);
 
+        // 테이블 모델 생성 및 테이블 초기화
         DefaultTableModel model = getTableModel();
         JTable table = new JTable(model);
         table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
@@ -31,6 +27,7 @@ public class AdminUI extends JFrame {
         table.getColumn("").setCellRenderer(new ButtonRenderer());
         table.getColumn("").setCellEditor(new ButtonEditor(new JCheckBox(), model));
 
+        // 테이블 스크롤 패널 추가 및 세부 설정
         JScrollPane scrollPane = new JScrollPane(table);
         table.setRowHeight(35);
         scrollPane.setBounds(10, 70, 830, 500);
@@ -39,15 +36,15 @@ public class AdminUI extends JFrame {
         table.getTableHeader().setReorderingAllowed(false);
         add(scrollPane);
 
+        // 관리 버튼(메뉴 등록/수정 등) 추가
         addAdminButtons(table);
 
-        // 창 닫힐 때 리스너 해제 보장
+        // 창 닫힐 때 키 디스패처 해제 보장
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 unregisterKeyDispatcher();
             }
-
             @Override
             public void windowClosing(WindowEvent e) {
                 unregisterKeyDispatcher();
@@ -55,54 +52,36 @@ public class AdminUI extends JFrame {
         });
     }
 
+    // 창이 열리거나 닫힐 때 키 디스패쳐 등록 및 해제
     @Override
     public void setVisible(boolean b) {
         if (b) {
-            registerKeyDispatcher();
+            // 등록
+            keyDispatcher = new KioskUIUtils.KeyHoldActionDispatcher(
+                    KeyEvent.VK_F10, // 트리거 키: F10
+                    100,             // 100ms 이상 누르면 동작
+                    () -> {          // 콜백: 홈 화면으로 이동
+                        new OrderTypeSelectionUI().setVisible(true);
+                        dispose();
+                    }
+            );
+            keyDispatcher.register();
         } else {
+            // 해제
             unregisterKeyDispatcher();
         }
         super.setVisible(b);
     }
 
-    private void registerKeyDispatcher() {
-        dispatcher = new KeyEventDispatcher() {
-            private boolean keyHeld = false;
-
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == TRIGGER_KEY && !keyHeld) {
-                    keyHeld = true;
-                    keyPressedTime = System.currentTimeMillis();
-                    holdTimer = new Timer(100, _ -> {
-                        if ((System.currentTimeMillis() - keyPressedTime) >= 100 && !homeOpened) {
-                            homeOpened = true;
-                            SwingUtilities.invokeLater(() -> {
-                                new OrderTypeSelectionUI().setVisible(true);
-                                dispose();
-                            });
-                        }
-                    });
-                    holdTimer.setRepeats(false);
-                    holdTimer.start();
-                } else if (e.getID() == KeyEvent.KEY_RELEASED && e.getKeyCode() == TRIGGER_KEY) {
-                    keyHeld = false;
-                    keyPressedTime = 0L;
-                    if (holdTimer != null) holdTimer.stop();
-                }
-                return false;
-            }
-        };
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(dispatcher);
-    }
-
+    // 디스패쳐 해제 함수
     private void unregisterKeyDispatcher() {
-        if (dispatcher != null) {
-            KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(dispatcher);
-            dispatcher = null;
+        if (keyDispatcher != null) {
+            keyDispatcher.unregister();
+            keyDispatcher = null;
         }
     }
 
+    // AdminUI에 들어가는 버튼들 관리하기 쉽게 따로 모아둠
     private void addAdminButtons(JTable table) {
         JButton registMenuBtn = new JButton("메뉴 등록");
         registMenuBtn.setBounds(10, 10, 200, 50);
@@ -153,6 +132,11 @@ public class AdminUI extends JFrame {
         add(showOrderedListBtn);
     }
 
+    /*
+       관리 테이블에 들어갈 모델 생성
+     - 5개 컬럼(카테고리, 메뉴, 가격, 품절여부, X버튼)
+     - 메뉴 삭제버튼(4번째 컬럼)만 수정 가능
+     */
     public static DefaultTableModel getTableModel() {
         Object[][] rowData = new DataSet().menus;
         String[] columnNames = {"카테고리", "메뉴", "가격", "품절여부", ""};
@@ -164,6 +148,10 @@ public class AdminUI extends JFrame {
         };
     }
 
+    /*
+     테이블 마지막 컬럼에 메뉴 삭제버튼을 보여주기 위한 렌더러
+     버튼에 항상 X 텍스트를 표시
+    */
     static class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {
             setOpaque(true);
@@ -175,6 +163,10 @@ public class AdminUI extends JFrame {
         }
     }
 
+    /*
+      메뉴 삭제버튼 클릭 시 해당 행(메뉴)을 삭제하는 에디터
+      삭제 후 알림 메시지 출력
+    */
     static class ButtonEditor extends DefaultCellEditor {
         protected JButton button;
         private int selectedRow;
