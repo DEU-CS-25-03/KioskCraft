@@ -29,6 +29,11 @@ public class KioskUI extends JFrame {
             add(categoryBtn);
         }
 
+        JButton goHome = new JButton("\uD83C\uDFE0\uFE0E");
+        goHome.setFont(new Font("", Font.PLAIN, 16));
+        goHome.setBounds(1425, 10, 50, 50);
+        add(goHome);
+
         // 메뉴 패널
         gridPanel = new JPanel(new GridLayout(0, 5, 10, 10));
         JPanel menuPanel = new JPanel(new BorderLayout());
