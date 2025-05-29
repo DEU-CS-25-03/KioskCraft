@@ -40,7 +40,6 @@ public class KioskUI extends JFrame {
             add(categoryBtn);
         }
 
-
          // 홈(초기화면) 이동 버튼 아래 유니코드는 🏠︎과 같음
         JButton goHome = new JButton("\uD83C\uDFE0\uFE0E");
         goHome.setFont(new Font("", Font.PLAIN, 16));
