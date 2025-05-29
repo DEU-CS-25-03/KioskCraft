@@ -8,9 +8,8 @@ import java.io.File;
 import java.util.Vector;
 
 public class KioskUI extends JFrame {
-    private JPanel gridPanel;
-    private JTable cartTable;
-    private DefaultTableModel cartModel;
+    private final JPanel gridPanel;
+    private final DefaultTableModel cartModel;
 
     public KioskUI() {
         setTitle("메뉴 페이지");
@@ -26,7 +25,7 @@ public class KioskUI extends JFrame {
             JButton categoryBtn = new JButton(category);
             categoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
             categoryBtn.setBounds(10 + i * 130, 10, 120, 40);
-            categoryBtn.addActionListener(e -> showMenuByCategory(category));
+            categoryBtn.addActionListener(_ -> showMenuByCategory(category));
             add(categoryBtn);
         }
 
@@ -51,7 +50,7 @@ public class KioskUI extends JFrame {
             }
         };
 
-        cartTable = new JTable(cartModel);
+        JTable cartTable = new JTable(cartModel);
         cartTable.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         cartTable.getTableHeader().setFont(new Font("맑은 고딕", Font.BOLD, 16));
         cartTable.setRowHeight(30);
@@ -76,7 +75,7 @@ public class KioskUI extends JFrame {
         JButton payBtn = new JButton("결제하기");
         payBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         payBtn.setBounds(1100, 690, 320, 60);
-        payBtn.addActionListener(e -> JOptionPane.showMessageDialog(this, "결제 완료!"));
+        payBtn.addActionListener(_ -> JOptionPane.showMessageDialog(this, "결제 완료!"));
         add(payBtn);
 
         showMenuByCategory("커피");
@@ -141,7 +140,7 @@ public class KioskUI extends JFrame {
         return 0;
     }
 
-    class ButtonRenderer extends JButton implements TableCellRenderer {
+    static class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer(String label) {
             setText(label);
         }
@@ -152,15 +151,15 @@ public class KioskUI extends JFrame {
     }
 
     class ButtonEditor extends DefaultCellEditor {
-        private JButton button;
-        private boolean isDecrease;
+        private final JButton button;
+        private final boolean isDecrease;
         private int editingRow;
 
         public ButtonEditor(JCheckBox checkBox, String label, boolean isDecrease) {
             super(checkBox);
             this.isDecrease = isDecrease;
             button = new JButton(label);
-            button.addActionListener(e -> handleClick());
+            button.addActionListener(_ -> handleClick());
         }
 
         private void handleClick() {
