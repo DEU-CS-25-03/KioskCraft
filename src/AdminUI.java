@@ -124,11 +124,11 @@ public class AdminUI extends JFrame {
         deleteCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         deleteCategoryBtn.addActionListener(_ -> new CategoryControlUI(this, "카테고리 삭제", true).setVisible(true));
         add(deleteCategoryBtn);
-
+//주문현황 DisignUI로 연결 수정
         JButton showOrderedListBtn = new JButton("주문현황 확인");
         showOrderedListBtn.setBounds(640, 580, 200, 50);
         showOrderedListBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        showOrderedListBtn.addActionListener(_ -> new DesignUI(this, "주문현황", true).setVisible(true));
+        showOrderedListBtn.addActionListener(_ -> new OrderStatusUI(this, "주문현황", true).setVisible(true));
         add(showOrderedListBtn);
     }
 
