@@ -3,6 +3,9 @@ import java.sql.*;
 import java.util.*;
 //
 public class OrderStatusDAO {
+    public OrderStatusDAO(Connection connection) {
+
+    }
 //    public List<Order> getAllOrders() {
 //        List<Order> orders = new ArrayList<>();
 //        String sql = "SELECT order_id, customer_name, status, order_time FROM orders";
