@@ -31,8 +31,8 @@ public class KioskUI extends JFrame {
          * 카테고리별 버튼 생성
          * 클릭 시 해당 카테고리 메뉴만 메뉴패널에 표시
          */
-        for (int i = 0; i < DataSet.categories.length; i++) {
-            String category = String.valueOf(DataSet.categories[i]);
+        for (int i = 0; i < DataSet.categories.toArray().length; i++) {
+            String category = String.valueOf(DataSet.categories.get(i));
             JButton categoryBtn = new JButton(category);
             categoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
             categoryBtn.setBounds(10 + i * 130, 10, 120, 40);
