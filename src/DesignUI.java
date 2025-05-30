@@ -39,6 +39,7 @@ public class DesignUI extends JDialog {
             if (selectedRow != -1) {
                 String selectedDesign = table.getValueAt(selectedRow, 0).toString();
                 try {
+                    dispose();
                     UIManager.setLookAndFeel("com.formdev.flatlaf.intellijthemes." + selectedDesign);
                     SwingUtilities.updateComponentTreeUI(owner);
                     JOptionPane.showMessageDialog(
@@ -47,7 +48,6 @@ public class DesignUI extends JDialog {
                             "알림",
                             JOptionPane.INFORMATION_MESSAGE
                     );
-                    dispose();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(
                             this,
