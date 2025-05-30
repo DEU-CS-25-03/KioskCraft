@@ -1,6 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PaymentDB.sql" type="DatabaseScript" editBeforeRun="true" singleton="false">
-    <script-text>DB_HOST=gateway01.us-west-2.prod.aws.tidbcloud.com;DB_PORT=4000;DB_USER=3omx2ePWtYvkrMx.root;DB_PASSWORD=ng1J3txbCJAZ6P5A;DB_NAME=mydb;DB_CA=&lt;CA_PATH&gt;</script-text>
-    <method v="2" />
-  </configuration>
-</component>

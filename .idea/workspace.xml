@@ -9,7 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="카테고리 등록 수정" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="카테고리 등록 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/PaymentDB_sql.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CartDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CartDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CouponDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CouponDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/LanguageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/LanguageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/OrderStatusDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/OrderStatusDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/PaymentRecordDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/PaymentRecordDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/PointNumberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/PointNumberDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,8 +58,13 @@
     &quot;assignee&quot;: &quot;Grrrrra&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="e00a5b0d-6e7f-4e85-a686-3b022dd17dc2" />
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="develop" />
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
@@ -72,7 +94,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "develop",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "develop에 #4개",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jyj36/github_IdeaProjects",
@@ -82,10 +105,10 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/J/Desktop/KioskPackage/src/Main.java",
-    "project.structure.last.edited": "프로젝트",
+    "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "database.query.execution",
     "vue.rearranger.settings.migration": "true",
     "애플리케이션.Main.executor": "Run"
   },
@@ -107,6 +130,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DESIGN_TBL.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="fc6e7977-6dac-4408-9821-ed9422717ef5/schema/mydb/table/DESIGN_TBL.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
     <configuration name="KioskCraft.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/KioskCraft_jar/KioskCraft.jar" />
       <method v="2" />
@@ -118,11 +146,13 @@
     <list>
       <item itemvalue="JAR 애플리케이션.flatlaf-demo-3.6.jar" />
       <item itemvalue="JAR 애플리케이션.KioskCraft.jar" />
+      <item itemvalue="데이터베이스 스크립트.DESIGN_TBL.sql" />
       <item itemvalue="애플리케이션.Main" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="데이터베이스 스크립트.DESIGN_TBL.sql" />
         <item itemvalue="JAR 애플리케이션.flatlaf-demo-3.6.jar" />
         <item itemvalue="JAR 애플리케이션.KioskCraft.jar" />
       </list>
