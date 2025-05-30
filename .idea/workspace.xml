@@ -9,23 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="카테고리 등록 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/PaymentDB_sql.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CartDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CartDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CouponDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CouponDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/LanguageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/LanguageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/OrderStatusDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/OrderStatusDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/PaymentRecordDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/PaymentRecordDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/PointNumberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/PointNumberDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DESIGN_TBL_sql.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +74,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "JAR 애플리케이션.KioskCraft.jar.executor": "Run",
     "JAR 애플리케이션.flatlaf-demo-3.6.jar.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -277,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748609696624</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply">
+      <option name="closed" value="true" />
+      <created>1748637132601</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748637132601</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +316,8 @@
     <MESSAGE value="디자인UI 약간 수정" />
     <MESSAGE value="메뉴 등록 수정" />
     <MESSAGE value="카테고리 등록 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="카테고리 등록 수정" />
+    <MESSAGE value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
