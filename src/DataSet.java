@@ -167,9 +167,8 @@ public class DataSet {
 
     public static final List<Object[]> menus = new ArrayList<>(Arrays.asList(RAW_MENUS));
 
-    public static final List<String> categories = Arrays.asList(
-            "커피", "논커피", "스무디", "에이드", "디저트"
-    );
+    public static final List<String> categories = new ArrayList<>(Arrays.asList( "커피", "논커피", "스무디", "에이드", "디저트" ));
+
     static String[] designs = {
             "FlatArcDarkIJTheme", "FlatArcDarkOrangeIJTheme", "FlatArcIJTheme",
             "FlatArcOrangeIJTheme", "FlatCarbonIJTheme", "FlatCobalt2IJTheme", "FlatCyanLightIJTheme",
