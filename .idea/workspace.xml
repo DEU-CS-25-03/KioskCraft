@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Add : JAR Files &amp; Database-related files push">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Add : README.MD 내용 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +52,12 @@
       </list>
     </option>
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DEU-CS-25-03/KioskCraft.git",
-    "accountId": "b7612f82-750f-461a-a563-39d1508daf9e"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
+    &quot;accountId&quot;: &quot;b7612f82-750f-461a-a563-39d1508daf9e&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -168,7 +167,7 @@
       <workItem from="1747883920748" duration="2093000" />
       <workItem from="1747886401910" duration="1837000" />
       <workItem from="1747969859005" duration="356000" />
-      <workItem from="1748637556532" duration="300000" />
+      <workItem from="1748637556532" duration="429000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -290,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748637409827</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add : README.MD 내용 추가">
+      <option name="closed" value="true" />
+      <created>1748637885742</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748637885742</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +344,8 @@
     <MESSAGE value="카테고리 등록 수정" />
     <MESSAGE value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
     <MESSAGE value="Add : JAR Files &amp; Database-related files push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add : JAR Files &amp; Database-related files push" />
+    <MESSAGE value="Add : README.MD 내용 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add : README.MD 내용 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
