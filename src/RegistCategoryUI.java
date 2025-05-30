@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.util.Objects;
 
 public class RegistCategoryUI extends JDialog {
