@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="KioskCraft:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/KioskCraft_jar</output-path>
+    <root id="archive" name="KioskCraft.jar">
+      <element id="module-output" name="KioskCraft" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/flatlaf-3.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/flatlaf-demo-3.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
