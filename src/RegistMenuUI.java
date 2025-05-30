@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
-import java.util.Objects;
 
 public class RegistMenuUI extends JDialog {
     private final DefaultTableModel parentModel;

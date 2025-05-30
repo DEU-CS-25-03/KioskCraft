@@ -41,7 +41,7 @@ public class KioskUI extends JFrame {
         }
 
          // 홈(초기화면) 이동 버튼 아래 유니코드는 🏠︎과 같음
-        JButton goHome = new JButton("\uD83C\uDFE0\uFE0E");
+        JButton goHome = new JButton("\uD83C\uDFE0");
         goHome.setFont(new Font("", Font.PLAIN, 16));
         goHome.setBounds(1425, 10, 50, 50);
         goHome.addActionListener(_ -> {
@@ -111,7 +111,7 @@ public class KioskUI extends JFrame {
      */
     private void showMenuByCategory(String category) {
         gridPanel.removeAll();
-        for (Object[] item : new DataSet().menus) {
+        for (Object[] item : DataSet.menus) {
             String cat = (String) item[0];
             String name = (String) item[1];
             String priceStr = (String) item[2];
@@ -171,7 +171,7 @@ public class KioskUI extends JFrame {
      * @return 메뉴 단가(정수)
      */
     private int getUnitPriceByName(String name) {
-        for (Object[] item : new DataSet().menus) {
+        for (Object[] item : DataSet.menus) {
             if (item[1].equals(name)) {
                 return Integer.parseInt(((String) item[2]).replace(",", "").replace("원", ""));
             }

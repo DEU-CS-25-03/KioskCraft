@@ -150,16 +150,14 @@ public class AdminUI extends JFrame {
     }
 
     static class ButtonEditor extends DefaultCellEditor {
-        private JButton button;
+        private final JButton button;
         private int selectedRow;
-        private DefaultTableModel model;
 
         public ButtonEditor(JCheckBox checkBox, DefaultTableModel model) {
             super(checkBox);
-            this.model = model;
             button = new JButton();
             button.setOpaque(true);
-            button.addActionListener(e -> {
+            button.addActionListener(_ -> {
                 int rowToDelete = selectedRow;
                 fireEditingStopped();
                 SwingUtilities.invokeLater(() -> {
