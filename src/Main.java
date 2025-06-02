@@ -1,3 +1,4 @@
+import DataAccessObject.DBManager;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
