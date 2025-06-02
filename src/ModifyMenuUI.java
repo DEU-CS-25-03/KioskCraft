@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class MenuControlUI extends JDialog {
+public class ModifyMenuUI extends JDialog {
     /*
      * 버튼 텍스트("등록" or "수정")
      * - 모드에 따라 자동 결정
@@ -15,7 +15,7 @@ public class MenuControlUI extends JDialog {
      * @param title    다이얼로그 타이틀(외부 전달값)
      * @param modal    모달 여부
      */
-    public MenuControlUI(boolean isRegist, JTable table, JFrame owner, String title, boolean modal) {
+    public ModifyMenuUI(boolean isRegist, JTable table, JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         // 등록 모드이면 텍스트 및 타이틀 변경
         if (isRegist) {
