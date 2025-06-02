@@ -3,15 +3,15 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
-//        DBManager dbManager = DBManager.getInstance();
-//        try {
-//            dbManager.connectDB();
-//            // dbManager.getUserInfoDAO()...
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            dbManager.closeConnection();
-//        }
+        DBManager dbManager = DBManager.getInstance();
+        try {
+            dbManager.connectDB();
+            // dbManager.getUserInfoDAO()...
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.closeConnection();
+        }
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel("com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme");

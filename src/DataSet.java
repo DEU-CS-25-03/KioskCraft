@@ -169,15 +169,36 @@ public class DataSet {
 
     public static final List<String> categories = new ArrayList<>(Arrays.asList( "커피", "논커피", "스무디", "에이드", "디저트" ));
 
-    static String[] designs = {
-            "FlatArcDarkIJTheme", "FlatArcDarkOrangeIJTheme", "FlatArcIJTheme",
-            "FlatArcOrangeIJTheme", "FlatCarbonIJTheme", "FlatCobalt2IJTheme", "FlatCyanLightIJTheme",
-            "FlatDarkFlatIJTheme", "FlatDarkPurpleIJTheme", "FlatDraculaIJTheme",
-            "FlatGradiantoDarkFuchsiaIJTheme", "FlatGradiantoDeepOceanIJTheme", "FlatGradiantoMidnightBlueIJTheme",
-            "FlatGradiantoNatureGreenIJTheme", "FlatGrayIJTheme", "FlatGruvboxDarkHardIJTheme",
-            "FlatHiberbeeDarkIJTheme", "FlatHighContrastIJTheme", "FlatLightFlatIJTheme",
-            "FlatMaterialDesignDarkIJTheme", "FlatMonocaiIJTheme", "FlatMonokaiProIJTheme",
-            "FlatNordIJTheme", "FlatOneDarkIJTheme", "FlatSolarizedDarkIJTheme",
-            "FlatSolarizedLightIJTheme", "FlatSpacegrayIJTheme", "FlatVuesionIJTheme"
+    // 테마 정보를 담는 2차원 배열 예시
+    static Object[][] designs = {
+            {"FlatArcDarkIJTheme","진한 어두운 톤의 Arc 스타일 다크 테마",false},
+            {"FlatArcDarkOrangeIJTheme","Arc 기반에 오렌지 포인트를 준 다크 테마",false},
+            {"FlatArcIJTheme","기본 Arc 스타일의 일반 테마",false},
+            {"FlatArcOrangeIJTheme","Arc 스타일에 오렌지 포인트를 준 라이트 테마",false},
+            {"FlatCarbonIJTheme","카본(검은색/회색) 기반의 다크 테마",false},
+            {"FlatCobalt2IJTheme","진한 파란색 톤의 Cobalt2 다크 테마",false},
+            {"FlatCyanLightIJTheme","시안(청록) 계열의 밝은 톤 라이트 테마",false},
+            {"FlatDarkFlatIJTheme","평평한(Flat) 디자인 기반의 어두운 테마",false},
+            {"FlatDarkPurpleIJTheme","어두운 보라색 계열의 다크 테마",false},
+            {"FlatDraculaIJTheme","Dracula 스타일의 대표적인 다크 테마",false},
+            {"FlatGradiantoDarkFuchsiaIJTheme","어두운 진분홍(퓨시아) 그라디언트 다크 테마",false},
+            {"FlatGradiantoDeepOceanIJTheme","깊은 바다 색상 그라디언트 다크 테마",false},
+            {"FlatGradiantoMidnightBlueIJTheme","한밤중의 파란색 그라디언트 다크 테마",false},
+            {"FlatGradiantoNatureGreenIJTheme","자연 녹색 그라디언트 다크 테마",false},
+            {"FlatGrayIJTheme","회색 톤으로만 구성된 심플 다크/라이트 혼합 테마",false},
+            {"FlatGruvboxDarkHardIJTheme","Gruvbox 스타일의 진한 다크 테마",false},
+            {"FlatHiberbeeDarkIJTheme","Hiberbee 다크 테마(짙은 배경+대비 높은 포인트)",false},
+            {"FlatHighContrastIJTheme","명암 대비가 높은 하이 컨트라스트 테마",false},
+            {"FlatLightFlatIJTheme","평평한(Flat) 디자인 기반의 밝은 라이트 테마",true},
+            {"FlatMaterialDesignDarkIJTheme","Material Design 가이드라인 기반의 다크 테마",false},
+            {"FlatMonocaiIJTheme","Monocai 스타일의 다크 테마",false},
+            {"FlatMonokaiProIJTheme","Monokai Pro 색상을 적용한 다크 테마",false},
+            {"FlatNordIJTheme","Nord 팔레트를 활용한 차분한 다크 테마",false},
+            {"FlatOneDarkIJTheme","One Dark 테마 스타일(진한 배경+부드러운 포인트)",false},
+            {"FlatSolarizedDarkIJTheme","Solarized Dark 팔레트를 적용한 다크 테마",false},
+            {"FlatSolarizedLightIJTheme","Solarized Light 팔레트를 적용한 라이트 테마",false},
+            {"FlatSpacegrayIJTheme","Spacegray 스타일의 어두운 테마",false},
+            {"FlatVuesionIJTheme","Vuesion(뷰전) 스타일의 라이트/다크 혼합 테마",false}
     };
+
 }
