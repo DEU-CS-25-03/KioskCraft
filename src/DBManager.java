@@ -9,9 +9,9 @@ public class DBManager {
     private Connection connection;
 
     // TiDB 연결 정보
-    private final String url = "jdbc:mysql://gateway01.us-west-2.prod.aws.tidbcloud.com:4000/mydb?useSSL=true&serverTimezone=Asia/Seoul";
-    private final String user = "3omx2ePWtYvkrMx.root";
-    private final String password = "yqjBe91ghMKqeEe5";  // passward 수시로 수정 필요함
+    private final String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:QnZoDMZWjRoVo7xl@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/fortune500";
+    private final String user = "3tXLfN5hUF3WufM.root";
+    private final String password = "QnZoDMZWjRoVo7xl";  // passward 수시로 수정 필요함
 
     // DAO 인스턴스들
     private DesignDAO designDAO;
