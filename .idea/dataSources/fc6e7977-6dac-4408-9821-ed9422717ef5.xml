@@ -6,96 +6,96 @@
       <DefaultCasing>mixed/mixed</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>|root||3omx2ePWtYvkrMx.cloud_admin||ALTER|G
-|root||3omx2ePWtYvkrMx.root||ALTER|G
+      <Grants>|root||3tXLfN5hUF3WufM.cloud_admin||ALTER|G
+|root||3tXLfN5hUF3WufM.root||ALTER|G
 |root||role_admin||ALTER|G
-|root||3omx2ePWtYvkrMx.root||ALTER ROUTINE|G
+|root||3tXLfN5hUF3WufM.root||ALTER ROUTINE|G
 |root||role_admin||ALTER ROUTINE|G
-|root||3omx2ePWtYvkrMx.cloud_admin||BACKUP_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||CONFIG|G
-|root||3omx2ePWtYvkrMx.cloud_admin||CONNECTION_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||CREATE|G
-|root||3omx2ePWtYvkrMx.root||CREATE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||BACKUP_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CONFIG|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CONNECTION_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE|G
+|root||3tXLfN5hUF3WufM.root||CREATE|G
 |root||role_admin||CREATE|G
-|root||3omx2ePWtYvkrMx.cloud_admin||CREATE ROLE|G
-|root||3omx2ePWtYvkrMx.root||CREATE ROLE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE ROLE|G
+|root||3tXLfN5hUF3WufM.root||CREATE ROLE|G
 |root||role_admin||CREATE ROLE|G
-|root||3omx2ePWtYvkrMx.root||CREATE ROUTINE|G
+|root||3tXLfN5hUF3WufM.root||CREATE ROUTINE|G
 |root||role_admin||CREATE ROUTINE|G
-|root||3omx2ePWtYvkrMx.root||CREATE TABLESPACE|G
+|root||3tXLfN5hUF3WufM.root||CREATE TABLESPACE|G
 |root||role_admin||CREATE TABLESPACE|G
-|root||3omx2ePWtYvkrMx.root||CREATE TEMPORARY TABLES|G
+|root||3tXLfN5hUF3WufM.root||CREATE TEMPORARY TABLES|G
 |root||role_admin||CREATE TEMPORARY TABLES|G
-|root||3omx2ePWtYvkrMx.cloud_admin||CREATE USER|G
-|root||3omx2ePWtYvkrMx.root||CREATE USER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE USER|G
+|root||3tXLfN5hUF3WufM.root||CREATE USER|G
 |root||role_admin||CREATE USER|G
-|root||3omx2ePWtYvkrMx.cloud_admin||CREATE VIEW|G
-|root||3omx2ePWtYvkrMx.root||CREATE VIEW|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE VIEW|G
+|root||3tXLfN5hUF3WufM.root||CREATE VIEW|G
 |root||role_admin||CREATE VIEW|G
-|root||3omx2ePWtYvkrMx.cloud_admin||DASHBOARD_CLIENT|G
-|root||3omx2ePWtYvkrMx.cloud_admin||DELETE|G
-|root||3omx2ePWtYvkrMx.root||DELETE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||DASHBOARD_CLIENT|G
+|root||3tXLfN5hUF3WufM.cloud_admin||DELETE|G
+|root||3tXLfN5hUF3WufM.root||DELETE|G
 |root||role_admin||DELETE|G
-|root||3omx2ePWtYvkrMx.cloud_admin||DROP|G
-|root||3omx2ePWtYvkrMx.root||DROP|G
+|root||3tXLfN5hUF3WufM.cloud_admin||DROP|G
+|root||3tXLfN5hUF3WufM.root||DROP|G
 |root||role_admin||DROP|G
-|root||3omx2ePWtYvkrMx.root||DROP ROLE|G
+|root||3tXLfN5hUF3WufM.root||DROP ROLE|G
 |root||role_admin||DROP ROLE|G
-|root||3omx2ePWtYvkrMx.root||EVENT|G
+|root||3tXLfN5hUF3WufM.root||EVENT|G
 |root||role_admin||EVENT|G
-|root||3omx2ePWtYvkrMx.root||EXECUTE|G
+|root||3tXLfN5hUF3WufM.root||EXECUTE|G
 |root||role_admin||EXECUTE|G
-|root||3omx2ePWtYvkrMx.root||FILE|G
+|root||3tXLfN5hUF3WufM.root||FILE|G
 |root||role_admin||FILE|G
-|root||3omx2ePWtYvkrMx.cloud_admin||INDEX|G
-|root||3omx2ePWtYvkrMx.root||INDEX|G
+|root||3tXLfN5hUF3WufM.cloud_admin||INDEX|G
+|root||3tXLfN5hUF3WufM.root||INDEX|G
 |root||role_admin||INDEX|G
-|root||3omx2ePWtYvkrMx.cloud_admin||INSERT|G
-|root||3omx2ePWtYvkrMx.root||INSERT|G
+|root||3tXLfN5hUF3WufM.cloud_admin||INSERT|G
+|root||3tXLfN5hUF3WufM.root||INSERT|G
 |root||role_admin||INSERT|G
-|root||3omx2ePWtYvkrMx.root||LOCK TABLES|G
+|root||3tXLfN5hUF3WufM.root||LOCK TABLES|G
 |root||role_admin||LOCK TABLES|G
-|root||3omx2ePWtYvkrMx.cloud_admin||PROCESS|G
-|root||3omx2ePWtYvkrMx.root||PROCESS|G
+|root||3tXLfN5hUF3WufM.cloud_admin||PROCESS|G
+|root||3tXLfN5hUF3WufM.root||PROCESS|G
 |root||role_admin||PROCESS|G
-|root||3omx2ePWtYvkrMx.cloud_admin||REFERENCES|G
-|root||3omx2ePWtYvkrMx.root||REFERENCES|G
+|root||3tXLfN5hUF3WufM.cloud_admin||REFERENCES|G
+|root||3tXLfN5hUF3WufM.root||REFERENCES|G
 |root||role_admin||REFERENCES|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RELOAD|G
-|root||3omx2ePWtYvkrMx.root||RELOAD|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RELOAD|G
+|root||3tXLfN5hUF3WufM.root||RELOAD|G
 |root||role_admin||RELOAD|G
-|root||3omx2ePWtYvkrMx.root||REPLICATION CLIENT|G
+|root||3tXLfN5hUF3WufM.root||REPLICATION CLIENT|G
 |root||role_admin||REPLICATION CLIENT|G
-|root||3omx2ePWtYvkrMx.root||REPLICATION SLAVE|G
+|root||3tXLfN5hUF3WufM.root||REPLICATION SLAVE|G
 |root||role_admin||REPLICATION SLAVE|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTORE_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_CONNECTION_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_REPLICA_WRITER_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_STATUS_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_TABLES_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_USER_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||RESTRICTED_VARIABLES_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTORE_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_CONNECTION_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_REPLICA_WRITER_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_STATUS_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_TABLES_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_USER_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_VARIABLES_ADMIN|G
 |root||role_admin||ROLE_ADMIN|G
-|root||3omx2ePWtYvkrMx.cloud_admin||SELECT|G
-|root||3omx2ePWtYvkrMx.root||SELECT|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SELECT|G
+|root||3tXLfN5hUF3WufM.root||SELECT|G
 |root||role_admin||SELECT|G
-|root||3omx2ePWtYvkrMx.cloud_admin||SHOW DATABASES|G
-|root||3omx2ePWtYvkrMx.root||SHOW DATABASES|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SHOW DATABASES|G
+|root||3tXLfN5hUF3WufM.root||SHOW DATABASES|G
 |root||role_admin||SHOW DATABASES|G
-|root||3omx2ePWtYvkrMx.root||SHOW VIEW|G
+|root||3tXLfN5hUF3WufM.root||SHOW VIEW|G
 |root||role_admin||SHOW VIEW|G
-|root||3omx2ePWtYvkrMx.cloud_admin||SHUTDOWN|G
-|root||3omx2ePWtYvkrMx.root||SUPER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SHUTDOWN|G
+|root||3tXLfN5hUF3WufM.root||SUPER|G
 |root||role_admin||SUPER|G
-|root||3omx2ePWtYvkrMx.cloud_admin||SYSTEM_USER|G
-|root||3omx2ePWtYvkrMx.cloud_admin||SYSTEM_VARIABLES_ADMIN|G
-|root||3omx2ePWtYvkrMx.root||TRIGGER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SYSTEM_USER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SYSTEM_VARIABLES_ADMIN|G
+|root||3tXLfN5hUF3WufM.root||TRIGGER|G
 |root||role_admin||TRIGGER|G
-|root||3omx2ePWtYvkrMx.cloud_admin||UPDATE|G
-|root||3omx2ePWtYvkrMx.root||UPDATE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||UPDATE|G
+|root||3tXLfN5hUF3WufM.root||UPDATE|G
 |root||role_admin||UPDATE|G
-|root||3omx2ePWtYvkrMx.cloud_admin||grant option|G
-|root||3omx2ePWtYvkrMx.root||grant option|G
+|root||3tXLfN5hUF3WufM.cloud_admin||grant option|G
+|root||3tXLfN5hUF3WufM.root||grant option|G
 |root||role_admin||grant option|G</Grants>
       <ServerVersion>7.5.2</ServerVersion>
     </root>
@@ -156,498 +156,567 @@
       <LastIntrospectionLocalTimestamp>2025-05-30.18:31:55</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
-    <schema id="17" parent="1" name="mydb">
+    <schema id="17" parent="1" name="fortune500">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
-      <Current>1</Current>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-05-30.20:02:44</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-06-02.08:26:38</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
-    <schema id="18" parent="1" name="mysql">
+    <schema id="18" parent="1" name="kiosk_db">
+      <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
+      <LastIntrospectionLevel>3</LastIntrospectionLevel>
+      <LastIntrospectionLocalTimestamp>2025-06-02.08:26:38</LastIntrospectionLocalTimestamp>
+      <CollationName>utf8mb4_bin</CollationName>
+    </schema>
+    <schema id="19" parent="1" name="mysql">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
       <LastIntrospectionLocalTimestamp>2025-05-30.18:31:55</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
-    <schema id="19" parent="1" name="test">
+    <schema id="20" parent="1" name="test">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-05-30.18:31:55</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-06-02.09:53:36</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
-    <user id="20" parent="1" name="3omx2ePWtYvkrMx.cloud_admin"/>
-    <user id="21" parent="1" name="3omx2ePWtYvkrMx.cloud_ai"/>
-    <user id="22" parent="1" name="3omx2ePWtYvkrMx.jyj369_3cfzgmTi">
+    <user id="21" parent="1" name="3tXLfN5hUF3WufM.028OHP50_APIKEY">
       <Plugin>tidb_auth_token</Plugin>
     </user>
-    <user id="23" parent="1" name="3omx2ePWtYvkrMx.root"/>
-    <user id="24" parent="1" name="role_admin"/>
-    <table id="25" parent="17" name="CART_ITEM_TBL">
-      <Comment>-- 장바구니 항목 테이블</Comment>
+    <user id="22" parent="1" name="3tXLfN5hUF3WufM.cloud_admin"/>
+    <user id="23" parent="1" name="3tXLfN5hUF3WufM.cloud_ai"/>
+    <user id="24" parent="1" name="3tXLfN5hUF3WufM.root"/>
+    <user id="25" parent="1" name="3tXLfN5hUF3WufM.whalst_4TUmbgvA">
+      <Plugin>tidb_auth_token</Plugin>
+    </user>
+    <user id="26" parent="1" name="role_admin"/>
+    <table id="27" parent="18" name="CART_ITEM_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="26" parent="17" name="CART_TBL">
-      <Comment>-- 장바구니 테이블</Comment>
+    <table id="28" parent="18" name="CART_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="27" parent="17" name="CATEGORY_TBL">
-      <Comment>-- 메뉴 카테고리 테이블</Comment>
+    <table id="29" parent="18" name="CATEGORY_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="28" parent="17" name="COUPON_TBL">
-      <Comment>-- 쿠폰 정보 테이블</Comment>
+    <table id="30" parent="18" name="COUPON_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="29" parent="17" name="DESIGN_TBL">
-      <Comment>-- 디자인 테이블</Comment>
+    <table id="31" parent="18" name="DESIGN_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="30" parent="17" name="LANGUAGE_TBL">
-      <Comment>-- 언어 설정 테이블</Comment>
+    <table id="32" parent="18" name="LANGUAGE_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="31" parent="17" name="MENU_TBL">
-      <Comment>-- 메뉴 정보 테이블</Comment>
+    <table id="33" parent="18" name="MENU_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="32" parent="17" name="ORDER_STATUS_TBL">
-      <Comment>-- 주문 상태 이력 테이블</Comment>
+    <table id="34" parent="18" name="ORDER_STATUS_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="33" parent="17" name="PAYMENT_METHOD_TBL">
-      <Comment>-- 결제 수단 테이블</Comment>
+    <table id="35" parent="18" name="PAYMENT_METHOD_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="34" parent="17" name="PAYMENT_TBL">
-      <Comment>-- 결제 테이블</Comment>
+    <table id="36" parent="18" name="PAYMENT_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <table id="35" parent="17" name="USER_INFO_TBL">
-      <Comment>-- 사용자 정보 테이블</Comment>
+    <table id="37" parent="18" name="USER_INFO_TBL">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_bin</CollationName>
     </table>
-    <column id="36" parent="25" name="Item_ID">
+    <table id="38" parent="20" name="categoryId">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_bin</CollationName>
+    </table>
+    <table id="39" parent="20" name="menuId">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_bin</CollationName>
+    </table>
+    <table id="40" parent="20" name="themeId">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_bin</CollationName>
+    </table>
+    <column id="41" parent="27" name="Item_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="37" parent="25" name="Cart_ID">
+    <column id="42" parent="27" name="Cart_ID">
       <Position>2</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="38" parent="25" name="Menu_ID">
+    <column id="43" parent="27" name="Menu_ID">
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="39" parent="25" name="Quantity">
+    <column id="44" parent="27" name="Quantity">
       <Position>4</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="40" parent="25" name="Added_At">
+    <column id="45" parent="27" name="Added_At">
       <Position>5</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <foreign-key id="41" parent="25" name="fk_1">
+    <foreign-key id="46" parent="27" name="fk_1">
       <ColNames>Cart_ID</ColNames>
       <RefColNames>Cart_ID</RefColNames>
       <RefTableName>CART_TBL</RefTableName>
     </foreign-key>
-    <foreign-key id="42" parent="25" name="fk_2">
+    <foreign-key id="47" parent="27" name="fk_2">
       <ColNames>Menu_ID</ColNames>
       <RefColNames>Menu_ID</RefColNames>
       <RefTableName>MENU_TBL</RefTableName>
     </foreign-key>
-    <index id="43" parent="25" name="PRIMARY">
+    <index id="48" parent="27" name="PRIMARY">
       <ColNames>Item_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="44" parent="25" name="fk_1">
+    <index id="49" parent="27" name="fk_1">
       <ColNames>Cart_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="45" parent="25" name="fk_2">
+    <index id="50" parent="27" name="fk_2">
       <ColNames>Menu_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="46" parent="25" name="PRIMARY">
+    <key id="51" parent="27" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="47" parent="26" name="Cart_ID">
+    <column id="52" parent="28" name="Cart_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="48" parent="26" name="User_number">
+    <column id="53" parent="28" name="User_number">
       <Position>2</Position>
       <StoredType>varchar(15)|0s</StoredType>
     </column>
-    <column id="49" parent="26" name="Created_At">
+    <column id="54" parent="28" name="Created_At">
       <Position>3</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <foreign-key id="50" parent="26" name="fk_1">
+    <foreign-key id="55" parent="28" name="fk_1">
       <ColNames>User_number</ColNames>
       <RefColNames>User_number</RefColNames>
       <RefTableName>USER_INFO_TBL</RefTableName>
     </foreign-key>
-    <index id="51" parent="26" name="PRIMARY">
+    <index id="56" parent="28" name="PRIMARY">
       <ColNames>Cart_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="52" parent="26" name="fk_1">
+    <index id="57" parent="28" name="fk_1">
       <ColNames>User_number</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="53" parent="26" name="PRIMARY">
+    <key id="58" parent="28" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="54" parent="27" name="Category_ID">
+    <column id="59" parent="29" name="Category_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="55" parent="27" name="Category_Name">
+    <column id="60" parent="29" name="Category_Name">
       <Position>2</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="56" parent="27" name="Description">
+    <column id="61" parent="29" name="Description">
       <Position>3</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <index id="57" parent="27" name="PRIMARY">
+    <index id="62" parent="29" name="PRIMARY">
       <ColNames>Category_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="58" parent="27" name="PRIMARY">
+    <key id="63" parent="29" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="59" parent="28" name="Coupon_Number">
+    <column id="64" parent="30" name="Coupon_Number">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>varchar(10)|0s</StoredType>
     </column>
-    <column id="60" parent="28" name="Discount_Rate">
+    <column id="65" parent="30" name="Discount_Rate">
       <Position>2</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="61" parent="28" name="Whether_to_use">
+    <column id="66" parent="30" name="Whether_to_use">
       <Position>3</Position>
       <StoredType>tinyint(1)|0s</StoredType>
     </column>
-    <column id="62" parent="28" name="Expiration_period">
+    <column id="67" parent="30" name="Expiration_period">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="63" parent="28" name="Period_of_use">
+    <column id="68" parent="30" name="Period_of_use">
       <Position>5</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <index id="64" parent="28" name="PRIMARY">
+    <index id="69" parent="30" name="PRIMARY">
       <ColNames>Coupon_Number</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="65" parent="28" name="PRIMARY">
+    <key id="70" parent="30" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="66" parent="29" name="Design_ID">
+    <column id="71" parent="31" name="Design_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="67" parent="29" name="Theme_Name">
+    <column id="72" parent="31" name="Theme_Name">
       <Position>2</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="68" parent="29" name="Theme_Color">
+    <column id="73" parent="31" name="Theme_Color">
       <Position>3</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="69" parent="29" name="Logo_Path">
+    <column id="74" parent="31" name="Logo_Path">
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="70" parent="29" name="Font_Name">
+    <column id="75" parent="31" name="Font_Name">
       <Position>5</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <index id="71" parent="29" name="PRIMARY">
+    <index id="76" parent="31" name="PRIMARY">
       <ColNames>Design_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="72" parent="29" name="PRIMARY">
+    <key id="77" parent="31" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="73" parent="30" name="Language_ID">
+    <column id="78" parent="32" name="Language_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="74" parent="30" name="Language_Code">
+    <column id="79" parent="32" name="Language_Code">
       <Position>2</Position>
       <StoredType>varchar(10)|0s</StoredType>
     </column>
-    <column id="75" parent="30" name="Language_Name">
+    <column id="80" parent="32" name="Language_Name">
       <Position>3</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="76" parent="30" name="Is_Default">
+    <column id="81" parent="32" name="Is_Default">
       <Position>4</Position>
       <StoredType>tinyint(1)|0s</StoredType>
     </column>
-    <index id="77" parent="30" name="PRIMARY">
+    <index id="82" parent="32" name="PRIMARY">
       <ColNames>Language_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="78" parent="30" name="PRIMARY">
+    <key id="83" parent="32" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="79" parent="31" name="Menu_ID">
+    <column id="84" parent="33" name="Menu_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="80" parent="31" name="Menu_name">
+    <column id="85" parent="33" name="Menu_name">
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="81" parent="31" name="price">
+    <column id="86" parent="33" name="price">
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="82" parent="31" name="Category_ID">
+    <column id="87" parent="33" name="Category_ID">
       <Position>4</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="83" parent="31" name="Image_Path">
+    <column id="88" parent="33" name="Image_Path">
       <Position>5</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="84" parent="31" name="Created_At">
+    <column id="89" parent="33" name="Created_At">
       <Position>6</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <foreign-key id="85" parent="31" name="fk_1">
+    <foreign-key id="90" parent="33" name="fk_1">
       <ColNames>Category_ID</ColNames>
       <RefColNames>Category_ID</RefColNames>
       <RefTableName>CATEGORY_TBL</RefTableName>
     </foreign-key>
-    <index id="86" parent="31" name="PRIMARY">
+    <index id="91" parent="33" name="PRIMARY">
       <ColNames>Menu_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="87" parent="31" name="fk_1">
+    <index id="92" parent="33" name="fk_1">
       <ColNames>Category_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="88" parent="31" name="PRIMARY">
+    <key id="93" parent="33" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="89" parent="32" name="Status_ID">
+    <column id="94" parent="34" name="Status_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="90" parent="32" name="Payment_ID">
+    <column id="95" parent="34" name="Payment_ID">
       <Position>2</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="91" parent="32" name="Status">
+    <column id="96" parent="34" name="Status">
       <Position>3</Position>
       <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <column id="92" parent="32" name="Updated_At">
+    <column id="97" parent="34" name="Updated_At">
       <Position>4</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <foreign-key id="93" parent="32" name="fk_1">
+    <foreign-key id="98" parent="34" name="fk_1">
       <ColNames>Payment_ID</ColNames>
       <RefColNames>Payment_ID</RefColNames>
       <RefTableName>PAYMENT_TBL</RefTableName>
     </foreign-key>
-    <index id="94" parent="32" name="PRIMARY">
+    <index id="99" parent="34" name="PRIMARY">
       <ColNames>Status_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="95" parent="32" name="fk_1">
+    <index id="100" parent="34" name="fk_1">
       <ColNames>Payment_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="96" parent="32" name="PRIMARY">
+    <key id="101" parent="34" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="97" parent="33" name="Method_ID">
+    <column id="102" parent="35" name="Method_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="98" parent="33" name="Method_Name">
+    <column id="103" parent="35" name="Method_Name">
       <Position>2</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="99" parent="33" name="Description">
+    <column id="104" parent="35" name="Description">
       <Position>3</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <index id="100" parent="33" name="PRIMARY">
+    <index id="105" parent="35" name="PRIMARY">
       <ColNames>Method_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="101" parent="33" name="PRIMARY">
+    <key id="106" parent="35" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="102" parent="34" name="Payment_ID">
+    <column id="107" parent="36" name="Payment_ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="103" parent="34" name="User_number">
+    <column id="108" parent="36" name="User_number">
       <Position>2</Position>
       <StoredType>varchar(15)|0s</StoredType>
     </column>
-    <column id="104" parent="34" name="Coupon_Number">
+    <column id="109" parent="36" name="Coupon_Number">
       <Position>3</Position>
       <StoredType>varchar(10)|0s</StoredType>
     </column>
-    <column id="105" parent="34" name="Method_ID">
+    <column id="110" parent="36" name="Method_ID">
       <Position>4</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="106" parent="34" name="Payment_time">
+    <column id="111" parent="36" name="Payment_time">
       <Position>5</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="107" parent="34" name="Payment_amount">
+    <column id="112" parent="36" name="Payment_amount">
       <Position>6</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="108" parent="34" name="Discounted_amount">
+    <column id="113" parent="36" name="Discounted_amount">
       <Position>7</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="109" parent="34" name="Card_number">
+    <column id="114" parent="36" name="Card_number">
       <Position>8</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="110" parent="34" name="Waiting_number">
+    <column id="115" parent="36" name="Waiting_number">
       <Position>9</Position>
       <StoredType>varchar(10)|0s</StoredType>
     </column>
-    <column id="111" parent="34" name="Order_status">
+    <column id="116" parent="36" name="Order_status">
       <Position>10</Position>
       <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <foreign-key id="112" parent="34" name="fk_1">
+    <foreign-key id="117" parent="36" name="fk_1">
       <ColNames>User_number</ColNames>
       <RefColNames>User_number</RefColNames>
       <RefTableName>USER_INFO_TBL</RefTableName>
     </foreign-key>
-    <foreign-key id="113" parent="34" name="fk_2">
+    <foreign-key id="118" parent="36" name="fk_2">
       <ColNames>Coupon_Number</ColNames>
       <RefColNames>Coupon_Number</RefColNames>
       <RefTableName>COUPON_TBL</RefTableName>
     </foreign-key>
-    <foreign-key id="114" parent="34" name="fk_3">
+    <foreign-key id="119" parent="36" name="fk_3">
       <ColNames>Method_ID</ColNames>
       <RefColNames>Method_ID</RefColNames>
       <RefTableName>PAYMENT_METHOD_TBL</RefTableName>
     </foreign-key>
-    <index id="115" parent="34" name="PRIMARY">
+    <index id="120" parent="36" name="PRIMARY">
       <ColNames>Payment_ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="116" parent="34" name="fk_1">
+    <index id="121" parent="36" name="fk_1">
       <ColNames>User_number</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="117" parent="34" name="fk_2">
+    <index id="122" parent="36" name="fk_2">
       <ColNames>Coupon_Number</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="118" parent="34" name="fk_3">
+    <index id="123" parent="36" name="fk_3">
       <ColNames>Method_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="119" parent="34" name="PRIMARY">
+    <key id="124" parent="36" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="120" parent="35" name="User_number">
+    <column id="125" parent="37" name="User_number">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>varchar(15)|0s</StoredType>
     </column>
-    <column id="121" parent="35" name="User_phone_Number">
+    <column id="126" parent="37" name="User_phone_Number">
       <Position>2</Position>
       <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <column id="122" parent="35" name="mileage_amount">
+    <column id="127" parent="37" name="mileage_amount">
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="123" parent="35" name="Coupon_availability">
+    <column id="128" parent="37" name="Coupon_availability">
       <Position>4</Position>
       <StoredType>tinyint(1)|0s</StoredType>
     </column>
-    <index id="124" parent="35" name="PRIMARY">
+    <index id="129" parent="37" name="PRIMARY">
       <ColNames>User_number</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="125" parent="35" name="PRIMARY">
+    <key id="130" parent="37" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
+    <column id="131" parent="38" name="categoryName">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(200)|0s</StoredType>
+    </column>
+    <column id="132" parent="39" name="category">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="133" parent="39" name="menuName">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="134" parent="39" name="price">
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="135" parent="39" name="imagePath">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="136" parent="39" name="isSoldOut">
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <index id="137" parent="39" name="PRIMARY">
+      <ColNames>menuName</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="138" parent="39" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="139" parent="40" name="themeName">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="140" parent="40" name="description">
+      <Position>2</Position>
+      <StoredType>varchar(1024)|0s</StoredType>
+    </column>
+    <column id="141" parent="40" name="isDefault">
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
   </database-model>
 </dataSource>

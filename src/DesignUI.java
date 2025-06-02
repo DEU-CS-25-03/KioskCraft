@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class DesignUI extends JDialog {
@@ -13,77 +12,63 @@ public class DesignUI extends JDialog {
     public DesignUI(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         setLayout(null);
-        setSize(284, 450);
+        setSize(425, 620);
         setLocationRelativeTo(null);
         setResizable(false);
         SwingUtilities.invokeLater(this::requestFocusInWindow);
-        
-        // 디자인 목록을 테이블로 표시 (단일 선택만 허용)
-        DefaultTableModel model = getTableModel();
-        JTable table = new JTable(model);
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        table.setRowHeight(35);
 
-        // 스크롤 팬 추가
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(10, 10, 250, 350);
-        add(scrollPane);
+        // 라디오 버튼을 담을 패널 (세로 방향 BoxLayout)
+        JPanel radioPanel = new JPanel();
+        radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.Y_AXIS));
 
-        // 디자인 변경 시 알림 표시 및 에러 처리
-        JButton setDesignBtn = new JButton("확인");
-        setDesignBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        setDesignBtn.setBounds(10, 370, 122, 30);
-        setDesignBtn.addActionListener(_ -> {
-            int selectedRow = table.getSelectedRow();
-            if (selectedRow != -1) {
-                String selectedDesign = table.getValueAt(selectedRow, 0).toString();
-                try {
-                    dispose();
-                    UIManager.setLookAndFeel("com.formdev.flatlaf.intellijthemes." + selectedDesign);
-                    SwingUtilities.updateComponentTreeUI(owner);
-                    JOptionPane.showMessageDialog(
-                            this,
-                            "기본 디자인이 " + selectedDesign + "으로 변경되었습니다.",
-                            "알림",
-                            JOptionPane.INFORMATION_MESSAGE
-                    );
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(
-                            this,
-                            "디자인 적용에 실패했습니다: " + e.getMessage(),
-                            "오류",
-                            JOptionPane.ERROR_MESSAGE
-                    );
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "디자인을 선택해주세요.", "알림", JOptionPane.WARNING_MESSAGE);
-            }
-        });
-        add(setDesignBtn);
+        ButtonGroup group = new ButtonGroup();
 
-        // 취소 버튼
-        JButton cancelBtn = new JButton("취소");
-        cancelBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        cancelBtn.setBounds(142, 370, 122, 30);
-        cancelBtn.addActionListener(_ -> dispose());
-        add(cancelBtn);
-    }
-
-    // 데이터 모델 생성(내용 수정 불가)
-    private static DefaultTableModel getTableModel() {
-        Object[][] rowData = new Object[DataSet.designs.length][1];
+        // DataSet.designs: Object[][] { { themeName, description, isDefault }, … }
         for (int i = 0; i < DataSet.designs.length; i++) {
-            rowData[i][0] = DataSet.designs[i];
+            String themeName   = DataSet.designs[i][0].toString();
+            String description = DataSet.designs[i][1].toString();
+            boolean isDefault  = (Boolean) DataSet.designs[i][2];
+
+            // 라디오 버튼 생성
+            JRadioButton rb = new JRadioButton(themeName);
+            rb.setToolTipText(description);
+            rb.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+            rb.setAlignmentX(Component.LEFT_ALIGNMENT);
+            if (isDefault) {
+                rb.setSelected(true);
+            }
+
+            // 선택 시 즉시 LookAndFeel 적용
+            rb.addActionListener(e -> {
+                try {
+                    UIManager.setLookAndFeel("com.formdev.flatlaf.intellijthemes." + themeName);
+                    SwingUtilities.updateComponentTreeUI(owner);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "디자인 적용에 실패했습니다: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
+                }
+            });
+
+            group.add(rb);
+            radioPanel.add(rb);
+
+            JLabel descLabel = new JLabel("   └ " + description);
+            descLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+            descLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+            radioPanel.add(descLabel);
         }
 
-        String[] columnNames = {"디자인 목록"};
+        // 스크롤 팬에 라디오 버튼 패널 담기
+        JScrollPane scrollPane = new JScrollPane(radioPanel);
+        scrollPane.setBounds(10, 10, 390, 500);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(30);
+        scrollPane.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        add(scrollPane);
 
-        return new DefaultTableModel(rowData, columnNames) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
+        // 닫기 버튼
+        JButton closeBtn = new JButton("닫기");
+        closeBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        closeBtn.setBounds(10, 520, 390, 50);
+        closeBtn.addActionListener(e -> dispose());
+        add(closeBtn);
     }
 }
