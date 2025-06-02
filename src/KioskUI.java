@@ -100,8 +100,10 @@ public class KioskUI extends JFrame {
         payBtn.addActionListener(_ -> JOptionPane.showMessageDialog(this, "결제 완료!"));
         add(payBtn);
 
-        // 초기 카테고리는 "커피"
-        showMenuByCategory("커피");
+        // 초기 카테고리 설정
+        if (!DataSet.categories.isEmpty())
+            showMenuByCategory(DataSet.categories.getFirst());
+
         setVisible(true);
     }
 

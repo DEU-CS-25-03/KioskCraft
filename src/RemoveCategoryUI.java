@@ -1,101 +1,88 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.util.Arrays;
+import java.util.List;
 
 public class RemoveCategoryUI extends JDialog {
-    public DefaultTableModel model = getTableModel();
+    private final CategoryTableModel model;
+
     public RemoveCategoryUI(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         setTitle(title);
         setLayout(null);
-        setSize(1280, 720);
+        setSize(335, 360);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        // 테이블 모델 생성 및 테이블 초기화
+        model = new CategoryTableModel(DataSet.categories);
         JTable table = new JTable(model);
+
+        // 버튼 렌더러/에디터 설정
         table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        table.setRowHeight(30);
+        table.setCellSelectionEnabled(false);
 
-        // 컬럼 너비 설정
-        TableColumnModel colModel = table.getColumnModel();
-        colModel.getColumn(0).setPreferredWidth(150); // 카테고리
-        colModel.getColumn(1).setPreferredWidth(260); // 메뉴명
-        colModel.getColumn(2).setPreferredWidth(80);  // 가격
-        colModel.getColumn(3).setPreferredWidth(60);  // 품절여부
-        colModel.getColumn(4).setPreferredWidth(40);  // 삭제 버튼
+        table.getColumn("").setCellRenderer(new ButtonRenderer());
+        table.getColumn("").setCellEditor(new ButtonEditor(new JCheckBox()));
 
-        // 삭제 버튼 렌더러/에디터 설정
-        table.getColumnModel().getColumn(4).setCellRenderer(new AdminUI.ButtonRenderer());
-        table.getColumnModel().getColumn(4).setCellEditor(new AdminUI.ButtonEditor(new JCheckBox(), model));
+        table.getColumn("카테고리").setMaxWidth(200);
+        table.getColumn("카테고리").setMinWidth(200);
+        table.getColumn("카테고리").setPreferredWidth(200);
 
-        // 스크롤 및 테이블 설정
         JScrollPane scrollPane = new JScrollPane(table);
-        table.setRowHeight(35);
-        scrollPane.setBounds(10, 70, 830, 500);
-        table.setRowSelectionAllowed(false);
-        table.getTableHeader().setResizingAllowed(false);
-        table.getTableHeader().setReorderingAllowed(false);
+        scrollPane.setBounds(10, 10, 300, 300);
         add(scrollPane);
     }
 
-    private DefaultTableModel getTableModel() {
-        String[] columnNames = { "카테고리", "메뉴명", "가격", "품절여부", "" };
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
-            @Override public boolean isCellEditable(int row, int column) {
-                return column == 4;  // 삭제 버튼만 편집 가능
-            }
-        };
-        for (Object[] row : DataSet.menus) {
-            Object[] rowData = Arrays.copyOf(row, row.length + 1);
-            rowData[rowData.length - 1] = "";
-            model.addRow(rowData);
-        }
-        return model;
-    }
+    // 테이블 모델 클래스
+    static class CategoryTableModel extends AbstractTableModel {
+        private final String[] columnNames = {"카테고리", ""};
+        private final List<String> data;
 
-    static class ButtonRenderer extends JButton implements TableCellRenderer {
-        public ButtonRenderer() { setOpaque(true); }
+        public CategoryTableModel(List<String> data) { this.data = data; }
+
+        public void removeRow(int row) {
+            data.remove(row);
+            fireTableRowsDeleted(row, row);
+        }
+
+        @Override public int getRowCount() { return data.size(); }
+        @Override public int getColumnCount() { return columnNames.length; }
+        @Override public String getColumnName(int column) { return columnNames[column]; }
+        @Override public boolean isCellEditable(int row, int column) { return column == 1; }
         @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            setText("X");
-            return this;
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            if (columnIndex == 0) return data.get(rowIndex);
+            else return "X";
         }
     }
 
-    static class ButtonEditor extends DefaultCellEditor {
-        private final JButton button;
-        private int selectedRow;
+    // 버튼 렌더러
+    static class ButtonRenderer extends JButton implements TableCellRenderer {
+        public ButtonRenderer() { setText("X"); }
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) { return this; }
+    }
 
-        public ButtonEditor(JCheckBox checkBox, DefaultTableModel model) {
+    // 버튼 에디터
+    class ButtonEditor extends DefaultCellEditor {
+        protected JButton button;
+        private int row;
+
+        public ButtonEditor(JCheckBox checkBox) {
             super(checkBox);
-            button = new JButton();
-            button.setOpaque(true);
+            button = new JButton("X");
             button.addActionListener(_ -> {
-                int rowToDelete = selectedRow;
-                fireEditingStopped();
-                SwingUtilities.invokeLater(() -> {
-                    if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
-                        DataSet.menus.remove(rowToDelete);
-                        model.removeRow(rowToDelete);
-                        JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                });
+                model.removeRow(row);
+                JOptionPane.showMessageDialog(null, "카테고리가 삭제되었습니다.");
             });
         }
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            button.setText("X");
-            selectedRow = row;
+            this.row = row;
             return button;
-        }
-
-        @Override
-        public Object getCellEditorValue() {
-            return null;
         }
     }
 }
