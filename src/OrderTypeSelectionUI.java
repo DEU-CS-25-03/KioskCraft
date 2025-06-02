@@ -55,6 +55,7 @@ public class OrderTypeSelectionUI extends JFrame {
         JButton setLangBtn = new JButton("\uD83C\uDF10");
         setLangBtn.setBounds(445, 10, 50, 50);
         setLangBtn.setFont(new Font(null, Font.PLAIN, 20));
+        setLangBtn.addActionListener(_ -> new LanguageChangeUI(this, "언어 변경", true).setVisible(true));
         bgPanel.add(setLangBtn);
 
         setContentPane(bgPanel);
