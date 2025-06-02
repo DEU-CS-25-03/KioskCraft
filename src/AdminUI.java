@@ -131,7 +131,7 @@ public class AdminUI extends JFrame {
                 return column == 4;  // 삭제 버튼만 편집 가능
             }
         };
-        for (Object[] row : DataSet.menus) {
+        for (Object[] row : Entity.menus) {
             Object[] rowData = Arrays.copyOf(row, row.length + 1);
             rowData[rowData.length - 1] = "";
             model.addRow(rowData);
@@ -161,7 +161,7 @@ public class AdminUI extends JFrame {
                 fireEditingStopped();
                 SwingUtilities.invokeLater(() -> {
                     if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
-                        DataSet.menus.remove(rowToDelete);
+                        Entity.menus.remove(rowToDelete);
                         model.removeRow(rowToDelete);
                         JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
                     }

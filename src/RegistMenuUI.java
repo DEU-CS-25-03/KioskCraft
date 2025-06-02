@@ -31,7 +31,7 @@ public class RegistMenuUI extends JDialog {
         categoryLabel.setBounds(10, 50, 100, 30);
         add(categoryLabel);
 
-        JComboBox<String> categoryCombo = new JComboBox<>(DataSet.categories.toArray(new String[0]));
+        JComboBox<String> categoryCombo = new JComboBox<>(Entity.categories.toArray(new String[0]));
         categoryCombo.setBounds(90, 50, 190, 30);
         add(categoryCombo);
 
@@ -89,7 +89,7 @@ public class RegistMenuUI extends JDialog {
             }
 
             // 중복 체크
-            for (Object[] menu : DataSet.menus) {
+            for (Object[] menu : Entity.menus) {
                 if (name.equals(menu[1])) {
                     JOptionPane.showMessageDialog(this, "중복된 메뉴가 존재합니다.");
                     return;
@@ -97,7 +97,7 @@ public class RegistMenuUI extends JDialog {
             }
 
             Object[] newRow = new Object[]{ category, name, price, false, imgPath };
-            DataSet.menus.add(newRow);
+            Entity.menus.add(newRow);
             parentModel.addRow(newRow);
 
             JOptionPane.showMessageDialog(this, "메뉴가 등록되었습니다.");
