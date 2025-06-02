@@ -1,5 +1,8 @@
+import DTO.Entity;
+
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +17,13 @@ public class Main {
         }
         SwingUtilities.invokeLater(() -> {
             try {
-                UIManager.setLookAndFeel("com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme");
+                for (int i = 0; i < Entity.designs.length; i++) {
+                    Object flag = Entity.designs[i][2];
+                    if (flag instanceof Boolean && (Boolean) flag) {
+                        UIManager.setLookAndFeel("com.formdev.flatlaf.intellijthemes."+Entity.designs[i][0].toString());
+                        break;
+                    }
+                }
                 new OrderTypeSelectionUI().setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "프로그램 시작 오류:\n" + e.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);

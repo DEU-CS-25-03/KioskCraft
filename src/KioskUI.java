@@ -1,3 +1,5 @@
+import DTO.Entity;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.*;

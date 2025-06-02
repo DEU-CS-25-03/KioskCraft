@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBManager {
     private static DBManager instance;
-    private Connection connection;
+    public Connection connection;
 
     // TiDB 연결 정보
     private final String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:QnZoDMZWjRoVo7xl@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
