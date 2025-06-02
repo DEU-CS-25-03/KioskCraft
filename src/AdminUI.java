@@ -1,4 +1,4 @@
-import DTO.Entity;
+import DataTransferObject.Entity;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -45,7 +45,7 @@ public class AdminUI extends JFrame {
         add(scrollPane);
 
         // 버튼들 추가
-        addAdminButtons(table);
+        addAdminButtons();
 
         // 창 닫힐 때 키 디스패처 해제
         addWindowListener(new WindowAdapter() {
@@ -76,7 +76,7 @@ public class AdminUI extends JFrame {
         }
     }
 
-    private void addAdminButtons(JTable table) {
+    private void addAdminButtons() {
         JButton registMenuBtn = new JButton("메뉴 등록");
         registMenuBtn.setBounds(10, 10, 200, 50);
         registMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));

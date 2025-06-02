@@ -1,4 +1,4 @@
-import DTO.Entity;
+import DataTransferObject.Entity;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

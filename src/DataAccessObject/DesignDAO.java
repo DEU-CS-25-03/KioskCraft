@@ -1,7 +1,6 @@
 package DataAccessObject;
 
-import DTO.Entity;
-
+import DataTransferObject.Entity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,14 +13,16 @@ import java.util.ArrayList;
  * DataSet.designs 배열을 초기화합니다.
  */
 public class DesignDAO {
+    Connection con;
     public DesignDAO(Connection conn) throws SQLException {
-        // 1) 임시 리스트에 조회 결과를 담는다.
+        con = conn;
+        // themeId 테이블 긁어오기
         String fetchSql = "SELECT themeName, description, isDefault FROM test.themeId";
+        // 임시로 저장하는 배열 생성
         ArrayList<Object[]> temp = new ArrayList<>();
-
-        try (PreparedStatement ps = conn.prepareStatement(fetchSql);
+        //PS 생성하고 데이터 긁어오기
+        try (PreparedStatement ps = con.prepareStatement(fetchSql);
              ResultSet rs = ps.executeQuery()) {
-
             while (rs.next()) {
                 String themeName   = rs.getString("themeName");
                 String description = rs.getString("description");
@@ -31,7 +32,7 @@ public class DesignDAO {
             }
         }
 
-        // 2) 리스트 크기만큼 DataSet.designs 배열을 할당
+        // 임시로 저장해놓은 거 Entity에 할당
         Entity.designs = new Object[temp.size()][3];
         for (int i = 0; i < temp.size(); i++) {
             Entity.designs[i][0] = temp.get(i)[0];
@@ -40,27 +41,24 @@ public class DesignDAO {
         }
     }
 
-    public static void updateDefaultDesign(Connection conn, String selectedDesign) throws SQLException {
+    public void updateDefaultDesign(String selectedDesign) throws SQLException {
         // 공백 제거
         selectedDesign = selectedDesign.trim();
-
         String clearSql = "UPDATE test.themeId SET isDefault = FALSE";
         String setSql   = "UPDATE test.themeId SET isDefault = TRUE WHERE themeName = ?";
-
         // 원래 auto-commit 상태를 저장
-        boolean originalAutoCommit = conn.getAutoCommit();
+        boolean originalAutoCommit = con.getAutoCommit();
         try {
             // 트랜잭션 시작
-            conn.setAutoCommit(false);
+            con.setAutoCommit(false);
 
             // 전부 0으로 변경
-            try (PreparedStatement psClear = conn.prepareStatement(clearSql)) {
+            try (PreparedStatement psClear = con.prepareStatement(clearSql)) {
                 int cleared = psClear.executeUpdate();
                 System.out.println("▶ updateDefaultDesign: clearedRows = " + cleared);
             }
-
             // 선택된 디자인만 1로 변경
-            try (PreparedStatement psSet = conn.prepareStatement(setSql)) {
+            try (PreparedStatement psSet = con.prepareStatement(setSql)) {
                 psSet.setString(1, selectedDesign);
                 int affectedRows = psSet.executeUpdate();
                 if (affectedRows == 0) {
@@ -68,42 +66,16 @@ public class DesignDAO {
                     throw new SQLException("테마 '" + selectedDesign + "'을(를) default로 설정하지 못했습니다.");
                 }
             }
-
-            // 4) 이상 없으면 커밋
-            conn.commit();
+            // 이상 없으면 커밋
+            con.commit();
             System.out.println("▶ updateDefaultDesign: 커밋 완료");
         } catch (SQLException e) {
-            conn.rollback();
+            con.rollback();
             System.err.println("▶ updateDefaultDesign: 롤백됨 - " + e.getMessage());
             throw e;
         } finally {
             // 트랜잭션 종료 후 원래 auto-commit 상태로 복원
-            conn.setAutoCommit(originalAutoCommit);
+            con.setAutoCommit(originalAutoCommit);
         }
     }
-
-
-    /*
-      이미 열린 Connection(conn)을 받아 test.themeId 테이블에서 모든 레코드를 조회한 뒤,
-      DataSet.designs 를 [rowCount][3] 형태로 채웁니다.
-
-      @param conn DB 연결 객체 (이미 오픈된 상태)
-     * @throws SQLException 쿼리 실행 도중 예외 발생 시
-     */
 }
-
-
-// 예시: 데이터 삽입
-//    public void insertDesign(String designId, String themeName, String themeColor, String logoPath, String fontName) throws SQLException {
-//        String sql = "INSERT INTO DESIGN_TBL (Design_ID, Theme_Name, Theme_Color, Logo_Path, Font_Name) VALUES (?, ?, ?, ?, ?)";
-//        try (var pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setString(1, designId);
-//            pstmt.setString(2, themeName);
-//            pstmt.setString(3, themeColor);
-//            pstmt.setString(4, logoPath);
-//            pstmt.setString(5, fontName);
-//            pstmt.executeUpdate();
-//        }
-//    }
-// 추가적인 CRUD 메소드들...
-
