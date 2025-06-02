@@ -18,7 +18,6 @@ public class AdminUI extends JFrame {
         setLayout(null);
 
         // 테이블 모델 생성 및 테이블 초기화
-
         JTable table = new JTable(model);
         table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 
@@ -85,7 +84,7 @@ public class AdminUI extends JFrame {
         JButton modifyMenuBtn = new JButton("메뉴 수정");
         modifyMenuBtn.setBounds(220, 10, 200, 50);
         modifyMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyMenuBtn.addActionListener(_ -> new MenuControlUI(false, table, this, "메뉴 수정", true).setVisible(true));
+        modifyMenuBtn.addActionListener(_ -> new ModifyMenuUI(false, table, this, "메뉴 수정", true).setVisible(true));
         add(modifyMenuBtn);
 
         JButton orderedCheckBtn = new JButton("매출 분석");
@@ -109,13 +108,13 @@ public class AdminUI extends JFrame {
         JButton modifyCategoryBtn = new JButton("카테고리 수정");
         modifyCategoryBtn.setBounds(220, 580, 200, 50);
         modifyCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyCategoryBtn.addActionListener(_ -> new CategoryControlUI(this, "카테고리 수정", true).setVisible(true));
+        modifyCategoryBtn.addActionListener(_ -> new ModifyCategoryUI(this, "카테고리 수정", true).setVisible(true));
         add(modifyCategoryBtn);
 
         JButton deleteCategoryBtn = new JButton("카테고리 삭제");
         deleteCategoryBtn.setBounds(430, 580, 200, 50);
         deleteCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        deleteCategoryBtn.addActionListener(_ -> new CategoryControlUI(this, "카테고리 삭제", true).setVisible(true));
+        deleteCategoryBtn.addActionListener(_ -> new RemoveCategoryUI(this, "카테고리 삭제", true).setVisible(true));
         add(deleteCategoryBtn);
 
         JButton showOrderedListBtn = new JButton("주문현황 확인");
