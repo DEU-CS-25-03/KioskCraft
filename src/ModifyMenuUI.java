@@ -1,66 +1,42 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import java.awt.*;
 
 public class ModifyMenuUI extends JDialog {
-    /*
-     * 버튼 텍스트("등록" or "수정")
-     * - 모드에 따라 자동 결정
-     */
-    private String btnText = "수정";
-
-    /**
-     * 메뉴 등록/수정 UI 생성자
-     * @param isRegist true면 등록 모드, false면 수정 모드
-     * @param table    메뉴 관리 테이블 (수정/등록용)
-     * @param owner    부모 프레임
-     * @param title    다이얼로그 타이틀(외부 전달값)
-     * @param modal    모달 여부
-     */
-    public ModifyMenuUI(boolean isRegist, JTable table, JFrame owner, String title, boolean modal) {
+    public ModifyMenuUI(JFrame owner, String title, boolean modal, DefaultTableModel model) {
         super(owner, title, modal);
-        // 등록 모드이면 텍스트 및 타이틀 변경
-        if (isRegist) {
-            btnText = "등록";
-            title = "메뉴 등록 시스템";
-        }
-
         setTitle(title);
         setLayout(null);
-        setSize(1280, 720);
+        setSize(335, 360);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        SwingUtilities.invokeLater(this::requestFocusInWindow);
 
 
-        // 메뉴명, 카테고리, 가격, 이미지 경로 입력 필드
-        JLabel menuLabel = new JLabel("메뉴명: ");
-        menuLabel.setBounds(10, 10, 100, 10);
-        add(menuLabel);
+        // 테이블 모델 생성 및 테이블 초기화
+        JTable table = new JTable(model);
+        table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 
-        JLabel categoryLabel = new JLabel("카테고리: ");
-        categoryLabel.setBounds(10, 30, 100, 10);
-        add(categoryLabel);
+        // 컬럼 너비 설정
+        TableColumnModel colModel = table.getColumnModel();
+        colModel.getColumn(0).setPreferredWidth(150); // 카테고리
+        colModel.getColumn(1).setPreferredWidth(260); // 메뉴명
+        colModel.getColumn(2).setPreferredWidth(80);  // 가격
+        colModel.getColumn(3).setPreferredWidth(60);  // 품절여부
+        colModel.getColumn(4).setPreferredWidth(40);  // 삭제 버튼
 
-        JLabel priceLabel = new JLabel("가격: ");
-        priceLabel.setBounds(10, 50, 100, 10);
-        add(priceLabel);
+        // 삭제 버튼 렌더러/에디터 설정
+        table.getColumnModel().getColumn(4).setCellRenderer(new AdminUI.ButtonRenderer());
+        table.getColumnModel().getColumn(4).setCellEditor(new AdminUI.ButtonEditor(new JCheckBox(), model));
 
-        JLabel imgPathLabel = new JLabel("이미지 경로: ");
-        imgPathLabel.setBounds(10, 70, 100, 10);
-        add(imgPathLabel);
-
-        /*
-         * 등록/수정 버튼
-         * - 클릭 시 알림 다이얼로그 출력
-         */
-        JButton menuControlBtn = new JButton(btnText);
-        menuControlBtn.addActionListener(_ -> JOptionPane.showMessageDialog(
-                null,
-                "메뉴가 " + btnText + " 되었습니다.")
-        );
-        menuControlBtn.setBounds(10, 600, 200, 50);
-        add(menuControlBtn);
-
-        // 취소 버튼 - 다이얼로그 닫기
-        JButton cancelBtn = new JButton("취소");
-        cancelBtn.addActionListener(_ -> dispose());
-        cancelBtn.setBounds(220, 600, 200, 50);
-        add(cancelBtn);
+        // 스크롤 및 테이블 설정
+        JScrollPane scrollPane = new JScrollPane(table);
+        table.setRowHeight(35);
+        scrollPane.setBounds(10, 70, 830, 500);
+        table.setRowSelectionAllowed(false);
+        table.getTableHeader().setResizingAllowed(false);
+        table.getTableHeader().setReorderingAllowed(false);
+        add(scrollPane);
     }
 }

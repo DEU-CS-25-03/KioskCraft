@@ -84,7 +84,7 @@ public class AdminUI extends JFrame {
         JButton modifyMenuBtn = new JButton("메뉴 수정");
         modifyMenuBtn.setBounds(220, 10, 200, 50);
         modifyMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyMenuBtn.addActionListener(_ -> new ModifyMenuUI(false, table, this, "메뉴 수정", true).setVisible(true));
+        modifyMenuBtn.addActionListener(_ -> new ModifyMenuUI(this, "메뉴 등록", true, model).setVisible(true));
         add(modifyMenuBtn);
 
         JButton orderedCheckBtn = new JButton("매출 분석");
