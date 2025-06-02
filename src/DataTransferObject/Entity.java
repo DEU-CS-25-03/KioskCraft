@@ -1,4 +1,4 @@
-package DTO;
+package DataTransferObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;

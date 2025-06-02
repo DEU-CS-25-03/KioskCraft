@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class OrderStatusUI extends JDialog {
-    private JTable orderTable;
-    private OrderTableModel tableModel;
-
     // 예시용 주문 데이터 클래스
     static class Order {
         String orderId;
@@ -22,7 +19,7 @@ public class OrderStatusUI extends JDialog {
     }
 
     // 테이블 모델 정의
-    class OrderTableModel extends AbstractTableModel {
+    static class OrderTableModel extends AbstractTableModel {
         private final String[] columns = {"주문번호", "고객명", "상태"};
         private final List<Order> orders;
 
@@ -43,12 +40,12 @@ public class OrderStatusUI extends JDialog {
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             Order order = orders.get(rowIndex);
-            switch (columnIndex) {
-                case 0: return order.orderId;
-                case 1: return order.customerCode;
-                case 2: return order.status;
-                default: return null;
-            }
+            return switch (columnIndex) {
+                case 0 -> order.orderId;
+                case 1 -> order.customerCode;
+                case 2 -> order.status;
+                default -> null;
+            };
         }
 
         @Override
@@ -69,14 +66,14 @@ public class OrderStatusUI extends JDialog {
         orderList.add(new Order("002", "A002", "처리중"));
         orderList.add(new Order("003", "A003", "완료"));
 
-        tableModel = new OrderTableModel(orderList);
-        orderTable = new JTable(tableModel);
+        OrderTableModel tableModel = new OrderTableModel(orderList);
+        JTable orderTable = new JTable(tableModel);
 
         JScrollPane scrollPane = new JScrollPane(orderTable);
         add(scrollPane, BorderLayout.CENTER);
 
         JButton closeButton = new JButton("닫기");
-        closeButton.addActionListener(e -> dispose());
+        closeButton.addActionListener(_ -> dispose());
         JPanel btnPanel = new JPanel();
         btnPanel.add(closeButton);
         add(btnPanel, BorderLayout.SOUTH);

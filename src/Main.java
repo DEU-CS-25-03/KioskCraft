@@ -1,4 +1,4 @@
-import DTO.Entity;
+import DataTransferObject.Entity;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -8,9 +8,8 @@ public class Main {
         DBManager dbManager = DBManager.getInstance();
         try {
             dbManager.connectDB();
-            // dbManager.getUserInfoDAO()...
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             dbManager.closeConnection();
         }
