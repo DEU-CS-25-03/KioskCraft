@@ -43,13 +43,13 @@ public class RegistCategoryUI extends JDialog {
             if (Objects.equals(categoryNameField.getText(), ""))
                 JOptionPane.showMessageDialog(null, "카테고리 이름을 작성해주세요.");
             else {
-                for(String category: DataSet.categories){
+                for(String category: Entity.categories){
                     if(categoryNameField.getText().equals(category)){
                         JOptionPane.showMessageDialog(null, "중복된 카테고리가 존재합니다.");
                         return;
                     }
                 }
-                DataSet.categories.add(categoryNameField.getText());
+                Entity.categories.add(categoryNameField.getText());
                 JOptionPane.showMessageDialog(null, "카테고리가 등록되었습니다.");
                 categoryNameField.setText("");
             }

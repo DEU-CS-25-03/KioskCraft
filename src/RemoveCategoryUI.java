@@ -15,7 +15,7 @@ public class RemoveCategoryUI extends JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        model = new CategoryTableModel(DataSet.categories);
+        model = new CategoryTableModel(Entity.categories);
         JTable table = new JTable(model);
 
         // 버튼 렌더러/에디터 설정

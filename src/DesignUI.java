@@ -24,10 +24,10 @@ public class DesignUI extends JDialog {
         ButtonGroup group = new ButtonGroup();
 
         // DataSet.designs: Object[][] { { themeName, description, isDefault }, … }
-        for (int i = 0; i < DataSet.designs.length; i++) {
-            String themeName   = DataSet.designs[i][0].toString();
-            String description = DataSet.designs[i][1].toString();
-            boolean isDefault  = (Boolean) DataSet.designs[i][2];
+        for (int i = 0; i < Entity.designs.length; i++) {
+            String themeName   = Entity.designs[i][0].toString();
+            String description = Entity.designs[i][1].toString();
+            boolean isDefault  = (Boolean) Entity.designs[i][2];
 
             // 라디오 버튼 생성
             JRadioButton rb = new JRadioButton(themeName);

@@ -31,8 +31,8 @@ public class KioskUI extends JFrame {
          * 카테고리별 버튼 생성
          * 클릭 시 해당 카테고리 메뉴만 메뉴패널에 표시
          */
-        for (int i = 0; i < DataSet.categories.toArray().length; i++) {
-            String category = String.valueOf(DataSet.categories.get(i));
+        for (int i = 0; i < Entity.categories.toArray().length; i++) {
+            String category = String.valueOf(Entity.categories.get(i));
             JButton categoryBtn = new JButton(category);
             categoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
             categoryBtn.setBounds(10 + i * 130, 10, 120, 40);
@@ -101,8 +101,8 @@ public class KioskUI extends JFrame {
         add(payBtn);
 
         // 초기 카테고리 설정
-        if (!DataSet.categories.isEmpty())
-            showMenuByCategory(DataSet.categories.getFirst());
+        if (!Entity.categories.isEmpty())
+            showMenuByCategory(Entity.categories.getFirst());
 
         setVisible(true);
     }
@@ -113,7 +113,7 @@ public class KioskUI extends JFrame {
      */
     private void showMenuByCategory(String category) {
         gridPanel.removeAll();
-        for (Object[] item : DataSet.menus) {
+        for (Object[] item : Entity.menus) {
             String cat = (String) item[0];
             String name = (String) item[1];
             String priceStr = (String) item[2];
@@ -173,7 +173,7 @@ public class KioskUI extends JFrame {
      * @return 메뉴 단가(정수)
      */
     private int getUnitPriceByName(String name) {
-        for (Object[] item : DataSet.menus) {
+        for (Object[] item : Entity.menus) {
             if (item[1].equals(name)) {
                 return Integer.parseInt(((String) item[2]).replace(",", "").replace("원", ""));
             }
