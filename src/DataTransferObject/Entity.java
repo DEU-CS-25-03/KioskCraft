@@ -1,5 +1,8 @@
 package DataTransferObject;
 
+import DataAccessObject.DBManager;
+import DataAccessObject.DesignDAO;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -172,4 +175,9 @@ public class Entity {
     public static List<String> categories = new ArrayList<>();
 
     public static Object[][] designs;
+    public static void refreshDesigns() throws Exception {
+        try (var conn = DBManager.getInstance().getConnection()) {
+            new DesignDAO(conn);
+        }
+    }
 }
