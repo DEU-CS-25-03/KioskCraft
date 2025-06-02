@@ -169,7 +169,7 @@ public class Entity {
 
     public static final List<Object[]> menus = new ArrayList<>(Arrays.asList(RAW_MENUS));
 
-    public static final List<String> categories = List.of();
+    public static List<String> categories = new ArrayList<>();
 
     public static Object[][] designs;
 }

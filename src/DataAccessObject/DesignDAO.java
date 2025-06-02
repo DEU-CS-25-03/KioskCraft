@@ -83,11 +83,11 @@ public class DesignDAO {
     }
 
 
-    /**
-     * 이미 열린 Connection(conn)을 받아 test.themeId 테이블에서 모든 레코드를 조회한 뒤,
-     * DataSet.designs 를 [rowCount][3] 형태로 채웁니다.
-     *
-     * @param conn DB 연결 객체 (이미 오픈된 상태)
+    /*
+      이미 열린 Connection(conn)을 받아 test.themeId 테이블에서 모든 레코드를 조회한 뒤,
+      DataSet.designs 를 [rowCount][3] 형태로 채웁니다.
+
+      @param conn DB 연결 객체 (이미 오픈된 상태)
      * @throws SQLException 쿼리 실행 도중 예외 발생 시
      */
 }
