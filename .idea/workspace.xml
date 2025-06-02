@@ -9,18 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="카테고리 관련 기능 업데이트">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="entity, dataset 통합">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5/storage_v2/_src_/schema/mydb.Kl8zAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5/storage_v2/_src_/schema/mydb.Kl8zAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5/storage_v2/_src_/schema/mysql.osA4Bg.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DesignUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KioskUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveCategoryUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,6 +58,9 @@
     &quot;assignee&quot;: &quot;Grrrrra&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="e00a5b0d-6e7f-4e85-a686-3b022dd17dc2" />
+  </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
       <list>
@@ -340,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748834435039</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="entity, dataset 통합">
+      <option name="closed" value="true" />
+      <created>1748862705110</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1748862705110</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +406,8 @@
     <MESSAGE value="언어변경 목업 추가" />
     <MESSAGE value="DB주소 변경" />
     <MESSAGE value="카테고리 관련 기능 업데이트" />
-    <option name="LAST_COMMIT_MESSAGE" value="카테고리 관련 기능 업데이트" />
+    <MESSAGE value="entity, dataset 통합" />
+    <option name="LAST_COMMIT_MESSAGE" value="entity, dataset 통합" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

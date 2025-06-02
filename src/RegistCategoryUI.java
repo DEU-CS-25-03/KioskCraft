@@ -1,3 +1,5 @@
+import DTO.Entity;
+
 import javax.swing.*;
 import java.util.Objects;
 
