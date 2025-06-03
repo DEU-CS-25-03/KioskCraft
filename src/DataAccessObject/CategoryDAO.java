@@ -1,30 +1,53 @@
+// DataAccessObject/CategoryDAO.java
 package DataAccessObject;
-
+import DataTransferObject.CategoryDTO;
 import DataTransferObject.Entity;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryDAO {
     private final Connection conn;
+    public CategoryDAO(Connection conn) {this.conn = conn;}
 
-    public CategoryDAO(Connection conn) {
-        this.conn = conn;
-        loadCategories();
-    }
-
-    private void loadCategories() {
+    // 카테고리 전체 조회 및 Entity.categories 동기화
+    public List<CategoryDTO> selectAllCategories() throws SQLException {
         String sql = "SELECT categoryName FROM test.categoryId";
-        Entity.categories.clear();  // 기존 값을 비우고
+        List<CategoryDTO> list = new ArrayList<>();
         try (PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
-            while (rs.next())
-                Entity.categories.add(rs.getString("categoryName"));
+            while (rs.next()) {
+                list.add(new CategoryDTO(rs.getString("categoryName")));
+            }
+        }
+        return list;
+    }
 
-        } catch (SQLException e) {
-            throw new RuntimeException("카테고리 로드 실패", e);
+    // 카테고리 등록
+    public void insertCategory(CategoryDTO category) throws SQLException {
+        String sql = "INSERT INTO test.categoryId (categoryName) VALUES (?)";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, category.getCategoryName());
+            ps.executeUpdate();
+        }
+    }
+
+    // 카테고리명 수정 (oldName → newName)
+    public void updateCategory(String oldName, String newName) throws SQLException {
+        String sql = "UPDATE test.categoryId SET categoryName=? WHERE categoryName=?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newName);
+            ps.setString(2, oldName);
+            ps.executeUpdate();
+        }
+    }
+
+    // 카테고리 삭제
+    public void deleteCategory(String categoryName) throws SQLException {
+        String sql = "DELETE FROM test.categoryId WHERE categoryName=?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, categoryName);
+            ps.executeUpdate();
         }
     }
 }

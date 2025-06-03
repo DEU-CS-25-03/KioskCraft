@@ -1,7 +1,13 @@
+import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
+import DataTransferObject.Entity;
+import DataTransferObject.MenuDTO;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.sql.Connection;
 
 public class ModifyMenuUI extends JDialog {
     public ModifyMenuUI(JFrame owner, String title, boolean modal, DefaultTableModel model) {
@@ -38,5 +44,41 @@ public class ModifyMenuUI extends JDialog {
         table.getTableHeader().setResizingAllowed(false);
         table.getTableHeader().setReorderingAllowed(false);
         add(scrollPane);
+        // 예시: 메뉴 수정 버튼 클릭 시
+        JButton modifyBtn = new JButton("수정");
+        modifyBtn.addActionListener(_ -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow < 0) return;
+
+            String category = (String) model.getValueAt(selectedRow, 0);
+            String name = (String) model.getValueAt(selectedRow, 1);
+            int price = Integer.parseInt(model.getValueAt(selectedRow, 2).toString());
+            boolean isSoldOut = Boolean.parseBoolean(model.getValueAt(selectedRow, 3).toString());
+            String imgPath = ""; // 필요시 이미지 경로도 불러오기
+
+            // --- DB 작업 및 테이블 동기화 비동기 처리 ---
+            new Thread(() -> {
+                try (Connection conn = DBManager.getInstance().getConnection()) {
+                    MenuDAO menuDAO = new MenuDAO(conn);
+                    MenuDTO updatedMenu = new MenuDTO(category, name, price, imgPath,isSoldOut);
+                    menuDAO.updateMenu(updatedMenu);
+
+                    Entity.refreshMenus();
+                    SwingUtilities.invokeLater(() -> {
+                        model.setRowCount(0);
+                        for (MenuDTO menu : Entity.menus) {
+                            model.addRow(new Object[]{
+                                    menu.getCategory(), menu.getMenuName(), menu.getPrice(), menu.isSoldOut(), ""
+                            });
+                        }
+                        JOptionPane.showMessageDialog(this, "메뉴 수정 완료");
+                    });
+                } catch (Exception ex) {
+                    SwingUtilities.invokeLater(() ->
+                            JOptionPane.showMessageDialog(this, "메뉴 수정 실패: " + ex.getMessage())
+                    );
+                }
+            }).start();
+        });
     }
 }

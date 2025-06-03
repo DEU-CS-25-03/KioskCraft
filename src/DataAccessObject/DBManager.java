@@ -8,12 +8,17 @@ public class DBManager {
     private static DBManager instance;
     public Connection connection;
 
+    private DBManager() {}
+
+    public static synchronized DBManager getInstance() {
+        if (instance == null) instance = new DBManager();
+        return instance;
+    }
     // DAO 인스턴스들
     public static DesignDAO designDAO;
     //private static UserInfoDAO userInfoDAO;
     public static CouponDAO couponDAO;
     //private static PaymentMethodDAO paymentMethodDAO;
-    public static CategoryDAO categoryDAO;
     public static MenuDAO menuDAO;
     public static CartDAO cartDAO;
     //private static CartItemDAO cartItemDAO;
@@ -21,12 +26,7 @@ public class DBManager {
     public static OrderStatusDAO orderStatusDAO;
     public static LanguageDAO languageDAO;
 
-    private DBManager() {}
 
-    public static synchronized DBManager getInstance() {
-        if (instance == null) instance = new DBManager();
-        return instance;
-    }
 
     public void connectDB() throws SQLException {
         if (connection == null || connection.isClosed()) {
@@ -40,7 +40,7 @@ public class DBManager {
             // TiDB 연결 정보
             String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:QnZoDMZWjRoVo7xl@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
             String user = "3tXLfN5hUF3WufM.root";
-            String password = "QnZoDMZWjRoVo7xl"; // passward 수시로 수정 필요함
+            String password = "JKzUbu8QiYCMtNsQ"; // passward 수시로 수정 필요함
 
             connection = DriverManager.getConnection(url, user, password);
             System.out.println("DB Connection Successful");
@@ -50,7 +50,6 @@ public class DBManager {
             //userInfoDAO = new UserInfoDAO(connection);
             couponDAO = new CouponDAO(connection);
             //paymentMethodDAO = new PaymentMethodDAO(connection);
-            categoryDAO = new CategoryDAO(connection);
             menuDAO = new MenuDAO(connection);
             cartDAO = new CartDAO(connection);
             //cartItemDAO = new CartItemDAO(connection);

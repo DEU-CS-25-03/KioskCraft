@@ -1,9 +1,12 @@
+import DataAccessObject.CategoryDAO;
+import DataAccessObject.DBManager;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.sql.Connection;
 import java.util.List;
 
 public class RemoveCategoryUI extends JDialog {
@@ -76,8 +79,24 @@ public class RemoveCategoryUI extends JDialog {
             super(checkBox);
             button = new JButton("X");
             button.addActionListener(_ -> {
-                model.removeRow(row);
-                JOptionPane.showMessageDialog(null, "카테고리가 삭제되었습니다.");
+                // 삭제할 카테고리명 가져오기
+                String selectedCategoryName = model.data.get(row);
+
+                // --- DB 삭제 및 동기화 ---
+                try (Connection conn = DBManager.getInstance().getConnection()) {
+                    CategoryDAO dao = new CategoryDAO(conn);
+                    // 1. 카테고리 삭제
+                    dao.deleteCategory(selectedCategoryName);
+                    // 2. Entity.categories 최신화
+                    Entity.refreshCategories();
+                    // 3. 테이블 모델 동기화
+                    model.data.clear();
+                    model.data.addAll(Entity.categories);
+                    model.fireTableDataChanged();
+                    JOptionPane.showMessageDialog(RemoveCategoryUI.this, "카테고리가 삭제되었습니다.");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(RemoveCategoryUI.this, "카테고리 삭제 실패: " + ex.getMessage());
+                }
             });
         }
 

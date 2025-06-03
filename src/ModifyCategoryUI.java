@@ -1,10 +1,15 @@
+import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
+import DataTransferObject.MenuDTO;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
 
 public class ModifyCategoryUI extends JDialog {
     private final CategoryTableModel model;

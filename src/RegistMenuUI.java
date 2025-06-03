@@ -1,9 +1,13 @@
+import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
+import DataTransferObject.MenuDTO;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
 
 public class RegistMenuUI extends JDialog {
     private final DefaultTableModel parentModel;
@@ -91,29 +95,71 @@ public class RegistMenuUI extends JDialog {
             }
 
             // 중복 체크
-            for (Object[] menu : Entity.menus) {
-                if (name.equals(menu[1])) {
+            for (MenuDTO menu : Entity.menus) {
+                if (name.equals(menu.getMenuName())) {
                     JOptionPane.showMessageDialog(this, "중복된 메뉴가 존재합니다.");
                     return;
                 }
             }
 
-            Object[] newRow = new Object[]{ category, name, price, false, imgPath };
-            Entity.menus.add(newRow);
-            parentModel.addRow(newRow);
+            // --- [비동기] DAO를 통한 DB 등록 및 Entity/테이블 동기화 ---
+            new Thread(() -> {
+                try (Connection conn = DBManager.getInstance().getConnection()) {
+                    MenuDAO menuDAO = new MenuDAO(conn);
+                    MenuDTO newMenu = new MenuDTO(category, name, Integer.parseInt(price), imgPath,false );
+                    menuDAO.insertMenu(newMenu);
 
-            JOptionPane.showMessageDialog(this, "메뉴가 등록되었습니다.");
-            menueField.setText("");
-            priceField.setText("");
-            imgPathField.setText("");
-            categoryCombo.setSelectedIndex(0);
+                    Entity.refreshMenus();
+
+                    SwingUtilities.invokeLater(() -> {
+                        parentModel.setRowCount(0);
+                        for (MenuDTO menu : Entity.menus) {
+                            parentModel.addRow(new Object[]{
+                                    menu.getCategory(), menu.getMenuName(), menu.getPrice(), menu.isSoldOut(), ""
+                            });
+                        }
+                        JOptionPane.showMessageDialog(this, "메뉴가 등록되었습니다.");
+                        menueField.setText("");
+                        priceField.setText("");
+                        imgPathField.setText("");
+                        categoryCombo.setSelectedIndex(0);
+                    });
+                } catch (Exception ex) {
+                    SwingUtilities.invokeLater(() ->
+                            JOptionPane.showMessageDialog(this, "메뉴 등록 실패: " + ex.getMessage())
+                    );
+                }
+            }).start();
         });
         add(confirmBtn);
+
+//            Object[] newRow = new Object[]{ category, name, price, false, imgPath };
+//            Entity.menus.add(newRow);
+//            parentModel.addRow(newRow);
 
         // --- 취소 ---
         JButton cancelBtn = new JButton("취소");
         cancelBtn.setBounds(150, 170, 130, 40);
         cancelBtn.addActionListener(_ -> dispose());
         add(cancelBtn);
+
+        // --- 최초 테이블 동기화 (비동기) ---
+        new Thread(() -> {
+            try {
+                Entity.refreshMenus();
+                SwingUtilities.invokeLater(() -> {
+                    parentModel.setRowCount(0);
+                    for (MenuDTO menu : Entity.menus) {
+                        parentModel.addRow(new Object[]{
+                                menu.getCategory(), menu.getMenuName(), menu.getPrice(), menu.isSoldOut(), ""
+                        });
+                    }
+                });
+            } catch (Exception ex) {
+                SwingUtilities.invokeLater(() ->
+                        JOptionPane.showMessageDialog(this, "메뉴 데이터 로딩 실패: " + ex.getMessage())
+                );
+            }
+        }).start();
     }
 }

@@ -2,12 +2,35 @@ package DataTransferObject;
 
 import DataAccessObject.DBManager;
 import DataAccessObject.DesignDAO;
+import DataAccessObject.MenuDAO;
+import DataAccessObject.CategoryDAO;
 
+
+import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Entity {
+
+    public static List<MenuDTO> menus = new ArrayList<>();
+    public static List<String> categories = new ArrayList<>();
+
+    public static void refreshMenus() throws Exception {
+        try (Connection conn = DBManager.getInstance().getConnection()) {
+            MenuDAO menuDAO = new MenuDAO(conn);
+            menus = menuDAO.selectAllMenus();
+        }
+    }
+    public static void refreshCategories() throws Exception {
+        try (Connection conn = DBManager.getInstance().getConnection()) {
+            CategoryDAO dao = new CategoryDAO(conn);
+            List<CategoryDTO> list = dao.selectAllCategories();
+            categories.clear();
+            for (CategoryDTO dto : list) {
+                categories.add(dto.getCategoryName());
+            }
+        }
+    }
     static Object[][] RAW_MENUS = {
             // 커피 (30개)
             {"커피", "아메리카노", "4,000원", false, "imgpath"},
@@ -169,11 +192,6 @@ public class Entity {
             {"에이드", "샤인라임에이드", "6,000원", false, "imgpath"},
             {"에이드", "허니레몬에이드", "6,000원", false, "imgpath"},
     };
-
-    public static final List<Object[]> menus = new ArrayList<>(Arrays.asList(RAW_MENUS));
-
-    public static List<String> categories = new ArrayList<>();
-
     public static Object[][] designs;
     public static void refreshDesigns() throws Exception {
         try (var conn = DBManager.getInstance().getConnection()) {

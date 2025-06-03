@@ -3,8 +3,100 @@
   <database-model serializer="dbm" dbms="TIDB" family-id="TIDB" format-version="4.53">
     <root id="1">
       <Dbms>TIDB</Dbms>
+      <DefaultCasing>mixed/mixed</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <Grants>|root||3tXLfN5hUF3WufM.cloud_admin||ALTER|G
+|root||3tXLfN5hUF3WufM.root||ALTER|G
+|root||role_admin||ALTER|G
+|root||3tXLfN5hUF3WufM.root||ALTER ROUTINE|G
+|root||role_admin||ALTER ROUTINE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||BACKUP_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CONFIG|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CONNECTION_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE|G
+|root||3tXLfN5hUF3WufM.root||CREATE|G
+|root||role_admin||CREATE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE ROLE|G
+|root||3tXLfN5hUF3WufM.root||CREATE ROLE|G
+|root||role_admin||CREATE ROLE|G
+|root||3tXLfN5hUF3WufM.root||CREATE ROUTINE|G
+|root||role_admin||CREATE ROUTINE|G
+|root||3tXLfN5hUF3WufM.root||CREATE TABLESPACE|G
+|root||role_admin||CREATE TABLESPACE|G
+|root||3tXLfN5hUF3WufM.root||CREATE TEMPORARY TABLES|G
+|root||role_admin||CREATE TEMPORARY TABLES|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE USER|G
+|root||3tXLfN5hUF3WufM.root||CREATE USER|G
+|root||role_admin||CREATE USER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||CREATE VIEW|G
+|root||3tXLfN5hUF3WufM.root||CREATE VIEW|G
+|root||role_admin||CREATE VIEW|G
+|root||3tXLfN5hUF3WufM.cloud_admin||DASHBOARD_CLIENT|G
+|root||3tXLfN5hUF3WufM.cloud_admin||DELETE|G
+|root||3tXLfN5hUF3WufM.root||DELETE|G
+|root||role_admin||DELETE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||DROP|G
+|root||3tXLfN5hUF3WufM.root||DROP|G
+|root||role_admin||DROP|G
+|root||3tXLfN5hUF3WufM.root||DROP ROLE|G
+|root||role_admin||DROP ROLE|G
+|root||3tXLfN5hUF3WufM.root||EVENT|G
+|root||role_admin||EVENT|G
+|root||3tXLfN5hUF3WufM.root||EXECUTE|G
+|root||role_admin||EXECUTE|G
+|root||3tXLfN5hUF3WufM.root||FILE|G
+|root||role_admin||FILE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||INDEX|G
+|root||3tXLfN5hUF3WufM.root||INDEX|G
+|root||role_admin||INDEX|G
+|root||3tXLfN5hUF3WufM.cloud_admin||INSERT|G
+|root||3tXLfN5hUF3WufM.root||INSERT|G
+|root||role_admin||INSERT|G
+|root||3tXLfN5hUF3WufM.root||LOCK TABLES|G
+|root||role_admin||LOCK TABLES|G
+|root||3tXLfN5hUF3WufM.cloud_admin||PROCESS|G
+|root||3tXLfN5hUF3WufM.root||PROCESS|G
+|root||role_admin||PROCESS|G
+|root||3tXLfN5hUF3WufM.cloud_admin||REFERENCES|G
+|root||3tXLfN5hUF3WufM.root||REFERENCES|G
+|root||role_admin||REFERENCES|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RELOAD|G
+|root||3tXLfN5hUF3WufM.root||RELOAD|G
+|root||role_admin||RELOAD|G
+|root||3tXLfN5hUF3WufM.root||REPLICATION CLIENT|G
+|root||role_admin||REPLICATION CLIENT|G
+|root||3tXLfN5hUF3WufM.root||REPLICATION SLAVE|G
+|root||role_admin||REPLICATION SLAVE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTORE_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_CONNECTION_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_REPLICA_WRITER_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_STATUS_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_TABLES_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_USER_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||RESTRICTED_VARIABLES_ADMIN|G
+|root||role_admin||ROLE_ADMIN|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SELECT|G
+|root||3tXLfN5hUF3WufM.root||SELECT|G
+|root||role_admin||SELECT|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SHOW DATABASES|G
+|root||3tXLfN5hUF3WufM.root||SHOW DATABASES|G
+|root||role_admin||SHOW DATABASES|G
+|root||3tXLfN5hUF3WufM.root||SHOW VIEW|G
+|root||role_admin||SHOW VIEW|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SHUTDOWN|G
+|root||3tXLfN5hUF3WufM.root||SUPER|G
+|root||role_admin||SUPER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SYSTEM_USER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||SYSTEM_VARIABLES_ADMIN|G
+|root||3tXLfN5hUF3WufM.root||TRIGGER|G
+|root||role_admin||TRIGGER|G
+|root||3tXLfN5hUF3WufM.cloud_admin||UPDATE|G
+|root||3tXLfN5hUF3WufM.root||UPDATE|G
+|root||role_admin||UPDATE|G
+|root||3tXLfN5hUF3WufM.cloud_admin||grant option|G
+|root||3tXLfN5hUF3WufM.root||grant option|G
+|root||role_admin||grant option|G</Grants>
       <ServerVersion>7.5.2</ServerVersion>
     </root>
     <collation id="2" parent="1" name="ascii_bin">
@@ -65,15 +157,12 @@
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
     <schema id="17" parent="1" name="fortune500">
-      <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
-      <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-06-02.08:26:38</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
     <schema id="18" parent="1" name="kiosk_db">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-06-02.08:26:38</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-06-03.11:06:59</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
     <schema id="19" parent="1" name="mysql">
@@ -85,7 +174,7 @@
     <schema id="20" parent="1" name="test">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-06-02.09:53:36</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-06-03.11:06:59</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
     <user id="21" parent="1" name="3tXLfN5hUF3WufM.028OHP50_APIKEY">

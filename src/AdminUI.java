@@ -1,4 +1,7 @@
+import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
+import DataTransferObject.MenuDTO;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -6,6 +9,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
 import java.util.Arrays;
 
 public class AdminUI extends JFrame {
@@ -133,11 +137,11 @@ public class AdminUI extends JFrame {
                 return column == 4;  // 삭제 버튼만 편집 가능
             }
         };
-        for (Object[] row : Entity.menus) {
-            Object[] rowData = Arrays.copyOf(row, row.length + 1);
-            rowData[rowData.length - 1] = "";
-            model.addRow(rowData);
-        }
+//        for (Object[] row : Entity.menus) {
+//            Object[] rowData = Arrays.copyOf(row, row.length + 1);
+//            rowData[rowData.length - 1] = "";
+//            model.addRow(rowData);
+//        }
         return model;
     }
 
@@ -150,25 +154,56 @@ public class AdminUI extends JFrame {
         }
     }
 
+    // AdminUI.java (삭제 버튼 부분만 발췌)
     static class ButtonEditor extends DefaultCellEditor {
         private final JButton button;
+        private final DefaultTableModel model;
         private int selectedRow;
 
         public ButtonEditor(JCheckBox checkBox, DefaultTableModel model) {
             super(checkBox);
-            button = new JButton();
+            this.model = model;
+            button = new JButton("X");
             button.setOpaque(true);
-            button.addActionListener(_ -> {
-                int rowToDelete = selectedRow;
-                fireEditingStopped();
-                SwingUtilities.invokeLater(() -> {
-                    if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
-                        Entity.menus.remove(rowToDelete);
-                        model.removeRow(rowToDelete);
-                        JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+            button.addActionListener(_ -> handleDelete());
+        }
+
+        private void handleDelete() {
+            int rowToDelete = selectedRow;
+            fireEditingStopped();
+            SwingUtilities.invokeLater(() -> {
+                if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
+                    String menuName = (String) model.getValueAt(rowToDelete, 1); // 메뉴명 컬럼 인덱스
+                    try (Connection conn = DBManager.getInstance().getConnection()) {
+                        MenuDAO menuDAO = new MenuDAO(conn);
+                        menuDAO.deleteMenu(menuName);
+
+                        refreshMenuTable();
+                        JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다.");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "메뉴 삭제 실패: " + ex.getMessage());
                     }
-                });
+                }
             });
+        }
+
+        // 테이블 갱신 메서드로 분리
+        private void refreshMenuTable() {
+            try {
+                Entity.refreshMenus();
+                model.setRowCount(0);
+                for (MenuDTO menu : Entity.menus) {
+                    model.addRow(new Object[]{
+                            menu.getCategory(),
+                            menu.getMenuName(),
+                            menu.getPrice(),
+                            menu.isSoldOut(),
+                            ""
+                    });
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "테이블 갱신 실패: " + ex.getMessage());
+            }
         }
 
         @Override

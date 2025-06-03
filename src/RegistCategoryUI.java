@@ -1,7 +1,10 @@
 import DataTransferObject.Entity;
+import DataAccessObject.CategoryDAO;
+import DataTransferObject.CategoryDTO;
+import DataAccessObject.DBManager;
 
 import javax.swing.*;
-import java.util.Objects;
+import java.sql.Connection;
 
 public class RegistCategoryUI extends JDialog {
     /**
@@ -42,18 +45,19 @@ public class RegistCategoryUI extends JDialog {
         JButton confirmBtn = new JButton("등록");
         confirmBtn.setBounds(10, 50, 95, 30);
         confirmBtn.addActionListener(_ -> {
-            if (Objects.equals(categoryNameField.getText(), ""))
-                JOptionPane.showMessageDialog(null, "카테고리 이름을 작성해주세요.");
-            else {
-                for(String category: Entity.categories){
-                    if(categoryNameField.getText().equals(category)){
-                        JOptionPane.showMessageDialog(null, "중복된 카테고리가 존재합니다.");
-                        return;
-                    }
-                }
-                Entity.categories.add(categoryNameField.getText());
-                JOptionPane.showMessageDialog(null, "카테고리가 등록되었습니다.");
+            String newCategory = categoryNameField.getText().trim();
+            if (newCategory.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "카테고리 이름을 작성해주세요.");
+                return;
+            }
+            try (Connection conn = DBManager.getInstance().getConnection()) {
+                CategoryDAO dao = new CategoryDAO(conn);
+                dao.insertCategory(new CategoryDTO(newCategory));
+                Entity.refreshCategories();
+                JOptionPane.showMessageDialog(this, "카테고리가 등록되었습니다.");
                 categoryNameField.setText("");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "카테고리 등록 실패: " + ex.getMessage());
             }
         });
         add(confirmBtn);

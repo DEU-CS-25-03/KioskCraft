@@ -1,4 +1,5 @@
 import DataTransferObject.Entity;
+import DataTransferObject.MenuDTO;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -115,21 +116,26 @@ public class KioskUI extends JFrame {
      */
     private void showMenuByCategory(String category) {
         gridPanel.removeAll();
-        for (Object[] item : Entity.menus) {
-            String cat = (String) item[0];
-            String name = (String) item[1];
-            String priceStr = (String) item[2];
-            boolean soldOut = (boolean) item[3];
+        for (MenuDTO menu : Entity.menus) {
+            // 카테고리 필터
+            if (!menu.getCategory().equals(category)) continue;
 
-            if (!cat.equals(category)) continue;
+            String name = menu.getMenuName();
+            int price = menu.getPrice();
+            boolean soldOut = menu.isSoldOut();
 
+            // 이미지 경로 처리
             String imagePath = "images/" + name + ".png";
             boolean imageExists = new File(imagePath).exists();
             if (!imageExists) imagePath = "images/default.png";
 
             MenuCardPanel card = new MenuCardPanel(
-                    name, priceStr, imagePath, !imageExists, soldOut,
-                    () -> addToCart(name, priceStr)
+                    name,
+                    String.valueOf(price),   // price는 int이므로 문자열로 변환
+                    imagePath,
+                    !imageExists,
+                    soldOut,
+                    () -> addToCart(name, String.valueOf(price))
             );
             gridPanel.add(card);
         }
@@ -175,9 +181,9 @@ public class KioskUI extends JFrame {
      * @return 메뉴 단가(정수)
      */
     private int getUnitPriceByName(String name) {
-        for (Object[] item : Entity.menus) {
-            if (item[1].equals(name)) {
-                return Integer.parseInt(((String) item[2]).replace(",", "").replace("원", ""));
+        for (MenuDTO menu : Entity.menus) {
+            if (menu.getMenuName().equals(name)) {
+                return menu.getPrice(); // DB에서 int로 관리하면 바로 반환
             }
         }
         return 0;
