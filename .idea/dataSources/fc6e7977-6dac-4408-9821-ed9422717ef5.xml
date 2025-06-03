@@ -574,53 +574,63 @@
       <Position>1</Position>
       <StoredType>varchar(200)|0s</StoredType>
     </column>
-    <column id="132" parent="39" name="category">
+    <index id="132" parent="38" name="PRIMARY">
+      <ColNames>categoryName</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="133" parent="38" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="134" parent="39" name="category">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>char(255)|0s</StoredType>
     </column>
-    <column id="133" parent="39" name="menuName">
+    <column id="135" parent="39" name="menuName">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="134" parent="39" name="price">
+    <column id="136" parent="39" name="price">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="135" parent="39" name="imagePath">
+    <column id="137" parent="39" name="imagePath">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>char(255)|0s</StoredType>
     </column>
-    <column id="136" parent="39" name="isSoldOut">
+    <column id="138" parent="39" name="isSoldOut">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>tinyint(1)|0s</StoredType>
     </column>
-    <index id="137" parent="39" name="PRIMARY">
+    <index id="139" parent="39" name="PRIMARY">
       <ColNames>menuName</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="138" parent="39" name="PRIMARY">
+    <key id="140" parent="39" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="139" parent="40" name="themeName">
+    <column id="141" parent="40" name="themeName">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>char(255)|0s</StoredType>
     </column>
-    <column id="140" parent="40" name="description">
+    <column id="142" parent="40" name="description">
       <Position>2</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="141" parent="40" name="isDefault">
+    <column id="143" parent="40" name="isDefault">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>

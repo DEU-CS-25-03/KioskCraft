@@ -92,7 +92,7 @@ public class AdminUI extends JFrame {
         JButton orderedCheckBtn = new JButton("매출 분석");
         orderedCheckBtn.setBounds(430, 10, 200, 50);
         orderedCheckBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        orderedCheckBtn.addActionListener(_ -> new DesignUI(this, "매출 분석", true).setVisible(true));
+        orderedCheckBtn.addActionListener(_ -> new SalesAnalysisUI(this, "매출 분석", true).setVisible(true));
         add(orderedCheckBtn);
 
         JButton setDefaultDesignBtn = new JButton("디자인 변경");
