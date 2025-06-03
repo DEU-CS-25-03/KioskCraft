@@ -1,9 +1,11 @@
+import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.SQLException;
 
 public class RegistMenuUI extends JDialog {
     private final DefaultTableModel parentModel;
@@ -15,22 +17,20 @@ public class RegistMenuUI extends JDialog {
         setSize(305, 260);
         setLocationRelativeTo(null);
         setResizable(false);
-
-        // 포커스
         SwingUtilities.invokeLater(this::requestFocusInWindow);
 
         // --- 메뉴명 ---
-        JLabel menuLabel = new JLabel("메뉴 이름: ");
-        menuLabel.setBounds(10, 10, 100, 30);
+        JLabel menuLabel = new JLabel("메뉴 이름:");
+        menuLabel.setBounds(10, 10, 80, 30);
         add(menuLabel);
 
-        JTextField menueField = new JTextField();
-        menueField.setBounds(90, 10, 190, 30);
-        add(menueField);
+        JTextField menuField = new JTextField();
+        menuField.setBounds(90, 10, 190, 30);
+        add(menuField);
 
         // --- 카테고리 (콤보박스) ---
-        JLabel categoryLabel = new JLabel("카테고리: ");
-        categoryLabel.setBounds(10, 50, 100, 30);
+        JLabel categoryLabel = new JLabel("카테고리:");
+        categoryLabel.setBounds(10, 50, 80, 30);
         add(categoryLabel);
 
         JComboBox<String> categoryCombo = new JComboBox<>(Entity.categories.toArray(new String[0]));
@@ -38,8 +38,8 @@ public class RegistMenuUI extends JDialog {
         add(categoryCombo);
 
         // --- 가격 ---
-        JLabel priceLabel = new JLabel("가격: ");
-        priceLabel.setBounds(10, 90, 100, 30);
+        JLabel priceLabel = new JLabel("가격:");
+        priceLabel.setBounds(10, 90, 80, 30);
         add(priceLabel);
 
         JTextField priceField = new JTextField();
@@ -47,8 +47,8 @@ public class RegistMenuUI extends JDialog {
         add(priceField);
 
         // --- 이미지 경로 ---
-        JLabel imgPathLabel = new JLabel("이미지 경로: ");
-        imgPathLabel.setBounds(10, 130, 100, 30);
+        JLabel imgPathLabel = new JLabel("이미지 경로:");
+        imgPathLabel.setBounds(10, 130, 80, 30);
         add(imgPathLabel);
 
         JTextField imgPathField = new JTextField();
@@ -69,12 +69,11 @@ public class RegistMenuUI extends JDialog {
         });
         add(imgPathBtn);
 
-        // --- 등록 버튼 액션 ---
         JButton confirmBtn = new JButton("등록");
         confirmBtn.setBounds(10, 170, 130, 40);
         confirmBtn.addActionListener(_ -> {
-            String name = menueField.getText().trim();
-            String category = (String)categoryCombo.getSelectedItem();
+            String name = menuField.getText().trim();
+            String category = (String) categoryCombo.getSelectedItem();
             String price = priceField.getText().trim();
             String imgPath = imgPathField.getText().trim();
 
@@ -84,7 +83,7 @@ public class RegistMenuUI extends JDialog {
                 return;
             }
 
-            // 가격 체크
+            // 가격 체크: 숫자로만
             if (!price.matches("\\d+")) {
                 JOptionPane.showMessageDialog(this, "가격은 숫자로만 입력해주세요.");
                 return;
@@ -98,19 +97,38 @@ public class RegistMenuUI extends JDialog {
                 }
             }
 
-            Object[] newRow = new Object[]{ category, name, price, false, imgPath };
-            Entity.menus.add(newRow);
-            parentModel.addRow(newRow);
+            String priceStr = String.format("%,d원", Integer.parseInt(price));
 
-            JOptionPane.showMessageDialog(this, "메뉴가 등록되었습니다.");
-            menueField.setText("");
-            priceField.setText("");
-            imgPathField.setText("");
-            categoryCombo.setSelectedIndex(0);
+            // Entity.menus에 추가할 Object[] 배열 생성
+            Object[] newRow = new Object[]{ category, name, priceStr, false, imgPath };
+            Entity.menus.add(newRow);
+
+            // DB에 삽입
+            try {
+                // 인스턴스 이렇게 쓸 때 노란 줄 뜰 수 있는데 무시해도 돼요
+                new MenuDAO(DBManager.getConnection());
+                MenuDAO.insertMenu(category, name, price, false, imgPath);
+
+                // 테이블 모델에도 새 행 추가
+                parentModel.addRow(newRow);
+
+                JOptionPane.showMessageDialog(this, "메뉴가 등록되었습니다.");
+
+                // 입력값 초기화
+                menuField.setText("");
+                priceField.setText("");
+                imgPathField.setText("");
+                categoryCombo.setSelectedIndex(0);
+
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                JOptionPane.showMessageDialog(this, "메뉴 등록 중 오류 발생: " + ex.getMessage(),
+                        "오류", JOptionPane.ERROR_MESSAGE);
+            }
         });
         add(confirmBtn);
 
-        // --- 취소 ---
+        // --- 취소 버튼 ---
         JButton cancelBtn = new JButton("취소");
         cancelBtn.setBounds(150, 170, 130, 40);
         cancelBtn.addActionListener(_ -> dispose());

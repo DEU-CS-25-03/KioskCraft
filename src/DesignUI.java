@@ -18,7 +18,7 @@ public class DesignUI extends JDialog {
         // ✅ Entity 캐시 먼저 검사하고 사용
         if (Entity.designs == null) {
             try {
-                Entity.refreshDesigns();
+                DesignDAO.loadDesigns();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "디자인 데이터 로딩 실패: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
                 dispose();
@@ -84,7 +84,7 @@ public class DesignUI extends JDialog {
             }
             String selectedDesign = selectedModel.getActionCommand().trim();
 
-            try (Connection con = DBManager.getInstance().getConnection()) {
+            try (Connection con = DBManager.getConnection()) {
                 DesignDAO.updateDefaultDesign(con, selectedDesign);
 
                 // 캐시 동기화

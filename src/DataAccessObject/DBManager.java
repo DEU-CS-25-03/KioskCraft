@@ -6,17 +6,14 @@ import java.sql.SQLException;
 
 public class DBManager {
     private static DBManager instance;
-    public Connection connection;
+    private static Connection connection;
 
-    // DAO 인스턴스들
+    // DAO 인스턴스들을 모두 null로 선언 (지연 생성할 것)
     public static DesignDAO designDAO;
-    //private static UserInfoDAO userInfoDAO;
     public static CouponDAO couponDAO;
-    //private static PaymentMethodDAO paymentMethodDAO;
     public static CategoryDAO categoryDAO;
     public static MenuDAO menuDAO;
     public static CartDAO cartDAO;
-    //private static CartItemDAO cartItemDAO;
     public static PaymentRecordDAO paymentRecordDAO;
     public static OrderStatusDAO orderStatusDAO;
     public static LanguageDAO languageDAO;
@@ -24,67 +21,122 @@ public class DBManager {
     private DBManager() {}
 
     public static synchronized DBManager getInstance() {
-        if (instance == null) instance = new DBManager();
+        if (instance == null) {
+            instance = new DBManager();
+        }
         return instance;
     }
 
-    public void connectDB() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                System.out.println(e.getMessage());
-                throw new SQLException("MySQL JDBC Driver not found");
-            }
-
-            // TiDB 연결 정보
-            String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:XzG2jb79smpUZ34s@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
-            String user = "3tXLfN5hUF3WufM.root";
-            String password = "XzG2jb79smpUZ34s"; // passward 수시로 수정 필요함
-
-            connection = DriverManager.getConnection(url, user, password);
-            System.out.println("DB Connection Successful");
-
-            // DAO 인스턴스 생성 및 Connection 주입
-            designDAO = new DesignDAO(connection);
-            //userInfoDAO = new UserInfoDAO(connection);
-            couponDAO = new CouponDAO(connection);
-            //paymentMethodDAO = new PaymentMethodDAO(connection);
-            categoryDAO = new CategoryDAO(connection);
-            menuDAO = new MenuDAO(connection);
-            cartDAO = new CartDAO(connection);
-            //cartItemDAO = new CartItemDAO(connection);
-            paymentRecordDAO = new PaymentRecordDAO(connection);
-            orderStatusDAO = new OrderStatusDAO(connection);
-            languageDAO = new LanguageDAO(connection);
+    /**
+     * 커넥션만 빠르게 초기화하고 DAO 생성은 미뤄둔다.
+     */
+    public static void connectDB() throws SQLException {
+        if (connection != null && !connection.isClosed()) {
+            return; // 이미 연결되어 있으면 패스
         }
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("MySQL JDBC Driver not found", e);
+        }
+
+        // TiDB (MySQL 호환) 연결 정보
+        String url      = "jdbc:mysql://gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
+        String user     = "3tXLfN5hUF3WufM.root";
+        String password = "XzG2jb79smpUZ34s";
+
+        // 실제로 물리적 커넥션을 여기서만 한 번 연다.
+        connection = DriverManager.getConnection(url, user, password);
+        System.out.println("DB Connection Successful");
+
+        // DAO 생성은 모두 지연(lazy) 처리한다.
+        designDAO        = null;
+        couponDAO        = null;
+        categoryDAO      = null;
+        menuDAO          = null;
+        cartDAO          = null;
+        paymentRecordDAO = null;
+        orderStatusDAO   = null;
+        languageDAO      = null;
     }
 
-    public Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) connectDB();
+    /**
+     * 필요한 시점에 커넥션을 보장받을 수 있도록.
+     */
+    public static Connection getConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            connectDB();
+        }
         return connection;
     }
 
     public void closeConnection() {
         try {
-            if (connection != null && !connection.isClosed()) connection.close();
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+                System.out.println("DB Connection Closed");
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    // 각 DAO의 getter
-    //위에 public로 선언해놔서 그대로 참조하면 되니까 getter는 따로 없어도 될 거 같아요
-//    public DesignDAO getDesignDAO() { return designDAO; }
-//    //public UserInfoDAO getUserInfoDAO() { return userInfoDAO; }
-//    public CouponDAO getCouponDAO() { return couponDAO; }
-//    //public PaymentMethodDAO getPaymentMethodDAO() { return paymentMethodDAO; }
-//    public CategoryDAO getCategoryDAO() { return categoryDAO; }
-//    public MenuDAO getMenuDAO() { return menuDAO; }
-//    public CartDAO getCartDAO() { return cartDAO; }
-//
-//    //public CartItemDAO getCartItemDAO() { return cartItemDAO; }
-//    public PaymentRecordDAO getPaymentRecordDAO() { return paymentRecordDAO; }
-//    public OrderStatusDAO getOrderStatusDAO() { return orderStatusDAO; }
-//    public LanguageDAO getLanguageDAO() { return languageDAO; }
+    // ───────────────────────────────────────────────────────────
+    // DAO 지연 생성 (Lazy Loading) 메서드들
+    // ───────────────────────────────────────────────────────────
+    //일단 리턴 남겨놓을게요 혹시 모르니까
+    public static synchronized DesignDAO getDesignDAO() throws SQLException {
+        if (designDAO == null) {
+            designDAO = new DesignDAO(getConnection());
+        }
+        return designDAO;
+    }
+
+    public synchronized CouponDAO getCouponDAO() throws SQLException {
+        if (couponDAO == null) {
+            couponDAO = new CouponDAO(getConnection());
+        }
+        return couponDAO;
+    }
+
+    public static synchronized void getCategoryDAO() throws SQLException {
+        if (categoryDAO == null) {
+            categoryDAO = new CategoryDAO(getConnection());
+        }
+    }
+
+    public static synchronized void getMenuDAO() throws SQLException {
+        if (menuDAO == null) {
+            menuDAO = new MenuDAO(getConnection());
+        }
+    }
+
+    public synchronized CartDAO getCartDAO() throws SQLException {
+        if (cartDAO == null) {
+            cartDAO = new CartDAO(getConnection());
+        }
+        return cartDAO;
+    }
+
+    public synchronized PaymentRecordDAO getPaymentRecordDAO() throws SQLException {
+        if (paymentRecordDAO == null) {
+            paymentRecordDAO = new PaymentRecordDAO(getConnection());
+        }
+        return paymentRecordDAO;
+    }
+
+    public synchronized OrderStatusDAO getOrderStatusDAO() throws SQLException {
+        if (orderStatusDAO == null) {
+            orderStatusDAO = new OrderStatusDAO(getConnection());
+        }
+        return orderStatusDAO;
+    }
+
+    public synchronized LanguageDAO getLanguageDAO() throws SQLException {
+        if (languageDAO == null) {
+            languageDAO = new LanguageDAO(getConnection());
+        }
+        return languageDAO;
+    }
 }
