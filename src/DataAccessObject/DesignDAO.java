@@ -5,23 +5,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DesignDAO {
+    static Connection con;
     public DesignDAO(Connection conn) throws SQLException {
-        String sql = "SELECT themeName, description, isDefault FROM test.themeId";
-        ArrayList<Object[]> temp = new ArrayList<>();
-        try (PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                temp.add(new Object[] {
-                        rs.getString("themeName"),
-                        rs.getString("description"),
-                        rs.getBoolean("isDefault")
-                });
-            }
-        }
-        Entity.designs = new Object[temp.size()][3];
-        for (int i = 0; i < temp.size(); i++) {
-            Entity.designs[i] = temp.get(i);
-        }
+        con = conn;
+        loadDesigns();
     }
 
     public static void updateDefaultDesign(Connection conn, String selectedDesign) throws SQLException {
@@ -45,6 +32,25 @@ public class DesignDAO {
             throw e;
         } finally {
             conn.setAutoCommit(originalAutoCommit);
+        }
+    }
+
+    public static void loadDesigns() throws SQLException {
+        String sql = "SELECT themeName, description, isDefault FROM test.themeId";
+        ArrayList<Object[]> temp = new ArrayList<>();
+        try (PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                temp.add(new Object[] {
+                        rs.getString("themeName"),
+                        rs.getString("description"),
+                        rs.getBoolean("isDefault")
+                });
+            }
+        }
+        Entity.designs = new Object[temp.size()][3];
+        for (int i = 0; i < temp.size(); i++) {
+            Entity.designs[i] = temp.get(i);
         }
     }
 }
