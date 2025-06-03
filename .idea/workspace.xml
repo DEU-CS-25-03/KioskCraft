@@ -10,13 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="전체적으로 코드 정리">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/OrderStatusDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/OrderStatusDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +168,7 @@
       <workItem from="1748638812614" duration="156000" />
       <workItem from="1748852582843" duration="5771000" />
       <workItem from="1748874907764" duration="4294000" />
+      <workItem from="1748958776256" duration="55000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
