@@ -38,9 +38,9 @@ public class DBManager {
             }
 
             // TiDB 연결 정보
-            String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:QnZoDMZWjRoVo7xl@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
+            String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:XzG2jb79smpUZ34s@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
             String user = "3tXLfN5hUF3WufM.root";
-            String password = "QnZoDMZWjRoVo7xl"; // passward 수시로 수정 필요함
+            String password = "XzG2jb79smpUZ34s"; // passward 수시로 수정 필요함
 
             connection = DriverManager.getConnection(url, user, password);
             System.out.println("DB Connection Successful");
