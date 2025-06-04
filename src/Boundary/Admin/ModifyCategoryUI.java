@@ -1,6 +1,7 @@
 package Boundary.Admin;
 
 import Controller.CategoryTableModel;
+import DataAccessObject.CategoryDAO;
 import DataTransferObject.Entity;
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
@@ -39,7 +40,7 @@ public class ModifyCategoryUI extends JDialog {
 
     // 버튼 렌더러
     static class ButtonRenderer extends JButton implements TableCellRenderer {
-        public ButtonRenderer() { setText("X"); }
+        public ButtonRenderer() { setText("수정"); }
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) { return this; }
     }
@@ -51,12 +52,39 @@ public class ModifyCategoryUI extends JDialog {
 
         public ButtonEditor(JCheckBox checkBox) {
             super(checkBox);
-            button = new JButton("X");
+            button = new JButton("수정");
             button.addActionListener(_ -> {
-                model.removeRow(row);
-                JOptionPane.showMessageDialog(null, "카테고리가 삭제되었습니다.");
+                String oldCategoryName = model.getCategoryAt(row);
+
+                String newCategoryName = JOptionPane.showInputDialog(
+                        null,
+                        "새 카테고리명을 입력하세요:",
+                        oldCategoryName
+                );
+
+                if (newCategoryName == null || newCategoryName.trim().isEmpty() || newCategoryName.equals(oldCategoryName)) {
+                    return;
+                }
+
+                // --- 비동기 + 커넥션 풀 ---
+                new Thread(() -> {
+                    try {
+                        CategoryDAO dao = new CategoryDAO();
+                        dao.updateCategory(oldCategoryName, newCategoryName.trim()); // DBManager.getConnection() 내부 사용
+                        Entity.refreshCategories(); // DBManager.getConnection() 내부 사용
+                        SwingUtilities.invokeLater(() -> {
+                            model.setData(Entity.categories); // 테이블 동기화
+                            JOptionPane.showMessageDialog(null, "카테고리명이 수정되었습니다.");
+                        });
+                    } catch (Exception ex) {
+                        SwingUtilities.invokeLater(() ->
+                                JOptionPane.showMessageDialog(null, "카테고리명 수정 실패: " + ex.getMessage())
+                        );
+                    }
+                }).start();
             });
         }
+
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {

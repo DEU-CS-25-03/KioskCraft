@@ -9,26 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : 싱글톤 패턴 DB 단일 커넥트 변경 -&gt; 커넥트 풀 방식으로 변경 &#10;ADD : HikariCP(zaxxer),slf4j jar파일 추가">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Boundary/Admin/RegistCategoryUI.java" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Create : file 클래스 폴더 분할&#10;Edit : adminUI 진입시 DB 커넥트 동기화 수정&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/Boundary/Admin/DesignUI.java&#10;#&#9;src/Boundary/Admin/RegistMenuUI.java&#10;#&#9;src/Boundary/Admin/RemoveCategoryUI.java&#10;#&#9;src/Main.java&#10;#&#9;src/RegistCategoryUI.java">
+      <change afterPath="$PROJECT_DIR$/src/Boundary/Admin/SalesAnalysisUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/src/main/core-api/java/com/mysql/cj/exceptions/MysqlErrorNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/src/main/core-api/java/com/mysql/cj/exceptions/MysqlErrorNumbers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CategoryTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Admin/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Admin/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Admin/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/ModifyMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Admin/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/RegistCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Admin/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/RemoveCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Customer/KioskUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KioskUIUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LanguageChangeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Customer/LanguageChangeUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/ModifyCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/ModifyMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderStatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistCategoryUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/RegistMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/RemoveCategoryUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -124,7 +115,7 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "vue.rearranger.settings.migration": "true",
-    "애플리케이션.Main.executor": "Run"
+    "애플리케이션.Main.executor": "Debug"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -136,6 +127,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Boundary.Admin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src" />
     </key>

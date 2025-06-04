@@ -1,12 +1,11 @@
 package DataAccessObject;
+
 import DataTransferObject.CategoryDTO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDAO {
-    // [변경] 커넥션을 멤버로 갖지 않음
-
     // 카테고리 전체 조회
     public List<CategoryDTO> selectAllCategories() throws SQLException {
         String sql = "SELECT categoryName FROM test.categoryId";

@@ -1,12 +1,12 @@
 package Boundary.Admin;
 
+import Controller.CategoryTableModel;
 import DataAccessObject.CategoryDAO;
 import DataTransferObject.Entity;
+
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.util.List;
 
 public class RemoveCategoryUI extends JDialog {
     private final CategoryTableModel model;
@@ -19,6 +19,7 @@ public class RemoveCategoryUI extends JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
 
+        // Controller.CategoryTableModel 사용
         model = new CategoryTableModel(Entity.categories);
         JTable table = new JTable(model);
 
@@ -39,28 +40,6 @@ public class RemoveCategoryUI extends JDialog {
         add(scrollPane);
     }
 
-    // 테이블 모델 클래스
-    static class CategoryTableModel extends AbstractTableModel {
-        private final String[] columnNames = {"카테고리", ""};
-        private final List<String> data;
-
-        public CategoryTableModel(List<String> data) { this.data = data; }
-
-        public void removeRow(int row) {
-            data.remove(row);
-            fireTableRowsDeleted(row, row);
-        }
-
-        @Override public int getRowCount() { return data.size(); }
-        @Override public int getColumnCount() { return columnNames.length; }
-        @Override public String getColumnName(int column) { return columnNames[column]; }
-        @Override public boolean isCellEditable(int row, int column) { return column == 1; }
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            if (columnIndex == 0) return data.get(rowIndex);
-            else return "X";
-        }
-    }
 
     // 버튼 렌더러
     static class ButtonRenderer extends JButton implements TableCellRenderer {
@@ -78,29 +57,30 @@ public class RemoveCategoryUI extends JDialog {
             super(checkBox);
             button = new JButton("X");
             button.addActionListener(_ -> {
-                // 삭제할 카테고리명 가져오기
-                String selectedCategoryName = model.data.get(row);
+                String selectedCategoryName = model.getCategoryAt(row);
 
-                // --- DB 삭제 및 동기화 ---
-                try {
-                    // [커넥션 풀] CategoryDAO는 커넥션을 멤버로 갖지 않고, 각 메서드에서 DBManager.getConnection() 사용
-                    CategoryDAO dao = new CategoryDAO();
-                    // 1. 카테고리 삭제
-                    dao.deleteCategory(selectedCategoryName);
-                    // 2. Entity.categories 최신화
-                    Entity.refreshCategories();
-                    // 3. 테이블 모델 동기화
-                    model.data.clear();
-                    model.data.addAll(Entity.categories);
-                    model.fireTableDataChanged();
-                    JOptionPane.showMessageDialog(RemoveCategoryUI.this, "카테고리가 삭제되었습니다.");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(RemoveCategoryUI.this, "카테고리 삭제 실패: " + ex.getMessage());
-                }
+                // --- 비동기 + 커넥션 풀 ---
+                new Thread(() -> {
+                    try {
+                        CategoryDAO dao = new CategoryDAO();
+                        dao.deleteCategory(selectedCategoryName); // DBManager.getConnection() 내부 사용
+                        Entity.refreshCategories(); // DBManager.getConnection() 내부 사용
+                        SwingUtilities.invokeLater(() -> {
+                            model.setData(Entity.categories); // 테이블 동기화
+                            JOptionPane.showMessageDialog(null, "카테고리가 삭제되었습니다.");
+                        });
+                    } catch (Exception ex) {
+                        SwingUtilities.invokeLater(() ->
+                                JOptionPane.showMessageDialog(null, "카테고리 삭제 실패: " + ex.getMessage())
+                        );
+                    }
+                }).start();
             });
         }
 
-        @Override
+
+
+    @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             this.row = row;
             return button;

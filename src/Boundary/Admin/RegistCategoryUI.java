@@ -14,6 +14,7 @@ public class RegistCategoryUI extends CategoryTableModel {
 
     /**
      * 카테고리 등록 다이얼로그 생성자
+     *
      * @param owner 부모 프레임
      * @param title 다이얼로그 제목
      * @param modal 모달 여부
@@ -42,7 +43,7 @@ public class RegistCategoryUI extends CategoryTableModel {
         // 등록 버튼
         JButton confirmBtn = new JButton("등록");
         confirmBtn.setBounds(10, 50, 95, 30);
-        confirmBtn.addActionListener(_ -> onRegister());
+        confirmBtn.addActionListener(_ -> onRegisterAsync());
         dialog.add(confirmBtn);
 
         // 취소 버튼
@@ -54,21 +55,28 @@ public class RegistCategoryUI extends CategoryTableModel {
         dialog.setVisible(true);
     }
 
-    private void onRegister() {
+    // [비동기] 카테고리 등록 및 동기화
+    private void onRegisterAsync() {
         String newCategory = categoryNameField.getText().trim();
         if (newCategory.isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "카테고리 이름을 작성해주세요.");
             return;
         }
-        try {
-            CategoryDAO dao = new CategoryDAO();
-            dao.insertCategory(new CategoryDTO(newCategory));
-            Entity.refreshCategories();
-            setData(Entity.categories); // 테이블 모델 데이터 동기화
-            JOptionPane.showMessageDialog(dialog, "카테고리가 등록되었습니다.");
-            categoryNameField.setText("");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "카테고리 등록 실패: " + ex.getMessage());
-        }
+        new Thread(() -> {
+            try {
+                CategoryDAO dao = new CategoryDAO();
+                dao.insertCategory(new CategoryDTO(newCategory)); // 커넥션 풀 사용
+                Entity.refreshCategories(); // 커넥션 풀 사용
+                SwingUtilities.invokeLater(() -> {
+                    setData(Entity.categories); // 테이블 모델 동기화
+                    JOptionPane.showMessageDialog(dialog, "카테고리가 등록되었습니다.");
+                    categoryNameField.setText("");
+                });
+            } catch (Exception ex) {
+                SwingUtilities.invokeLater(() ->
+                        JOptionPane.showMessageDialog(dialog, "카테고리 등록 실패: " + ex.getMessage())
+                );
+            }
+        }).start();
     }
 }

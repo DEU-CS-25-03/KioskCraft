@@ -36,7 +36,7 @@ public class DBManager {
             // 커넥션 풀 옵션 설정 (실무에서는 환경에 맞게 조정)
             config.setMaximumPoolSize(10);           // 최대 커넥션 수
             config.setMinimumIdle(2);                // 최소 유휴 커넥션 수
-            config.setConnectionTimeout(30000);      // 커넥션 대기 최대 시간(ms)
+            config.setConnectionTimeout(20000);      // 커넥션 대기 최대 시간(ms)
             config.setIdleTimeout(600000);           // 유휴 커넥션 유지 시간(ms)
             config.setMaxLifetime(1800000);          // 커넥션 최대 수명(ms)
             config.setConnectionTestQuery("SELECT 1"); // 커넥션 유효성 검사 쿼리
