@@ -1,3 +1,6 @@
+package Boundary.Customer;
+
+import Boundary.OrderTypeSelectionUI;
 import DataTransferObject.Entity;
 import DataTransferObject.MenuDTO;
 

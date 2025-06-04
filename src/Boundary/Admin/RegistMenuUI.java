@@ -1,3 +1,5 @@
+package Boundary.Admin;
+
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
 import DataTransferObject.MenuDTO;

@@ -1,4 +1,5 @@
-import DataAccessObject.DBManager;
+package Boundary.Admin;
+
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
 import DataTransferObject.MenuDTO;
@@ -13,7 +14,7 @@ public class ModifyMenuUI extends JDialog {
         super(owner, title, modal);
         setTitle(title);
         setLayout(null);
-        setSize(335, 360);
+        setSize(860, 620);
         setLocationRelativeTo(null);
         setResizable(false);
         SwingUtilities.invokeLater(this::requestFocusInWindow);

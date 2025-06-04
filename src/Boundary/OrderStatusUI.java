@@ -1,3 +1,5 @@
+package Boundary;
+
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.awt.*;

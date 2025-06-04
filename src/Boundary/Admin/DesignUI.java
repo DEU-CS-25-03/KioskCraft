@@ -1,3 +1,5 @@
+package Boundary.Admin;
+
 import DataAccessObject.DesignDAO;
 import DataTransferObject.Entity;
 import javax.swing.*;
@@ -12,7 +14,7 @@ public class DesignUI extends JDialog {
         setResizable(false);
         SwingUtilities.invokeLater(this::requestFocusInWindow);
 
-        // ✅ Entity 캐시 먼저 검사하고 사용
+        //  Entity 캐시 먼저 검사하고 사용
         if (Entity.designs == null) {
             try {
                 Entity.refreshDesigns();

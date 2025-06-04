@@ -1,3 +1,10 @@
+package Boundary;
+
+import Boundary.Admin.AdminUI;
+import Boundary.Customer.KioskUI;
+import Boundary.Customer.LanguageChangeUI;
+import Controller.KioskUIUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

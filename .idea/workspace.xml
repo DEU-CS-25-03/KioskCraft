@@ -9,23 +9,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="전체적으로 코드 정리">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/flatlaf_demo_3_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/flatlaf_demo_3_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : 싱글톤 패턴 DB 단일 커넥트 변경 -&gt; 커넥트 풀 방식으로 변경 &#10;ADD : HikariCP(zaxxer),slf4j jar파일 추가">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Boundary/Admin/RegistCategoryUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/src/build/misc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/src/build/misc/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/src/main/core-api/java/com/mysql/cj/exceptions/MysqlErrorNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysql-connector-j-9.3.0/src/main/core-api/java/com/mysql/cj/exceptions/MysqlErrorNumbers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CategoryTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DesignUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/DesignUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Customer/KioskUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KioskUIUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LanguageChangeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Customer/LanguageChangeUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModifyMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/ModifyMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderStatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistCategoryUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/RegistMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/Admin/RemoveCategoryUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -131,6 +135,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src" />
+    </key>
+  </component>
   <component name="RunManager" selected="애플리케이션.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -386,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748878289988</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="EDIT : 싱글톤 패턴 DB 단일 커넥트 변경 -&gt; 커넥트 풀 방식으로 변경 &#10;ADD : HikariCP(zaxxer),slf4j jar파일 추가">
+      <option name="closed" value="true" />
+      <created>1749044363522</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1749044363522</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +459,8 @@
     <MESSAGE value="카테고리 DB에서 불러오기" />
     <MESSAGE value="전체적으로 코드 정리" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="EDIT : 싱글톤 패턴 DB 단일 커넥트 변경 -&gt; 커넥트 풀 방식으로 변경 &#10;ADD : HikariCP(zaxxer),slf4j jar파일 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDIT : 싱글톤 패턴 DB 단일 커넥트 변경 -&gt; 커넥트 풀 방식으로 변경 &#10;ADD : HikariCP(zaxxer),slf4j jar파일 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

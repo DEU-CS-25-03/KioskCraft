@@ -1,4 +1,7 @@
-import DataAccessObject.DBManager;
+package Boundary.Admin;
+
+import Boundary.*;
+import Controller.KioskUIUtils;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
 import DataTransferObject.MenuDTO;
@@ -9,12 +12,11 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Connection;
-import java.util.Arrays;
 
 public class AdminUI extends JFrame {
     private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher;
     public DefaultTableModel model = getTableModel();
+
     public AdminUI() {
         setTitle("관리자 페이지");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -22,6 +24,9 @@ public class AdminUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(null);
+
+        // [1] 진입 시 커넥션 풀을 통해 DB에서 최신 메뉴를 불러와 테이블 초기화
+        refreshMenuTableFromDB(); // ★ 주석: 최초 진입 시 DB 동기화
 
         // 테이블 모델 생성 및 테이블 초기화
         JTable table = new JTable(model);
@@ -57,6 +62,25 @@ public class AdminUI extends JFrame {
             @Override public void windowClosing(WindowEvent e) { unregisterKeyDispatcher(); }
         });
     }
+    // [1] DB에서 메뉴를 불러와 테이블 모델을 동기화하는 메서드
+    private void refreshMenuTableFromDB() {
+        try {
+            Entity.refreshMenus(); // 커넥션 풀로 DB 동기화
+            model = getTableModel();
+            for (MenuDTO menu : Entity.menus) {
+                model.addRow(new Object[]{
+                        menu.getCategory(),
+                        menu.getMenuName(),
+                        menu.getPrice(),
+                        menu.isSoldOut(),
+                        ""
+                });
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "메뉴 데이터 로딩 실패: " + ex.getMessage());
+            model = getTableModel();
+        }
+    }
 
     @Override
     public void setVisible(boolean b) {
@@ -84,55 +108,79 @@ public class AdminUI extends JFrame {
         JButton registMenuBtn = new JButton("메뉴 등록");
         registMenuBtn.setBounds(10, 10, 200, 50);
         registMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        registMenuBtn.addActionListener(_ -> new RegistMenuUI(this, "메뉴 등록", true, model).setVisible(true));
+        registMenuBtn.addActionListener(_ -> {
+                new RegistMenuUI(this, "메뉴 등록", true, model).setVisible(true);
+                refreshMenuTableFromDB();
+        });
         add(registMenuBtn);
 
         JButton modifyMenuBtn = new JButton("메뉴 수정");
         modifyMenuBtn.setBounds(220, 10, 200, 50);
         modifyMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyMenuBtn.addActionListener(_ -> new ModifyMenuUI(this, "메뉴 등록", true, model).setVisible(true));
+        modifyMenuBtn.addActionListener(_ -> {
+                new ModifyMenuUI(this, "메뉴 등록", true, model).setVisible(true);
+                refreshMenuTableFromDB();
+        });
         add(modifyMenuBtn);
 
         JButton orderedCheckBtn = new JButton("매출 분석");
         orderedCheckBtn.setBounds(430, 10, 200, 50);
         orderedCheckBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        orderedCheckBtn.addActionListener(_ -> new DesignUI(this, "매출 분석", true).setVisible(true));
+        orderedCheckBtn.addActionListener(_ -> {
+            new DesignUI(this, "매출 분석", true).setVisible(true);
+            refreshMenuTableFromDB();
+        });
         add(orderedCheckBtn);
 
         JButton setDefaultDesignBtn = new JButton("디자인 변경");
         setDefaultDesignBtn.setBounds(640, 10, 200, 50);
         setDefaultDesignBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        setDefaultDesignBtn.addActionListener(_ -> new DesignUI(this, "디자인 변경", true).setVisible(true));
+        setDefaultDesignBtn.addActionListener(_ ->{
+            new DesignUI(this, "디자인 변경", true).setVisible(true);
+            refreshMenuTableFromDB();
+        });
         add(setDefaultDesignBtn);
 
         JButton registCategoryBtn = new JButton("카테고리 등록");
         registCategoryBtn.setBounds(10, 580, 200, 50);
         registCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        registCategoryBtn.addActionListener(_ -> new RegistCategoryUI(this, "카테고리 등록", true).setVisible(true));
+        registCategoryBtn.addActionListener(_ -> {
+            new RegistCategoryUI(this, "카테고리 등록", true);
+            refreshMenuTableFromDB();
+        });
         add(registCategoryBtn);
 
         JButton modifyCategoryBtn = new JButton("카테고리 수정");
         modifyCategoryBtn.setBounds(220, 580, 200, 50);
         modifyCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyCategoryBtn.addActionListener(_ -> new ModifyCategoryUI(this, "카테고리 수정", true).setVisible(true));
+        modifyCategoryBtn.addActionListener(_ -> {
+            new ModifyCategoryUI(this, "카테고리 수정", true).setVisible(true);
+            refreshMenuTableFromDB();
+        });
         add(modifyCategoryBtn);
 
         JButton deleteCategoryBtn = new JButton("카테고리 삭제");
         deleteCategoryBtn.setBounds(430, 580, 200, 50);
         deleteCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        deleteCategoryBtn.addActionListener(_ -> new RemoveCategoryUI(this, "카테고리 삭제", true).setVisible(true));
+        deleteCategoryBtn.addActionListener(_ -> {
+            new RemoveCategoryUI(this, "카테고리 삭제", true).setVisible(true);
+            refreshMenuTableFromDB();
+        });
         add(deleteCategoryBtn);
 
         JButton showOrderedListBtn = new JButton("주문현황 확인");
         showOrderedListBtn.setBounds(640, 580, 200, 50);
         showOrderedListBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        showOrderedListBtn.addActionListener(_ -> new OrderStatusUI(this, "주문현황", true).setVisible(true));
+        showOrderedListBtn.addActionListener(_ -> {
+            new OrderStatusUI(this, "주문현황", true).setVisible(true);
+            refreshMenuTableFromDB();
+        });
         add(showOrderedListBtn);
     }
 
     private DefaultTableModel getTableModel() {
         String[] columnNames = { "카테고리", "메뉴명", "가격", "품절여부", "" };
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+        return new DefaultTableModel(columnNames, 0) {
             @Override public boolean isCellEditable(int row, int column) {
                 return column == 4;  // 삭제 버튼만 편집 가능
             }
@@ -142,7 +190,6 @@ public class AdminUI extends JFrame {
 //            rowData[rowData.length - 1] = "";
 //            model.addRow(rowData);
 //        }
-        return model;
     }
 
     static class ButtonRenderer extends JButton implements TableCellRenderer {
@@ -154,7 +201,7 @@ public class AdminUI extends JFrame {
         }
     }
 
-    // AdminUI.java (삭제 버튼 부분만 발췌)
+    // Boundary.Admin.AdminUI.java (삭제 버튼 부분만 발췌)
     static class ButtonEditor extends DefaultCellEditor {
         private final JButton button;
         private final DefaultTableModel model;

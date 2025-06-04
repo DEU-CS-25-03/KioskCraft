@@ -1,19 +1,23 @@
+import Boundary.OrderTypeSelectionUI;
 import DataTransferObject.Entity;
+import DataAccessObject.DBManager;
 
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        // DBManager는 커넥션 풀을 static 블록에서 자동 초기화하므로 별도 인스턴스/연결/종료 관리가 필요 없음
-
         // (필요하다면 프로그램 시작 시 DB 데이터 동기화)
+        // 동기화는 프로그램 시작(최초 실행) 시에만 한 번 발생
         try {
             Entity.refreshDesigns();
-            // Entity.refreshMenus();
-            // Entity.refreshCategories();
+            Entity.refreshMenus();
+            Entity.refreshCategories();
         } catch (Exception e) {
             System.out.println("초기 데이터 로딩 실패: " + e.getMessage());
         }
+
+        // 종료 훅 등록: 프로그램이 종료될 때 커넥션 풀도 안전하게 종료
+        Runtime.getRuntime().addShutdownHook(new Thread(DBManager::closeDataSource));
 
         SwingUtilities.invokeLater(() -> {
             try {

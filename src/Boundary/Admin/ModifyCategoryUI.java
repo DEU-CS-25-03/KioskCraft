@@ -1,15 +1,10 @@
-import DataAccessObject.DBManager;
-import DataAccessObject.MenuDAO;
-import DataTransferObject.Entity;
-import DataTransferObject.MenuDTO;
+package Boundary.Admin;
 
+import Controller.CategoryTableModel;
+import DataTransferObject.Entity;
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
 
 public class ModifyCategoryUI extends JDialog {
     private final CategoryTableModel model;
@@ -40,29 +35,6 @@ public class ModifyCategoryUI extends JDialog {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 10, 300, 300);
         add(scrollPane);
-    }
-
-    // 테이블 모델 클래스
-    static class CategoryTableModel extends AbstractTableModel {
-        private final String[] columnNames = {"카테고리", ""};
-        private final List<String> data;
-
-        public CategoryTableModel(List<String> data) { this.data = data; }
-
-        public void removeRow(int row) {
-            data.remove(row);
-            fireTableRowsDeleted(row, row);
-        }
-
-        @Override public int getRowCount() { return data.size(); }
-        @Override public int getColumnCount() { return columnNames.length; }
-        @Override public String getColumnName(int column) { return columnNames[column]; }
-        @Override public boolean isCellEditable(int row, int column) { return column == 1; }
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            if (columnIndex == 0) return data.get(rowIndex);
-            else return "X";
-        }
     }
 
     // 버튼 렌더러

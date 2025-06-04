@@ -1,3 +1,5 @@
+package Controller;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
@@ -16,6 +18,11 @@ public class CategoryTableModel extends AbstractTableModel {
     public void setData(List<String> newData) {
         data.clear();
         data.addAll(newData);
+        fireTableDataChanged();
+    }
+    public void removeRow(int row) {
+        data.remove(row);
+        fireTableRowsDeleted(row, row);
     }
 
     @Override public int getRowCount() { return data.size(); }

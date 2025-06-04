@@ -1,6 +1,7 @@
+package Boundary.Admin;
+
 import DataAccessObject.CategoryDAO;
 import DataTransferObject.Entity;
-
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
