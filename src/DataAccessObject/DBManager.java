@@ -1,89 +1,81 @@
 package DataAccessObject;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBManager {
-    private static DBManager instance;
-    public Connection connection;
+    // HikariCP 커넥션 풀 객체 (정적 필드)
+    private static HikariDataSource dataSource;
 
-    private DBManager() {}
-
-    public static synchronized DBManager getInstance() {
-        if (instance == null) instance = new DBManager();
-        return instance;
-    }
-    // DAO 인스턴스들
+    // DAO 인스턴스들 (필요시 getConnection() 사용)
     public static DesignDAO designDAO;
-    //private static UserInfoDAO userInfoDAO;
     public static CouponDAO couponDAO;
-    //private static PaymentMethodDAO paymentMethodDAO;
+    public static CategoryDAO categoryDAO;
     public static MenuDAO menuDAO;
     public static CartDAO cartDAO;
-    //private static CartItemDAO cartItemDAO;
     public static PaymentRecordDAO paymentRecordDAO;
     public static OrderStatusDAO orderStatusDAO;
     public static LanguageDAO languageDAO;
 
+    // 생성자 비공개 (싱글톤 불필요, 정적 클래스 형태)
+    private DBManager() {}
 
-
-    public void connectDB() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                System.out.println(e.getMessage());
-                throw new SQLException("MySQL JDBC Driver not found");
-            }
-
-            // TiDB 연결 정보
-            String url = "jdbc:mysql://3tXLfN5hUF3WufM.root:QnZoDMZWjRoVo7xl@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
-            String user = "3tXLfN5hUF3WufM.root";
-            String password = "JKzUbu8QiYCMtNsQ"; // passward 수시로 수정 필요함
-
-            connection = DriverManager.getConnection(url, user, password);
-            System.out.println("DB Connection Successful");
-
-            // DAO 인스턴스 생성 및 Connection 주입
-            designDAO = new DesignDAO(connection);
-            //userInfoDAO = new UserInfoDAO(connection);
-            couponDAO = new CouponDAO(connection);
-            //paymentMethodDAO = new PaymentMethodDAO(connection);
-            menuDAO = new MenuDAO(connection);
-            cartDAO = new CartDAO(connection);
-            //cartItemDAO = new CartItemDAO(connection);
-            paymentRecordDAO = new PaymentRecordDAO(connection);
-            orderStatusDAO = new OrderStatusDAO(connection);
-            languageDAO = new LanguageDAO(connection);
-        }
-    }
-
-    public Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) connectDB();
-        return connection;
-    }
-
-    public void closeConnection() {
+    // 정적 초기화 블록에서 커넥션 풀 설정 및 생성
+    static {
         try {
-            if (connection != null && !connection.isClosed()) connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            HikariConfig config = new HikariConfig();
+
+            // DB 접속 정보 설정
+            config.setJdbcUrl("jdbc:mysql://gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db");
+            config.setUsername("3tXLfN5hUF3WufM.root");
+            config.setPassword("XzG2jb79smpUZ34s");
+
+            // 커넥션 풀 옵션 설정 (실무에서는 환경에 맞게 조정)
+            config.setMaximumPoolSize(10);           // 최대 커넥션 수
+            config.setMinimumIdle(2);                // 최소 유휴 커넥션 수
+            config.setConnectionTimeout(30000);      // 커넥션 대기 최대 시간(ms)
+            config.setIdleTimeout(600000);           // 유휴 커넥션 유지 시간(ms)
+            config.setMaxLifetime(1800000);          // 커넥션 최대 수명(ms)
+            config.setConnectionTestQuery("SELECT 1"); // 커넥션 유효성 검사 쿼리
+
+            // 커넥션 풀 생성
+            dataSource = new HikariDataSource(config);
+            System.out.println("HikariCP Connection Pool Initialized");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to initialize HikariCP", e);
         }
     }
 
-    // 각 DAO의 getter
-    //위에 public로 선언해놔서 그대로 참조하면 되니까 getter는 따로 없어도 될 거 같아요
-//    public DesignDAO getDesignDAO() { return designDAO; }
-//    //public UserInfoDAO getUserInfoDAO() { return userInfoDAO; }
-//    public CouponDAO getCouponDAO() { return couponDAO; }
-//    //public PaymentMethodDAO getPaymentMethodDAO() { return paymentMethodDAO; }
-//    public CategoryDAO getCategoryDAO() { return categoryDAO; }
-//    public MenuDAO getMenuDAO() { return menuDAO; }
-//    public CartDAO getCartDAO() { return cartDAO; }
-//
-//    //public CartItemDAO getCartItemDAO() { return cartItemDAO; }
-//    public PaymentRecordDAO getPaymentRecordDAO() { return paymentRecordDAO; }
-//    public OrderStatusDAO getOrderStatusDAO() { return orderStatusDAO; }
-//    public LanguageDAO getLanguageDAO() { return languageDAO; }
+    /**
+     * 커넥션 풀에서 커넥션을 빌려 반환
+     * 각 DAO/서비스에서 필요할 때마다 호출하여 사용 (try-with-resources 권장)
+     */
+    public static Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
+
+    /**
+     * DAO 인스턴스 예시 (생성자에서 커넥션을 받지 않고, 내부에서 getConnection() 사용하도록 리팩토링 필요)
+     */
+    public static synchronized DesignDAO getDesignDAO() throws SQLException {
+        if (designDAO == null) {
+            designDAO = new DesignDAO(); // 내부에서 getConnection() 사용하도록 구현
+        }
+        return designDAO;
+    }
+    // 다른 DAO들도 동일하게 구현
+
+    /**
+     * 커넥션 풀 종료 (애플리케이션 종료 시 호출)
+     */
+    public static void closeDataSource() {
+        if (dataSource != null && !dataSource.isClosed()) {
+            dataSource.close();
+            System.out.println("HikariCP Connection Pool Closed");
+        }
+    }
 }

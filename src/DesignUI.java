@@ -1,10 +1,7 @@
-import DataAccessObject.DBManager;
 import DataAccessObject.DesignDAO;
 import DataTransferObject.Entity;
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class DesignUI extends JDialog {
     public DesignUI(JFrame owner, String title, boolean modal) {
@@ -84,15 +81,16 @@ public class DesignUI extends JDialog {
             }
             String selectedDesign = selectedModel.getActionCommand().trim();
 
-            try (Connection con = DBManager.getInstance().getConnection()) {
-                DesignDAO.updateDefaultDesign(con, selectedDesign);
+            try {
+                // [커넥션 풀] DesignDAO는 커넥션을 파라미터로 받지 않고, 내부에서 DBManager.getConnection() 사용
+                DesignDAO.updateDefaultDesign(selectedDesign);
 
                 // 캐시 동기화
                 for (Object[] design : Entity.designs)
                     design[2] = design[0].equals(selectedDesign);
 
                 JOptionPane.showMessageDialog(this, "디자인이 변경되었습니다: " + selectedDesign, "성공", JOptionPane.INFORMATION_MESSAGE);
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "디자인 적용 오류: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
             dispose();

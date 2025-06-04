@@ -174,9 +174,10 @@ public class AdminUI extends JFrame {
             SwingUtilities.invokeLater(() -> {
                 if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
                     String menuName = (String) model.getValueAt(rowToDelete, 1); // 메뉴명 컬럼 인덱스
-                    try (Connection conn = DBManager.getInstance().getConnection()) {
-                        MenuDAO menuDAO = new MenuDAO(conn);
-                        menuDAO.deleteMenu(menuName);
+                    try {
+                        // [풀커넥션] MenuDAO는 커넥션을 멤버로 갖지 않고, 메서드마다 커넥션 풀에서 빌려 씀
+                        MenuDAO menuDAO = new MenuDAO(); // 생성자에서 커넥션을 받지 않음
+                        menuDAO.deleteMenu(menuName);    // 내부에서 DBManager.getConnection() 사용
 
                         refreshMenuTable();
                         JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다.");

@@ -1,12 +1,10 @@
 import DataAccessObject.CategoryDAO;
-import DataAccessObject.DBManager;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.sql.Connection;
 import java.util.List;
 
 public class RemoveCategoryUI extends JDialog {
@@ -83,8 +81,9 @@ public class RemoveCategoryUI extends JDialog {
                 String selectedCategoryName = model.data.get(row);
 
                 // --- DB 삭제 및 동기화 ---
-                try (Connection conn = DBManager.getInstance().getConnection()) {
-                    CategoryDAO dao = new CategoryDAO(conn);
+                try {
+                    // [커넥션 풀] CategoryDAO는 커넥션을 멤버로 갖지 않고, 각 메서드에서 DBManager.getConnection() 사용
+                    CategoryDAO dao = new CategoryDAO();
                     // 1. 카테고리 삭제
                     dao.deleteCategory(selectedCategoryName);
                     // 2. Entity.categories 최신화

@@ -1,4 +1,3 @@
-import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
 import DataTransferObject.MenuDTO;
@@ -7,7 +6,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
-import java.sql.Connection;
 
 public class RegistMenuUI extends JDialog {
     private final DefaultTableModel parentModel;
@@ -104,9 +102,10 @@ public class RegistMenuUI extends JDialog {
 
             // --- [비동기] DAO를 통한 DB 등록 및 Entity/테이블 동기화 ---
             new Thread(() -> {
-                try (Connection conn = DBManager.getInstance().getConnection()) {
-                    MenuDAO menuDAO = new MenuDAO(conn);
-                    MenuDTO newMenu = new MenuDTO(category, name, Integer.parseInt(price), imgPath,false );
+                try {
+                    // [커넥션 풀] MenuDAO는 커넥션을 멤버로 갖지 않고, 각 메서드에서 DBManager.getConnection() 사용
+                    MenuDAO menuDAO = new MenuDAO();
+                    MenuDTO newMenu = new MenuDTO(category, name, Integer.parseInt(price), imgPath, false);
                     menuDAO.insertMenu(newMenu);
 
                     Entity.refreshMenus();
@@ -132,10 +131,6 @@ public class RegistMenuUI extends JDialog {
             }).start();
         });
         add(confirmBtn);
-
-//            Object[] newRow = new Object[]{ category, name, price, false, imgPath };
-//            Entity.menus.add(newRow);
-//            parentModel.addRow(newRow);
 
         // --- 취소 ---
         JButton cancelBtn = new JButton("취소");

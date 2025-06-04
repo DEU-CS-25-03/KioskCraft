@@ -6,14 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuDAO {
-    private final Connection conn;
-    public MenuDAO(Connection conn) {this.conn = conn;}
+
+    // 생성자에서 커넥션을 받지 않음 (커넥션 풀 사용)
+    public MenuDAO() {}
 
     // 메뉴 전체 조회
     public List<MenuDTO> selectAllMenus() throws SQLException {
-        String sql = "SELECT category, menuName, price, isSoldOut, imagePath FROM menuId";
+        String sql = "SELECT category, menuName, price, isSoldOut, imagePath FROM test.menuId";
         List<MenuDTO> menus = new ArrayList<>();
-        try (PreparedStatement ps = conn.prepareStatement(sql);
+        // 커넥션 풀에서 커넥션을 빌려 사용
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 menus.add(new MenuDTO(
@@ -22,7 +25,6 @@ public class MenuDAO {
                         rs.getInt("price"),
                         rs.getString("imagePath"),
                         rs.getBoolean("isSoldOut")
-
                 ));
             }
         }
@@ -31,8 +33,9 @@ public class MenuDAO {
 
     // 메뉴 등록
     public void insertMenu(MenuDTO menu) throws SQLException {
-        String sql = "INSERT INTO menuId (category, menuName, price, isSoldOut, imagePath) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        String sql = "INSERT INTO test.menuId (category, menuName, price, isSoldOut, imagePath) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, menu.getCategory());
             ps.setString(2, menu.getMenuName());
             ps.setInt(3, menu.getPrice());
@@ -44,8 +47,9 @@ public class MenuDAO {
 
     // 메뉴 수정
     public void updateMenu(MenuDTO menu) throws SQLException {
-        String sql = "UPDATE menuId SET category=?, price=?, isSoldOut=?, imagePath=? WHERE menuName=?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        String sql = "UPDATE test.menuId SET category=?, price=?, isSoldOut=?, imagePath=? WHERE menuName=?";
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, menu.getCategory());
             ps.setInt(2, menu.getPrice());
             ps.setBoolean(3, menu.isSoldOut());
@@ -54,10 +58,12 @@ public class MenuDAO {
             ps.executeUpdate();
         }
     }
+
     // 메뉴 삭제
     public void deleteMenu(String menuName) throws SQLException {
-        String sql = "DELETE FROM menuId WHERE menuName=?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        String sql = "DELETE FROM test.menuId WHERE menuName=?";
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, menuName);
             ps.executeUpdate();
         }

@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.sql.Connection;
 
 public class ModifyMenuUI extends JDialog {
     public ModifyMenuUI(JFrame owner, String title, boolean modal, DefaultTableModel model) {
@@ -18,7 +17,6 @@ public class ModifyMenuUI extends JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
         SwingUtilities.invokeLater(this::requestFocusInWindow);
-
 
         // 테이블 모델 생성 및 테이블 초기화
         JTable table = new JTable(model);
@@ -44,7 +42,8 @@ public class ModifyMenuUI extends JDialog {
         table.getTableHeader().setResizingAllowed(false);
         table.getTableHeader().setReorderingAllowed(false);
         add(scrollPane);
-        // 예시: 메뉴 수정 버튼 클릭 시
+
+        // 메뉴 수정 버튼
         JButton modifyBtn = new JButton("수정");
         modifyBtn.addActionListener(_ -> {
             int selectedRow = table.getSelectedRow();
@@ -58,9 +57,10 @@ public class ModifyMenuUI extends JDialog {
 
             // --- DB 작업 및 테이블 동기화 비동기 처리 ---
             new Thread(() -> {
-                try (Connection conn = DBManager.getInstance().getConnection()) {
-                    MenuDAO menuDAO = new MenuDAO(conn);
-                    MenuDTO updatedMenu = new MenuDTO(category, name, price, imgPath,isSoldOut);
+                try {
+                    // [커넥션 풀] MenuDAO는 커넥션을 멤버로 갖지 않고, 메서드마다 DBManager.getConnection() 사용
+                    MenuDAO menuDAO = new MenuDAO();
+                    MenuDTO updatedMenu = new MenuDTO(category, name, price, imgPath, isSoldOut);
                     menuDAO.updateMenu(updatedMenu);
 
                     Entity.refreshMenus();
@@ -80,5 +80,8 @@ public class ModifyMenuUI extends JDialog {
                 }
             }).start();
         });
+        // 버튼을 다이얼로그에 추가
+        modifyBtn.setBounds(10, 10, 100, 40);
+        add(modifyBtn);
     }
 }

@@ -1,10 +1,8 @@
 import DataTransferObject.Entity;
 import DataAccessObject.CategoryDAO;
 import DataTransferObject.CategoryDTO;
-import DataAccessObject.DBManager;
 
 import javax.swing.*;
-import java.sql.Connection;
 
 public class RegistCategoryUI extends JDialog {
     /**
@@ -21,14 +19,10 @@ public class RegistCategoryUI extends JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        /*
-         * 오픈시 포커스 강제 (엔터키 입력 등 편의)
-         */
+        // 오픈시 포커스 강제
         SwingUtilities.invokeLater(this::requestFocusInWindow);
 
-        /*
-         * 카테고리명 입력 라벨/필드
-         */
+        // 카테고리명 입력 라벨/필드
         JLabel categoryNameLabel = new JLabel("카테고리 이름: ");
         categoryNameLabel.setBounds(10, 10, 100, 30);
         add(categoryNameLabel);
@@ -37,11 +31,7 @@ public class RegistCategoryUI extends JDialog {
         categoryNameField.setBounds(90, 10, 120, 30);
         add(categoryNameField);
 
-        /*
-         * 등록 버튼
-         * - 빈 값이면 알림
-         * - 정상 입력시 "등록되었습니다" 메시지, 입력칸 초기화
-         */
+        // 등록 버튼
         JButton confirmBtn = new JButton("등록");
         confirmBtn.setBounds(10, 50, 95, 30);
         confirmBtn.addActionListener(_ -> {
@@ -50,8 +40,9 @@ public class RegistCategoryUI extends JDialog {
                 JOptionPane.showMessageDialog(this, "카테고리 이름을 작성해주세요.");
                 return;
             }
-            try (Connection conn = DBManager.getInstance().getConnection()) {
-                CategoryDAO dao = new CategoryDAO(conn);
+            try {
+                // [커넥션 풀] CategoryDAO는 커넥션을 멤버로 갖지 않고, 각 메서드에서 DBManager.getConnection() 사용
+                CategoryDAO dao = new CategoryDAO();
                 dao.insertCategory(new CategoryDTO(newCategory));
                 Entity.refreshCategories();
                 JOptionPane.showMessageDialog(this, "카테고리가 등록되었습니다.");
@@ -62,10 +53,7 @@ public class RegistCategoryUI extends JDialog {
         });
         add(confirmBtn);
 
-        /*
-         * 취소 버튼
-         * - 다이얼로그 닫기
-         */
+        // 취소 버튼
         JButton cancelBtn = new JButton("취소");
         cancelBtn.setBounds(115, 50, 95, 30);
         cancelBtn.addActionListener(_ -> dispose());
