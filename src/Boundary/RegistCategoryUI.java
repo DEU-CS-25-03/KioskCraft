@@ -1,3 +1,5 @@
+package Boundary;
+
 import DataTransferObject.Entity;
 
 import javax.swing.*;

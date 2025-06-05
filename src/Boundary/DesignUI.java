@@ -1,3 +1,5 @@
+package Boundary;
+
 import DataAccessObject.DBManager;
 import DataAccessObject.DesignDAO;
 import DataTransferObject.Entity;

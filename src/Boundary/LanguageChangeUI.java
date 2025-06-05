@@ -1,15 +1,12 @@
+package Boundary;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class LanguageChangeUI extends JDialog {
+import static Control.DesignControl.getTableModel;
 
-    /**
-     * 디자인 설정 다이얼로그 생성자
-     * @param owner 부모 프레임 (UI를 동기화할 대상)
-     * @param title 다이얼로그 제목
-     * @param modal 모달 여부(모달이면 부모 UI 조작 불가)
-     */
+public class LanguageChangeUI extends JDialog {
     public LanguageChangeUI(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         setLayout(null);
@@ -40,25 +37,11 @@ public class LanguageChangeUI extends JDialog {
         });
         add(setLangBtn);
 
-
         // 취소 버튼
         JButton cancelBtn = new JButton("취소");
         cancelBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         cancelBtn.setBounds(142, 370, 122, 30);
         cancelBtn.addActionListener(_ -> dispose());
         add(cancelBtn);
-    }
-
-    // 데이터 모델 생성(내용 수정 불가)
-    private static DefaultTableModel getTableModel() {
-        Object[][] rowData = {{"한국어"}, {"일본어"}, {"중국어"}, {"영어"}};
-        String[] columnNames = {"언어 목록"};
-
-        return new DefaultTableModel(rowData, columnNames) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
     }
 }

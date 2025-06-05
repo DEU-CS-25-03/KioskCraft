@@ -1,3 +1,5 @@
+package Boundary;
+
 import DataTransferObject.Entity;
 
 import javax.swing.*;
@@ -16,11 +18,6 @@ public class KioskUI extends JFrame {
     //장바구니(선택한 메뉴, 수량, 총액 등)용 테이블 모델
     private final DefaultTableModel cartModel;
 
-    /*
-     * 키오스크 UI 메인 프레임 생성자
-     * - 카테고리 버튼, 메뉴 패널, 장바구니, 결제 버튼을 배치
-     * - 기본 카테고리("커피")로 메뉴 표시
-     */
     public KioskUI() {
         setTitle("메뉴 페이지");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
