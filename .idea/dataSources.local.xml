@@ -13,8 +13,9 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
-            <name qname="kiosk_db" />
+            <name qname="mydb" />
             <name qname="test" />
+            <name qname="kiosk_db" />
           </node>
         </introspection-scope>
       </schema-mapping>

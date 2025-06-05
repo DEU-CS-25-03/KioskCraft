@@ -1,3 +1,7 @@
+package Boundary;
+
+import Control.AdminControl;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -27,8 +31,8 @@ public class ModifyMenuUI extends JDialog {
         colModel.getColumn(4).setPreferredWidth(40);  // 삭제 버튼
 
         // 삭제 버튼 렌더러/에디터 설정
-        table.getColumnModel().getColumn(4).setCellRenderer(new AdminUI.ButtonRenderer());
-        table.getColumnModel().getColumn(4).setCellEditor(new AdminUI.ButtonEditor(new JCheckBox(), model));
+        table.getColumnModel().getColumn(4).setCellRenderer(new AdminControl.ButtonRenderer());
+        table.getColumnModel().getColumn(4).setCellEditor(new AdminControl.ButtonEditor(new JCheckBox(), model));
 
         // 스크롤 및 테이블 설정
         JScrollPane scrollPane = new JScrollPane(table);

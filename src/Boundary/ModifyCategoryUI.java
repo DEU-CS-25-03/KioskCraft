@@ -1,3 +1,5 @@
+package Boundary;
+
 import DataTransferObject.Entity;
 
 import javax.swing.*;
@@ -6,10 +8,10 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.util.List;
 
-public class RemoveCategoryUI extends JDialog {
+public class ModifyCategoryUI extends JDialog {
     private final CategoryTableModel model;
 
-    public RemoveCategoryUI(JFrame owner, String title, boolean modal) {
+    public ModifyCategoryUI(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         setTitle(title);
         setLayout(null);

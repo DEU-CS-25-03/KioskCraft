@@ -1,3 +1,5 @@
+package Boundary;
+
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;

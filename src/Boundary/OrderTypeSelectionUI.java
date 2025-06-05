@@ -1,3 +1,7 @@
+package Boundary;
+
+import Control.KioskUIUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
