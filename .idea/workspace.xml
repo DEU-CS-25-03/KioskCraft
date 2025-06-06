@@ -9,19 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="코드 전반 주석 정리 및 설명 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/KioskUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Control/AdminControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/AdminControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Control/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/MenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +169,7 @@
       <workItem from="1748874907764" duration="4294000" />
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
-      <workItem from="1749182421046" duration="10350000" />
+      <workItem from="1749182421046" duration="11417000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -436,7 +427,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749189269104</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정">
+      <option name="closed" value="true" />
+      <created>1749202548158</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1749202548158</updated>
+    </task>
+    <task id="LOCAL-00034" summary="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정">
+      <option name="closed" value="true" />
+      <created>1749202592506</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1749202592506</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +477,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="EDIT : 기존 데이터 clear" />
     <MESSAGE value="관리자 UI 틀 만듦" />
     <MESSAGE value="메뉴삭제 추가" />
     <MESSAGE value="이미지 변경" />
@@ -495,7 +501,8 @@
     <MESSAGE value="컨트롤 분리 2차" />
     <MESSAGE value="컨트롤 분리 및 결제 약간 추가" />
     <MESSAGE value="코드 전반 주석 정리 및 설명 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="코드 전반 주석 정리 및 설명 추가" />
+    <MESSAGE value="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
