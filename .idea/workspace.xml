@@ -9,15 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="컨트롤 분리 2차">
-      <change afterPath="$PROJECT_DIR$/src/Boundary/MenuCardPanel.java" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="컨트롤 분리 및 결제 약간 추가">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/AdminUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Boundary/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/DesignUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Boundary/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/KioskUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/LanguageChangeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/LanguageChangeUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/MenuCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/MenuCardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/SalesAnalysisUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/SalesAnalysisUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/AdminControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/AdminControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/CategoryControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/DesignControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/DesignControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Control/KioskControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/KioskControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/KioskUIUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/LanguageChangeControl.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +188,7 @@
       <workItem from="1748874907764" duration="4294000" />
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
-      <workItem from="1749182421046" duration="3430000" />
+      <workItem from="1749182421046" duration="4709000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -408,7 +422,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749181751647</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="컨트롤 분리 및 결제 약간 추가">
+      <option name="closed" value="true" />
+      <created>1749187820757</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1749187820757</updated>
+    </task>
+    <task id="LOCAL-00031" summary="컨트롤 분리 및 결제 약간 추가">
+      <option name="closed" value="true" />
+      <created>1749187879850</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1749187879850</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +472,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="EDIT :" />
     <MESSAGE value="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가" />
     <MESSAGE value="EDIT : 기존 데이터 clear" />
     <MESSAGE value="관리자 UI 틀 만듦" />
@@ -467,7 +496,8 @@
     <MESSAGE value="매출분석클래스 목업 추가" />
     <MESSAGE value="메뉴목록 불러오기 추가" />
     <MESSAGE value="컨트롤 분리 2차" />
-    <option name="LAST_COMMIT_MESSAGE" value="컨트롤 분리 2차" />
+    <MESSAGE value="컨트롤 분리 및 결제 약간 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="컨트롤 분리 및 결제 약간 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

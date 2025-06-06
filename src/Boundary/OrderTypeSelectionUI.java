@@ -1,16 +1,19 @@
 package Boundary;
 
 import Control.KioskUIUtils;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * OrderTypeSelectionUI 클래스
+ * - 매장/포장 선택 화면을 표시
+ * - F10 키 홀드 시 관리자 페이지(AdminUI)로 전환
+ */
 public class OrderTypeSelectionUI extends JFrame {
-    // F10 키 꾹 누름 감지용 디스패처
-    private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher;
-    // 포장 여부 선택 결과값 (매장: false, 포장: true)
-    public boolean isTakeOut;
+    private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher; // F10 키 디스패처
+    public boolean isTakeOut; // 포장 여부
+
     public OrderTypeSelectionUI() {
         setTitle("키오스크 시스템");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -18,14 +21,11 @@ public class OrderTypeSelectionUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        //배경 패널 적용(이미지 리사이즈 포함)
+        // 배경 패널 적용 (이미지 리사이즈 포함)
         KioskUIUtils.BackgroundPanel bgPanel = new KioskUIUtils.BackgroundPanel("background.png");
         bgPanel.setLayout(null);
 
-        /*
-         * "매장" 버튼
-         * - 클릭 시 포장 아님(false) 설정, KioskUI로 진입
-         */
+        // "매장" 버튼: 클릭 시 isTakeOut=false, KioskUI 열고 현재 창 닫기
         JButton eatInBtn = new JButton("매장");
         eatInBtn.setBounds(40, 520, 200, 130);
         eatInBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
@@ -36,10 +36,7 @@ public class OrderTypeSelectionUI extends JFrame {
         });
         bgPanel.add(eatInBtn);
 
-        /*
-         * "포장" 버튼
-         * - 클릭 시 포장(true) 설정, KioskUI로 진입
-         */
+        // "포장" 버튼: 클릭 시 isTakeOut=true, KioskUI 열고 현재 창 닫기
         JButton takeOutBtn = new JButton("포장");
         takeOutBtn.setBounds(280, 520, 200, 130);
         takeOutBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
@@ -50,10 +47,7 @@ public class OrderTypeSelectionUI extends JFrame {
         });
         bgPanel.add(takeOutBtn);
 
-        /*
-         * 언어 변경 버튼(🌐)
-         * - 실제 동작은 미구현, UI만 배치
-         */
+        // 언어 변경 버튼(🌐): 클릭 시 LanguageChangeUI 표시
         JButton setLangBtn = new JButton("\uD83C\uDF10");
         setLangBtn.setBounds(445, 10, 50, 50);
         setLangBtn.setFont(new Font(null, Font.PLAIN, 20));
@@ -62,24 +56,17 @@ public class OrderTypeSelectionUI extends JFrame {
 
         setContentPane(bgPanel);
 
-
-        // 창 닫힐 때 키 디스패처(관리자 진입용) 해제 보장
-
+        // 창 닫힐 때 키 디스패처 해제 보장
         addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                unregisterKeyDispatcher();
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                unregisterKeyDispatcher();
-            }
+            @Override public void windowClosed(WindowEvent e) { unregisterKeyDispatcher(); }
+            @Override public void windowClosing(WindowEvent e) { unregisterKeyDispatcher(); }
         });
     }
 
-    /*
-     * 창이 보여질 때(F10 관리자 진입 단축키 등록),
-     * 숨겨질 때 해제(메모리/중복 방지)
+    /**
+     * setVisible 오버라이드
+     * - visible=true 시 F10 키 디스패처 등록 (관리자 페이지 진입)
+     * - visible=false 시 디스패처 해제
      */
     @Override
     public void setVisible(boolean b) {
@@ -93,9 +80,9 @@ public class OrderTypeSelectionUI extends JFrame {
         super.setVisible(b);
     }
 
-    /*
-     * 키 디스패처(관리자 진입 단축키) 해제
-     * - 창 닫힐 때 반드시 호출
+    /**
+     * 키 디스패처 해제
+     * - F10 키 리스너 해제 및 null 처리
      */
     private void unregisterKeyDispatcher() {
         if (keyDispatcher != null) {
