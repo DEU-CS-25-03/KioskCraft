@@ -122,13 +122,14 @@ public class ModifyCategoryUI extends JDialog {
         editDlg.add(cancelBtn);
 
         // 확인 버튼 클릭 시 입력 검증, 중복 검사, DB 및 모델 업데이트
+        // showEditDialog 내부 (예시)
         confirmBtn.addActionListener(_ -> {
             String newName = nameField.getText().trim();
             if (newName.isEmpty()) {
                 JOptionPane.showMessageDialog(editDlg, "카테고리 이름을 작성해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            // 중복 검사 (본인 제외)
+            // 중복 검사
             for (int i = 0; i < Entity.categories.size(); i++) {
                 if (i != rowIndex && newName.equals(Entity.categories.get(i))) {
                     JOptionPane.showMessageDialog(editDlg, "중복된 카테고리가 존재합니다.", "입력 오류", JOptionPane.WARNING_MESSAGE);
@@ -136,7 +137,7 @@ public class ModifyCategoryUI extends JDialog {
                 }
             }
 
-            // DB 업데이트 시도
+            // 1) DB에서만 업데이트
             try {
                 CategoryControl.modifyCategory(oldName, newName, rowIndex);
             } catch (SQLException ex) {
@@ -144,7 +145,7 @@ public class ModifyCategoryUI extends JDialog {
                 return;
             }
 
-            // Entity 리스트 및 테이블 모델 값 변경
+            // 2) Entity.categories 및 테이블 모델 업데이트
             Entity.categories.set(rowIndex, newName);
             model.setValueAt(newName, rowIndex, 0);
 

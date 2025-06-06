@@ -73,7 +73,6 @@ public class MenuControl {
             //    MenuDAO.loadAllMenusToEntity()를 호출하려면 DAO 객체를 생성해야 함.
             //    이때 MenuDAO 생성자를 통해 connection이 세팅되고 loadAllMenusToEntity()가 실행됩니다.
             new MenuDAO(conn);  // 이 한 줄이 loadAllMenusToEntity()를 호출하게 됨
-            DBManager.closeConnection(conn);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "메뉴 삭제 중 오류 발생:\n" + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
@@ -123,9 +122,6 @@ public class MenuControl {
 
             // 2) Entity.menus 최신화: MenuDAO 생성자가 loadAllMenusToEntity() 호출
             new MenuDAO(conn);
-
-            // 연결 종료
-            DBManager.closeConnection(conn);
         }
 
         // 3) editModel(이미지경로 포함) 업데이트

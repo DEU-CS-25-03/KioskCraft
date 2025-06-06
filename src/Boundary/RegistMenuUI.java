@@ -118,7 +118,6 @@ public class RegistMenuUI extends JDialog {
                 imgPathField.setText("");
                 categoryCombo.setSelectedIndex(0);
                 loadAllMenusToEntity();     // 삽입 후 Entity.menus를 다시 로드하여 최신화
-                DBManager.closeConnection(conn);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "메뉴 등록 중 오류 발생: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
