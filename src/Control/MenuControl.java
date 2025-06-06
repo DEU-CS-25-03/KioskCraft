@@ -15,11 +15,12 @@ public class MenuControl {
     /**
      * insertMenu 메서드
      * - 새로운 메뉴를 DB에 삽입하고, 삽입 후 Entity.menus를 최신화
-     * @param category   메뉴 카테고리 (String)
-     * @param menuName   메뉴 이름 (String)
-     * @param priceStr   "6,000원" 등의 형태 문자열(price 포함)
-     * @param isSoldOut  품절 여부(boolean)
-     * @param imagePath  이미지 경로(String)
+     *
+     * @param category  메뉴 카테고리 (String)
+     * @param menuName  메뉴 이름 (String)
+     * @param priceStr  "6,000원" 등의 형태 문자열(price 포함)
+     * @param isSoldOut 품절 여부(boolean)
+     * @param imagePath 이미지 경로(String)
      * @throws SQLException SQL 실행 실패 시 예외 발생
      */
     public static void insertMenu(String category, String menuName, String priceStr, boolean isSoldOut, String imagePath, Connection conn) throws SQLException {
@@ -50,9 +51,9 @@ public class MenuControl {
      * - DAO에 delete 기능이 없으므로, Control 계층에서 바로 SQL DELETE를 실행
      * - 삭제 후 Entity.menus를 DAO를 통해 다시 로드하고, 화면 모델(DefaultTableModel)에서도 해당 행 제거
      *
-     * @param menuName  삭제할 메뉴 이름
-     * @param model     JTable의 DefaultTableModel
-     * @param rowIndex  삭제할 행의 인덱스
+     * @param menuName 삭제할 메뉴 이름
+     * @param model    JTable의 DefaultTableModel
+     * @param rowIndex 삭제할 행의 인덱스
      */
     public static void deleteMenu(String menuName, DefaultTableModel model, int rowIndex) {
         // 1) DB 연결 후 직접 DELETE SQL 실행
@@ -84,5 +85,62 @@ public class MenuControl {
 
         // 4) 삭제 완료 메시지
         JOptionPane.showMessageDialog(null, "'" + menuName + "' 메뉴가 삭제되었습니다.", "삭제 완료", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
+     * modifyMenu 메서드
+     * - DB에서 메뉴를 수정하고, Entity.menus 및 두 개의 테이블 모델을 갱신
+     *
+     * @param oldName      기존 메뉴명 (WHERE 기준)
+     * @param newCategory  새 카테고리
+     * @param newName      새 메뉴명
+     * @param priceInput   숫자 문자열(예: "3000")
+     * @param newImagePath 새 이미지 경로
+     * @param newSoldOut   새 품절 여부
+     * @param rowIndex     수정 대상 행 인덱스
+     * @param editModel    ModifyMenuUI에서 쓰는 모델 (카테고리, 메뉴명, 단가, 품절여부, 이미지경로)
+     * @param adminModel   AdminUI에서 쓰는 모델 (카테고리, 메뉴명, 단가, 품절여부, 삭제 버튼)
+     * @throws SQLException DB 오류 시 던짐
+     */
+    public static void modifyMenu(String oldName, String newCategory, String newName, String priceInput, String newImagePath, boolean newSoldOut, int rowIndex, DefaultTableModel editModel, DefaultTableModel adminModel) throws SQLException {
+        // 1) DB 업데이트
+        try (Connection conn = DBManager.getConnection()) {
+            String updateSql = "UPDATE test.menuId " + "SET category = ?, menuName = ?, price = ?, imagePath = ?, isSoldOut = ? " + "WHERE menuName = ?";
+            try (PreparedStatement ps = conn.prepareStatement(updateSql)) {
+                int priceInt = Integer.parseInt(priceInput);
+                ps.setString(1, newCategory);
+                ps.setString(2, newName);
+                ps.setInt(3, priceInt);
+                ps.setString(4, newImagePath);
+                ps.setBoolean(5, newSoldOut);
+                ps.setString(6, oldName);
+
+                int affected = ps.executeUpdate();
+                if (affected == 0) {
+                    throw new SQLException("'" + oldName + "' 메뉴를 찾을 수 없습니다.");
+                }
+            }
+
+            // 2) Entity.menus 최신화: MenuDAO 생성자가 loadAllMenusToEntity() 호출
+            new MenuDAO(conn);
+
+            // 연결 종료
+            DBManager.closeConnection(conn);
+        }
+
+        // 3) editModel(이미지경로 포함) 업데이트
+        String newPriceStr = String.format("%,d원", Integer.parseInt(priceInput));
+        editModel.setValueAt(newCategory, rowIndex, 0);
+        editModel.setValueAt(newName, rowIndex, 1);
+        editModel.setValueAt(newPriceStr, rowIndex, 2);
+        editModel.setValueAt(newSoldOut, rowIndex, 3);
+        editModel.setValueAt(newImagePath, rowIndex, 4);
+
+        // 4) adminModel(삭제 컬럼 포함) 업데이트
+        adminModel.setValueAt(newCategory, rowIndex, 0);
+        adminModel.setValueAt(newName, rowIndex, 1);
+        adminModel.setValueAt(newPriceStr, rowIndex, 2);
+        adminModel.setValueAt(newSoldOut, rowIndex, 3);
+        // 5번째 컬럼(인덱스 4)은 “삭제” 버튼이므로 그대로 놔둔다.
     }
 }

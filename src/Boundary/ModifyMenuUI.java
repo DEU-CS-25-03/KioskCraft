@@ -1,5 +1,6 @@
 package Boundary;
 
+import Control.MenuControl;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
@@ -197,7 +198,6 @@ public class ModifyMenuUI extends JDialog {
         cancelBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         cancelBtn.addActionListener(_ -> editDlg.dispose());
         editDlg.add(cancelBtn);
-
         // --- 확인 버튼 리스너: 입력 검증 및 DB, Entity, 모델 업데이트 ---
         confirmBtn.addActionListener(_ -> {
             String newName = nameField.getText().trim();
@@ -205,7 +205,6 @@ public class ModifyMenuUI extends JDialog {
             boolean newSoldOut = soldOutCheck.isSelected();
             String newCategory = (String) categoryCombo.getSelectedItem();
             String newImagePath = imgField.getText().trim();
-
             // 빈 칸 검사
             if (newName.isEmpty() || priceInput.isEmpty() || newCategory == null || newImagePath.isEmpty()) {
                 JOptionPane.showMessageDialog(editDlg, "모든 항목을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
@@ -217,46 +216,19 @@ public class ModifyMenuUI extends JDialog {
                 return;
             }
 
-            // DB UPDATE 수행
-            try (Connection conn = DBManager.getConnection()) {
-                String updateSql = "UPDATE test.menuId " + "SET category = ?, menuName = ?, price = ?, imagePath = ?, isSoldOut = ? " + "WHERE menuName = ?";
-                try (PreparedStatement ps = conn.prepareStatement(updateSql)) {
-                    int priceInt = Integer.parseInt(priceInput);
-                    ps.setString(1, newCategory);
-                    ps.setString(2, newName);
-                    ps.setInt(3, priceInt);
-                    ps.setString(4, newImagePath);
-                    ps.setBoolean(5, newSoldOut);
-                    ps.setString(6, oldName);
-
-                    int affected = ps.executeUpdate();
-                    if (affected == 0) {
-                        JOptionPane.showMessageDialog(editDlg, "'" + oldName + "' 메뉴를 찾을 수 없습니다.", "수정 실패", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
+            // 중복 메뉴명 체크
+            for (Object[] menu : Entity.menus) {
+                if (newName.equals(menu[1])) {
+                    JOptionPane.showMessageDialog(editDlg, "중복된 메뉴가 존재합니다.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
+            }
 
-                // Entity.menus 최신화
-                new MenuDAO(conn);
-
-                // editModel(이미지경로 포함) 업데이트
-                String newPriceStr = String.format("%,d원", Integer.parseInt(priceInput));
-                editModel.setValueAt(newCategory, rowIndex, 0);
-                editModel.setValueAt(newName, rowIndex, 1);
-                editModel.setValueAt(newPriceStr, rowIndex, 2);
-                editModel.setValueAt(newSoldOut, rowIndex, 3);
-                editModel.setValueAt(newImagePath, rowIndex, 4);
-
-                // AdminUI의 adminModel(삭제 컬럼 포함)도 동일한 인덱스에 반영
-                adminModel.setValueAt(newCategory, rowIndex, 0);
-                adminModel.setValueAt(newName, rowIndex, 1);
-                adminModel.setValueAt(newPriceStr, rowIndex, 2);
-                adminModel.setValueAt(newSoldOut, rowIndex, 3);
-                // 삭제 컬럼(인덱스 4)은 그대로 "삭제"
-
+            try {
+                // MenuControl.modifyMenu 호출
+                MenuControl.modifyMenu(oldName, newCategory, newName, priceInput, newImagePath, newSoldOut, rowIndex, editModel, adminModel);
                 JOptionPane.showMessageDialog(editDlg, "메뉴가 성공적으로 수정되었습니다.", "수정 완료", JOptionPane.INFORMATION_MESSAGE);
                 editDlg.dispose();
-                DBManager.closeConnection(conn);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(editDlg, "메뉴 수정 중 오류 발생:\n" + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
