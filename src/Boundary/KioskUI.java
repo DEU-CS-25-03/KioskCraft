@@ -3,19 +3,20 @@ package Boundary;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.Arrays;
 import java.util.Vector;
+import Control.KioskControl;
+
+import static Control.KioskControl.showMenuByCategory;
 
 public class KioskUI extends JFrame {
-    //메뉴 목록을 보여주는 그리드 패널 (5열 구조)
+    // 메뉴 그리드 패널 (5열)
     private final JPanel gridPanel;
 
-    //장바구니(선택한 메뉴, 수량, 총액 등)용 테이블 모델
+    // 장바구니 테이블 모델 (컬럼: 메뉴명, 단가, 수량, 총액, -, x)
     private final DefaultTableModel cartModel;
 
     public KioskUI() {
@@ -25,21 +26,27 @@ public class KioskUI extends JFrame {
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-
-        /*
-         * 카테고리별 버튼 생성
-         * 클릭 시 해당 카테고리 메뉴만 메뉴패널에 표시
-         */
-        for (int i = 0; i < Entity.categories.toArray().length; i++) {
-            String category = String.valueOf(Entity.categories.get(i));
+        gridPanel = new JPanel(new GridLayout(0, 5, 10, 10));
+        String[] columns = {"메뉴명", "단가", "수량", "총액", "", ""};
+        cartModel = new DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // 0~3(메뉴명, 단가, 수량, 총액) 컬럼은 편집 불가
+                // 4번 인덱스("-"), 5번 인덱스("x")만 편집 가능
+                return column >= 4;
+            }
+        };
+        // --- 1) 카테고리 버튼 생성 ---
+        for (int i = 0; i < Entity.categories.size(); i++) {
+            String category = Entity.categories.get(i);
             JButton categoryBtn = new JButton(category);
             categoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
             categoryBtn.setBounds(10 + i * 130, 10, 120, 40);
-            categoryBtn.addActionListener(_ -> showMenuByCategory(category));
+            categoryBtn.addActionListener(_ -> showMenuByCategory(category, gridPanel, cartModel));
             add(categoryBtn);
         }
 
-         // 홈(초기화면) 이동 버튼 아래 유니코드는 🏠︎과 같음
+        // 홈 버튼 (🏠)
         JButton goHome = new JButton("\uD83C\uDFE0");
         goHome.setFont(new Font("", Font.PLAIN, 16));
         goHome.setBounds(1425, 10, 50, 50);
@@ -49,26 +56,38 @@ public class KioskUI extends JFrame {
         });
         add(goHome);
 
-        // 메뉴(메뉴 카드) 패널
-        gridPanel = new JPanel(new GridLayout(0, 5, 10, 10));
+        // --- 2) 메뉴 그리드패널 + 스크롤패널 ---
         JPanel menuPanel = new JPanel(new BorderLayout());
         menuPanel.add(gridPanel, BorderLayout.CENTER);
 
-        JScrollPane scrollPane = new JScrollPane(menuPanel,
+        JScrollPane scrollPane = new JScrollPane(
+                menuPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
+        );
         scrollPane.setBounds(10, 60, 1080, 690);
         scrollPane.getVerticalScrollBar().setUnitIncrement(30);
         add(scrollPane);
 
-        // 장바구니 모델 생성(4, 5열만 수정 가능)
-        String[] columns = {"메뉴명", "수량", "총액", "", ""};
-        cartModel = new DefaultTableModel(columns, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return column >= 3;
-            }
-        };
+        // --- 3) 장바구니 테이블 생성 및 초기화 ---
+
+
+        // Entity.cartList에 담긴 {메뉴명, 단가, 수량, 총액} 꺼내서 테이블에 뿌리기
+        for (Object[] item : Entity.cartList) {
+            String name = (String) item[0];
+            int unitPrice = (int) item[1];
+            int quantity  = (int) item[2];
+            int total     = (int) item[3];
+
+            Vector<Object> row = new Vector<>();
+            row.add(name);         // 메뉴명
+            row.add(unitPrice);    // 단가
+            row.add(quantity);     // 수량
+            row.add(total);        // 총액
+            row.add("-");          // 수량 감소 버튼
+            row.add("x");          // 행 삭제 버튼
+            cartModel.addRow(row);
+        }
 
         JTable cartTable = new JTable(cartModel);
         cartTable.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
@@ -76,221 +95,52 @@ public class KioskUI extends JFrame {
         cartTable.setRowHeight(30);
         cartTable.setRowSelectionAllowed(false);
 
-        // - 버튼(수량 감소), x 버튼(행 삭제) 커스텀 렌더러/에디터 적용
-        cartTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer("-"));
-        cartTable.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new JCheckBox(), "-", true));
-        cartTable.getColumnModel().getColumn(4).setCellRenderer(new ButtonRenderer("x"));
-        cartTable.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor(new JCheckBox(), "x", false));
-        cartTable.getColumnModel().getColumn(0).setPreferredWidth(250);
-        cartTable.getColumnModel().getColumn(1).setPreferredWidth(60);
-        cartTable.getColumnModel().getColumn(2).setPreferredWidth(130);
-        cartTable.getColumnModel().getColumn(3).setPreferredWidth(40);
-        cartTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+        // 버튼 렌더러/에디터 연결 (컬럼 인덱스: "-"=4, "x"=5)
+        cartTable.getColumnModel().getColumn(4).setCellRenderer(new KioskControl.ButtonRenderer("-"));
+        cartTable.getColumnModel().getColumn(4).setCellEditor(new KioskControl.ButtonEditor(new JCheckBox(), "-", true, cartModel));
+        cartTable.getColumnModel().getColumn(5).setCellRenderer(new KioskControl.ButtonRenderer("x"));
+        cartTable.getColumnModel().getColumn(5).setCellEditor(new KioskControl.ButtonEditor(new JCheckBox(), "x", false, cartModel));
+
+        // 컬럼 너비 설정
+        cartTable.getColumnModel().getColumn(0).setPreferredWidth(200); // 메뉴명
+        cartTable.getColumnModel().getColumn(1).setPreferredWidth(80);  // 단가
+        cartTable.getColumnModel().getColumn(2).setPreferredWidth(60);  // 수량
+        cartTable.getColumnModel().getColumn(3).setPreferredWidth(130); // 총액
+        cartTable.getColumnModel().getColumn(4).setPreferredWidth(40);  // "-"
+        cartTable.getColumnModel().getColumn(5).setPreferredWidth(40);  // "x"
 
         JScrollPane cartScrollPane = new JScrollPane(cartTable);
         cartScrollPane.setBounds(1100, 60, 375, 620);
         add(cartScrollPane);
 
-
-        // 결제 버튼 (현재는 메시지박스만 표시)
+        // --- 4) 결제 버튼: 결제 완료 후 Entity.cartList와 테이블 모두 비우기 ---
         JButton payBtn = new JButton("결제하기");
         payBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         payBtn.setBounds(1100, 690, 375, 60);
-        payBtn.addActionListener(_ -> JOptionPane.showMessageDialog(this, "결제 완료!"));
-        add(payBtn);
-
-        // 초기 카테고리 설정
-        if (!Entity.categories.isEmpty())
-            showMenuByCategory(Entity.categories.getFirst());
-
-        setVisible(true);
-    }
-
-    /*
-     * 해당 카테고리에 속한 메뉴 카드만 메뉴 패널에 표시
-     * 메뉴 이미지 없으면 기본 이미지로 대체, 품절 표시 처리
-     */
-    private void showMenuByCategory(String category) {
-        gridPanel.removeAll();
-        for (Object[] item : Entity.menus) {
-            String cat = (String) item[0];
-            String name = (String) item[1];
-            String priceStr = (String) item[2];
-            boolean soldOut = (boolean) item[3];
-
-            if (!cat.equals(category)) continue;
-
-            String imagePath = "images/" + name + ".png";
-            boolean imageExists = new File(imagePath).exists();
-            if (!imageExists) imagePath = "images/default.png";
-
-            MenuCardPanel card = new MenuCardPanel(
-                    name, priceStr, imagePath, !imageExists, soldOut,
-                    () -> addToCart(name, priceStr)
-            );
-            gridPanel.add(card);
-        }
-
-        gridPanel.revalidate();
-        gridPanel.repaint();
-    }
-
-    /*
-     * 장바구니에 메뉴 추가
-     * 이미 담긴 메뉴면 수량+1, 총액 업데이트
-     * 없으면 새 행 추가
-     */
-    private void addToCart(String name, String priceStr) {
-        int price = Integer.parseInt(priceStr.replace(",", "").replace("원", ""));
-        boolean found = false;
-
-        for (int i = 0; i < cartModel.getRowCount(); i++) {
-            String existingName = (String) cartModel.getValueAt(i, 0);
-            if (existingName.equals(name)) {
-                int quantity = (int) cartModel.getValueAt(i, 1) + 1;
-                cartModel.setValueAt(quantity, i, 1);
-                cartModel.setValueAt(quantity * price, i, 2);
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            Vector<Object> row = new Vector<>();
-            row.add(name);
-            row.add(1);
-            row.add(price);
-            row.add("-"); // 수량 감소 버튼
-            row.add("x"); // 행 삭제 버튼
-            cartModel.addRow(row);
-        }
-    }
-
-    /**
-     * 메뉴명으로 단가(가격) 조회
-     * @param name 메뉴명
-     * @return 메뉴 단가(정수)
-     */
-    private int getUnitPriceByName(String name) {
-        for (Object[] item : Entity.menus) {
-            if (item[1].equals(name)) {
-                return Integer.parseInt(((String) item[2]).replace(",", "").replace("원", ""));
-            }
-        }
-        return 0;
-    }
-
-    // 장바구니 테이블 내 버튼(-, x) 셀에 사용하는 버튼 렌더러
-    static class ButtonRenderer extends JButton implements TableCellRenderer {
-        public ButtonRenderer(String label) {
-            setText(label);
-        }
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            return this;
-        }
-    }
-
-    /*
-     * 장바구니 테이블 내 버튼(-, x) 셀에 사용하는 버튼 에디터
-     * - isDecrease가 true면 수량 감소, false면 행 삭제
-     */
-    class ButtonEditor extends DefaultCellEditor {
-        private final JButton button;
-        private final boolean isDecrease;
-        private int editingRow;
-
-        public ButtonEditor(JCheckBox checkBox, String label, boolean isDecrease) {
-            super(checkBox);
-            this.isDecrease = isDecrease;
-            button = new JButton(label);
-            button.addActionListener(_ -> handleClick());
-        }
-
-        /*
-         * 버튼 클릭 시 이벤트 처리
-         * - 수량이 1보다 크면 감소/총액 업데이트
-         * - 아니면 행 삭제
-         */
-        private void handleClick() {
-            if (isDecrease) {
-                int quantity = (int) cartModel.getValueAt(editingRow, 1);
-                String name = (String) cartModel.getValueAt(editingRow, 0);
-                int unitPrice = getUnitPriceByName(name);
-
-                if (quantity > 1) {
-                    cartModel.setValueAt(quantity - 1, editingRow, 1);
-                    cartModel.setValueAt((quantity - 1) * unitPrice, editingRow, 2);
-                } else {
-                    cartModel.removeRow(editingRow);
-                }
+        payBtn.addActionListener(_ -> {
+            if (Entity.cartList.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "장바구니가 비어있습니다.\n메뉴를 선택해주세요.");
             } else {
-                cartModel.removeRow(editingRow);
-            }
-        }
+                JOptionPane.showMessageDialog(this, "결제 완료!");
 
-        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            this.editingRow = row;
-            return button;
-        }
-    }
-}
-
-/*
- * 메뉴(상품) 카드 한 칸을 나타내는 패널 클래스
- * - 이미지, 이름, 가격(품절 표시 포함) 표시
- * - 클릭 시 메뉴 장바구니 추가
- */
-class MenuCardPanel extends JPanel {
-    public MenuCardPanel(String name, String price, String imagePath, boolean isDefault, boolean soldOut, Runnable onClick) {
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(150, 150));
-        setBorder(new LineBorder(Color.BLACK));
-
-        // 이미지 라벨
-        JLabel imgLabel;
-        if (isDefault) {
-            // 기본 이미지(없을 때) 직접 그림
-            BufferedImage placeholder = new BufferedImage(60, 60, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g2 = placeholder.createGraphics();
-            g2.setColor(Color.LIGHT_GRAY);
-            g2.fillRect(0, 0, 60, 60);
-            g2.setColor(Color.BLACK);
-            g2.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-            g2.drawString("Default Img", 2, 35);
-            g2.dispose();
-            imgLabel = new JLabel(new ImageIcon(placeholder));
-        } else {
-            // 메뉴 이미지
-            ImageIcon icon = new ImageIcon(imagePath);
-            Image img = icon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-            imgLabel = new JLabel(new ImageIcon(img));
-        }
-        imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-        // 이름, 가격 라벨(품절이면 색상 gray 처리)
-        JLabel nameLabel = new JLabel(name, SwingConstants.CENTER);
-        nameLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        JLabel priceLabel = new JLabel(price + (soldOut ? " (품절)" : ""), SwingConstants.CENTER);
-        priceLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-
-        if (soldOut) {
-            imgLabel.setEnabled(false);
-            nameLabel.setForeground(Color.GRAY);
-            priceLabel.setForeground(Color.GRAY);
-        }
-
-        JPanel textPanel = new JPanel(new GridLayout(2, 1));
-        textPanel.add(nameLabel);
-        textPanel.add(priceLabel);
-
-        add(imgLabel, BorderLayout.CENTER);
-        add(textPanel, BorderLayout.SOUTH);
-
-        // 클릭 시(품절 아니면) onClick 실행(장바구니 추가)
-        this.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                if (!soldOut) onClick.run();
+                for(Object[] row : Entity.cartList) {
+                    System.out.println(Arrays.toString(row));
+                }
+                // Entity.cartList 비우기
+                Entity.cartList.clear();
+                // 테이블 모델도 비우기
+                cartModel.setRowCount(0);
             }
         });
+        add(payBtn);
+
+        // --- 5) 초기 카테고리 표시 ---
+        if (!Entity.categories.isEmpty()) {
+            showMenuByCategory(Entity.categories.getFirst(), gridPanel, cartModel);
+        }
+        setVisible(true);
+
+        // (원한다면) 프레임 뜨자마자 프레임에 포커스 요청
+        SwingUtilities.invokeLater(this::requestFocusInWindow);
     }
 }
