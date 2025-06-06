@@ -84,7 +84,7 @@ public class DBManager {
      * DB 연결 종료
      * - 연결이 열려 있으면 닫고 메시지 출력
      */
-    public static void closeConnection() {
+    public static void closeConnection(Connection connection) {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();

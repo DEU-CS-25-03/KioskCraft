@@ -1,12 +1,12 @@
 package Boundary;
 
 import Control.KioskUIUtils;
+import Control.AdminControl;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import Control.AdminControl;
 
 /**
  * AdminUI 클래스
@@ -35,12 +35,16 @@ public class AdminUI extends JFrame {
         colModel.getColumn(0).setPreferredWidth(150); // 카테고리
         colModel.getColumn(1).setPreferredWidth(260); // 메뉴명
         colModel.getColumn(2).setPreferredWidth(80);  // 가격
-        colModel.getColumn(3).setPreferredWidth(60);  // 품절 여부
-        colModel.getColumn(4).setPreferredWidth(40);  // 삭제 버튼
+        colModel.getColumn(3).setPreferredWidth(80);  // 품절 여부
+        colModel.getColumn(4).setPreferredWidth(80);  // 삭제 버튼
 
         // 삭제 버튼 렌더러 및 에디터 설정
-        table.getColumnModel().getColumn(4).setCellRenderer(new AdminControl.ButtonRenderer());
-        table.getColumnModel().getColumn(4).setCellEditor(new AdminControl.ButtonEditor(new JCheckBox(), model));
+        table.getColumnModel()
+                .getColumn(4)
+                .setCellRenderer(new AdminControl.ButtonRenderer());
+        table.getColumnModel()
+                .getColumn(4)
+                .setCellEditor(new AdminControl.ButtonEditor(model, table));
 
         // 테이블 스크롤 설정
         JScrollPane scrollPane = new JScrollPane(table);
@@ -61,70 +65,80 @@ public class AdminUI extends JFrame {
         });
     }
 
-    /**
-     * 관리자 기능 버튼들 생성 및 위치 지정
-     * - 메뉴 등록, 메뉴 수정, 매출 분석, 디자인 변경
-     * - 카테고리 등록, 카테고리 수정, 카테고리 삭제, 주문현황 확인
-     */
     private void addAdminButtons() {
         JButton registMenuBtn = new JButton("메뉴 등록");
         registMenuBtn.setBounds(10, 10, 200, 50);
         registMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        registMenuBtn.addActionListener(_ -> new RegistMenuUI(this, "메뉴 등록", true, model).setVisible(true));
+        registMenuBtn.addActionListener(_ ->
+                new RegistMenuUI(this, "메뉴 등록", true, model).setVisible(true)
+        );
         add(registMenuBtn);
 
         JButton modifyMenuBtn = new JButton("메뉴 수정");
         modifyMenuBtn.setBounds(220, 10, 200, 50);
         modifyMenuBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyMenuBtn.addActionListener(_ -> new ModifyMenuUI(this, "메뉴 수정", true, model).setVisible(true));
+        modifyMenuBtn.addActionListener(_ ->
+                new ModifyMenuUI(this, "메뉴 수정", true, model).setVisible(true)
+        );
         add(modifyMenuBtn);
 
         JButton salesAnalysisBtn = new JButton("매출 분석");
         salesAnalysisBtn.setBounds(430, 10, 200, 50);
         salesAnalysisBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        salesAnalysisBtn.addActionListener(_ -> new SalesAnalysisUI(this, "매출 분석", true).setVisible(true));
+        salesAnalysisBtn.addActionListener(_ ->
+                new SalesAnalysisUI(this, "매출 분석", true).setVisible(true)
+        );
         add(salesAnalysisBtn);
 
         JButton designBtn = new JButton("디자인 변경");
         designBtn.setBounds(640, 10, 200, 50);
         designBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        designBtn.addActionListener(_ -> new DesignUI(this, "디자인 변경", true).setVisible(true));
+        designBtn.addActionListener(_ ->
+                new DesignUI(this, "디자인 변경", true).setVisible(true)
+        );
         add(designBtn);
 
         JButton registCategoryBtn = new JButton("카테고리 등록");
         registCategoryBtn.setBounds(10, 580, 200, 50);
         registCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        registCategoryBtn.addActionListener(_ -> new RegistCategoryUI(this, "카테고리 등록", true).setVisible(true));
+        registCategoryBtn.addActionListener(_ ->
+                new RegistCategoryUI(this, "카테고리 등록", true).setVisible(true)
+        );
         add(registCategoryBtn);
 
         JButton modifyCategoryBtn = new JButton("카테고리 수정");
         modifyCategoryBtn.setBounds(220, 580, 200, 50);
         modifyCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyCategoryBtn.addActionListener(_ -> new ModifyCategoryUI(this, "카테고리 수정", true).setVisible(true));
+        modifyCategoryBtn.addActionListener(_ ->
+                new ModifyCategoryUI(this, "카테고리 수정", true).setVisible(true)
+        );
         add(modifyCategoryBtn);
 
         JButton removeCategoryBtn = new JButton("카테고리 삭제");
         removeCategoryBtn.setBounds(430, 580, 200, 50);
         removeCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        removeCategoryBtn.addActionListener(_ -> new RemoveCategoryUI(this, "카테고리 삭제", true).setVisible(true));
+        removeCategoryBtn.addActionListener(_ ->
+                new RemoveCategoryUI(this, "카테고리 삭제", true).setVisible(true)
+        );
         add(removeCategoryBtn);
 
         JButton orderStatusBtn = new JButton("주문현황 확인");
         orderStatusBtn.setBounds(640, 580, 200, 50);
         orderStatusBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        orderStatusBtn.addActionListener(_ -> new OrderStatusUI(this, "주문현황", true).setVisible(true));
+        orderStatusBtn.addActionListener(_ ->
+                new OrderStatusUI(this, "주문현황", true).setVisible(true)
+        );
         add(orderStatusBtn);
     }
 
-    /**
-     * 프레임 가시성 설정 시 호출
-     * - 가시화(true) 시 F10 키 홀드 디스패처 등록
-     * - 비가시화(false) 시 디스패처 해제
-     */
     @Override
     public void setVisible(boolean b) {
         if (b) {
-            keyDispatcher = new KioskUIUtils.KeyHoldActionDispatcher(KeyEvent.VK_F10, 100, () -> { new OrderTypeSelectionUI().setVisible(true); dispose(); });
+            keyDispatcher = new KioskUIUtils.KeyHoldActionDispatcher(
+                    KeyEvent.VK_F10,
+                    100,
+                    () -> { new OrderTypeSelectionUI().setVisible(true); dispose(); }
+            );
             keyDispatcher.register();
         } else {
             unregisterKeyDispatcher();
@@ -132,10 +146,6 @@ public class AdminUI extends JFrame {
         super.setVisible(b);
     }
 
-    /**
-     * F10 키 홀드 디스패처 해제
-     * - 키 리스너 등록 해제 및 null 처리
-     */
     public static void unregisterKeyDispatcher() {
         if (keyDispatcher != null) {
             keyDispatcher.unregister();

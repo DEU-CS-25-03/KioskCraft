@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * - DB 연결 초기화 후 캐시 로드, 초기 디자인 적용, 주문 유형 선택 UI 표시
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         try {
             DBManager.connectDB();      // DB 연결 초기화
             DBManager.getCategoryDAO(); // CategoryDAO 지연 생성 및 Entity.categories 로드
@@ -19,7 +19,7 @@ public class Main {
         } catch (SQLException e) {
             System.out.println(e.getMessage()); // 연결 또는 로드 오류 시 콘솔에 메시지 출력
         } finally {
-            DBManager.closeConnection(); // DB 연결 종료
+            DBManager.closeConnection(DBManager.getConnection()); // DB 연결 종료
         }
 
         SwingUtilities.invokeLater(() -> {

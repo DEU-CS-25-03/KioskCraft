@@ -101,14 +101,14 @@ public class DesignUI extends JDialog {
             }
             String selectedDesign = selectedModel.getActionCommand().trim();
 
-            try (Connection con = DBManager.getConnection()) {
-                DesignDAO.updateDefaultDesign(con, selectedDesign);
+            try (Connection conn = DBManager.getConnection()) {
+                DesignDAO.updateDefaultDesign(conn, selectedDesign);
                 // 캐시 동기화: 선택된 디자인만 isDefault=true로 설정
                 for (Object[] design : Entity.designs) {
                     design[2] = design[0].equals(selectedDesign);
                 }
                 JOptionPane.showMessageDialog(this, "디자인이 변경되었습니다: " + selectedDesign, "성공", JOptionPane.INFORMATION_MESSAGE);
-                DBManager.closeConnection();
+                DBManager.closeConnection(conn);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "디자인 적용 오류: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }

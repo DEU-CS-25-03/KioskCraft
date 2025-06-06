@@ -64,6 +64,7 @@ public class KioskUI extends JFrame {
         goHome.addActionListener(_ -> {
             new OrderTypeSelectionUI().setVisible(true);
             dispose();
+            Entity.cartList.clear();
         });
         add(goHome);
 
