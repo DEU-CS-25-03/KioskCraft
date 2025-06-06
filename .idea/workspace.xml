@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 관련 코드 간소화">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Control/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/MenuControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +168,7 @@
       <workItem from="1748874907764" duration="4294000" />
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
-      <workItem from="1749182421046" duration="11417000" />
+      <workItem from="1749182421046" duration="14328000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -443,7 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749202592506</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="메뉴 관련 코드 간소화">
+      <option name="closed" value="true" />
+      <created>1749203719298</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1749203719298</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="관리자 UI 틀 만듦" />
     <MESSAGE value="메뉴삭제 추가" />
     <MESSAGE value="이미지 변경" />
     <MESSAGE value="modal 설정" />
@@ -502,7 +508,8 @@
     <MESSAGE value="컨트롤 분리 및 결제 약간 추가" />
     <MESSAGE value="코드 전반 주석 정리 및 설명 추가" />
     <MESSAGE value="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정" />
+    <MESSAGE value="메뉴 관련 코드 간소화" />
+    <option name="LAST_COMMIT_MESSAGE" value="메뉴 관련 코드 간소화" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
