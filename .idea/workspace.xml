@@ -9,9 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 관련 코드 간소화">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 수정 폼 디자인 변경">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/CategoryControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +171,7 @@
       <workItem from="1748874907764" duration="4294000" />
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
-      <workItem from="1749182421046" duration="14328000" />
+      <workItem from="1749182421046" duration="17781000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -450,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749203719298</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="메뉴 수정 폼 디자인 변경">
+      <option name="closed" value="true" />
+      <created>1749206345356</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1749206345356</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="메뉴삭제 추가" />
     <MESSAGE value="이미지 변경" />
     <MESSAGE value="modal 설정" />
     <MESSAGE value="홈버튼 추가" />
@@ -509,7 +519,8 @@
     <MESSAGE value="코드 전반 주석 정리 및 설명 추가" />
     <MESSAGE value="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정" />
     <MESSAGE value="메뉴 관련 코드 간소화" />
-    <option name="LAST_COMMIT_MESSAGE" value="메뉴 관련 코드 간소화" />
+    <MESSAGE value="메뉴 수정 폼 디자인 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="메뉴 수정 폼 디자인 변경" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
