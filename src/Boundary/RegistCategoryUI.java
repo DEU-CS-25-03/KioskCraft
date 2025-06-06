@@ -59,12 +59,12 @@ public class RegistCategoryUI extends JDialog {
             // 3-3) DB에 INSERT 수행 후, Entity.categories 및 테이블 모델 업데이트
             try {
                 CategoryControl.insertCategory(input);
-                categoryNameField.setText(""); // 입력 필드 초기화
+                // 다이얼로그를 닫기 전에 성공 메시지 한 번만 띄움
+                JOptionPane.showMessageDialog(this, "카테고리 등록을 성공했습니다.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "카테고리 등록 중 오류 발생:\n" + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
-        });
-        add(confirmBtn);
+        });add(confirmBtn);
 
         // 4) 취소 버튼 생성 및 액션 설정: 클릭 시 다이얼로그 닫기
         JButton cancelBtn = new JButton("취소");
