@@ -71,7 +71,7 @@ public class DBManager {
         return connection;
     }
 
-    public void closeConnection() {
+    public static void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();

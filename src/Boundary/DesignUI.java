@@ -94,6 +94,7 @@ public class DesignUI extends JDialog {
                     design[2] = design[0].equals(selectedDesign);
 
                 JOptionPane.showMessageDialog(this, "디자인이 변경되었습니다: " + selectedDesign, "성공", JOptionPane.INFORMATION_MESSAGE);
+                DBManager.closeConnection();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "디자인 적용 오류: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
