@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="add: RegistCategoryUI 등록 완료 팝업창">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Edit: control -&gt; Controller">
+      <change afterPath="$PROJECT_DIR$/src/Boundary/Customer/PaymentStartUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Boundary/Customer/PaymentWaitingUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/CategoryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/MenuDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryData.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuData.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/KioskUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +68,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -114,6 +116,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src\Boundary" />
+      <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src\Boundary\Customer" />
+    </key>
+  </component>
   <component name="RunManager" selected="애플리케이션.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -492,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749226864808</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Edit: control -&gt; Controller">
+      <option name="closed" value="true" />
+      <created>1749229252529</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1749229252529</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="홈버튼 추가" />
     <MESSAGE value="디자인UI 약간 수정" />
     <MESSAGE value="메뉴 등록 수정" />
     <MESSAGE value="카테고리 등록 수정" />
@@ -551,7 +566,8 @@
     <MESSAGE value="메뉴 수정 폼 디자인 변경" />
     <MESSAGE value="DB 연결 HikariCP 방식으로 변경" />
     <MESSAGE value="add: RegistCategoryUI 등록 완료 팝업창" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: RegistCategoryUI 등록 완료 팝업창" />
+    <MESSAGE value="Edit: control -&gt; Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit: control -&gt; Controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
