@@ -5,6 +5,11 @@ import Control.CategoryControl;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * ModifyCategoryUI 클래스
+ * - 기존 Entity.categories 목록을 테이블로 표시하여 카테고리 편집 기능 제공
+ * - CategoryControl의 TableModel, ButtonRenderer, ButtonEditor 사용
+ */
 public class ModifyCategoryUI extends JDialog {
 
     public ModifyCategoryUI(JFrame owner, String title, boolean modal) {
@@ -15,21 +20,25 @@ public class ModifyCategoryUI extends JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
 
+        // CategoryControl에서 제공하는 카테고리 테이블 모델 생성 (Entity.categories를 데이터로 사용)
         CategoryControl.CategoryTableModel model = new CategoryControl.CategoryTableModel(Entity.categories);
         JTable table = new JTable(model);
 
-        // 버튼 렌더러/에디터 설정
-        table.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        table.setRowHeight(30);
-        table.setCellSelectionEnabled(false);
+        // 테이블 스타일 설정
+        table.setFont(new Font("맑은 고딕", Font.PLAIN, 16)); // 폰트 설정
+        table.setRowHeight(30);                              // 행 높이 설정
+        table.setCellSelectionEnabled(false);                // 셀 단위 선택 비활성
 
+        // 마지막 컬럼(버튼) 렌더러/에디터 등록
         table.getColumn("").setCellRenderer(new CategoryControl.ButtonRenderer());
         table.getColumn("").setCellEditor(new CategoryControl.ButtonEditor(new JCheckBox(), model));
 
+        // "카테고리" 컬럼 너비 고정 (최대/최소/추천 너비 모두 200px)
         table.getColumn("카테고리").setMaxWidth(200);
         table.getColumn("카테고리").setMinWidth(200);
         table.getColumn("카테고리").setPreferredWidth(200);
 
+        // 테이블을 스크롤 패널에 담아 다이얼로그에 추가
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 10, 300, 300);
         add(scrollPane);
