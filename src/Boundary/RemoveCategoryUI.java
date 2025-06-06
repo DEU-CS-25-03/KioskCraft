@@ -3,6 +3,7 @@ package Boundary;
 import Controller.CategoryControl;
 import DataTransferObject.Entity;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 /**
@@ -11,7 +12,7 @@ import java.awt.*;
  * - CategoryControl의 TableModel, ButtonRenderer, ButtonEditor 사용
  */
 public class RemoveCategoryUI extends JDialog {
-    public RemoveCategoryUI(JFrame owner, String title, boolean modal) {
+    public RemoveCategoryUI(JFrame owner, String title, boolean modal, DefaultTableModel adminModel) {
         super(owner, title, modal);
         setTitle(title);
         setLayout(null);
@@ -30,7 +31,7 @@ public class RemoveCategoryUI extends JDialog {
 
         // 마지막 컬럼(삭제 버튼) 렌더러/에디터 등록
         table.getColumn("").setCellRenderer(new CategoryControl.ButtonRenderer());
-        table.getColumn("").setCellEditor(new CategoryControl.ButtonEditor(new JCheckBox(), model));
+        table.getColumn("").setCellEditor(new CategoryControl.ButtonEditor(new JCheckBox(), model, adminModel));
 
         // "카테고리" 컬럼 너비 고정 (최대/최소/권장 너비 모두 200px)
         table.getColumn("카테고리").setMaxWidth(200);

@@ -95,13 +95,13 @@ public class AdminUI extends JFrame {
         JButton modifyCategoryBtn = new JButton("카테고리 수정");
         modifyCategoryBtn.setBounds(220, 580, 200, 50);
         modifyCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        modifyCategoryBtn.addActionListener(_ -> new ModifyCategoryUI(this, "카테고리 수정", true).setVisible(true));
+        modifyCategoryBtn.addActionListener(_ -> new ModifyCategoryUI(this, "카테고리 수정", true, model).setVisible(true));
         add(modifyCategoryBtn);
 
         JButton removeCategoryBtn = new JButton("카테고리 삭제");
         removeCategoryBtn.setBounds(430, 580, 200, 50);
         removeCategoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        removeCategoryBtn.addActionListener(_ -> new RemoveCategoryUI(this, "카테고리 삭제", true).setVisible(true));
+        removeCategoryBtn.addActionListener(_ -> new RemoveCategoryUI(this, "카테고리 삭제", true, model).setVisible(true));
         add(removeCategoryBtn);
 
         JButton orderStatusBtn = new JButton("주문현황 확인");
