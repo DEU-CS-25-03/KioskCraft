@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Control/MenuControl.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" dialect="GenericSQL" />

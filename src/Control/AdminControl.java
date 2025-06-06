@@ -1,98 +1,104 @@
 package Control;
 
-import Boundary.OrderTypeSelectionUI;
 import DataTransferObject.Entity;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
+import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.Arrays;
 
 /**
  * AdminControl 클래스
- * - Entity.menus를 바탕으로 테이블 모델 생성
- * - 각 행의 마지막 컬럼에 삭제 버튼 제공
+ * - AdminUI에서 사용할 테이블 모델, 버튼 렌더러/에디터 제공
  */
-public class AdminControl extends JFrame {
+public class AdminControl {
 
+    /**
+     * 메뉴 전체를 Entity.menus에서 읽어와 테이블 모델로 만들어 리턴
+     * 컬럼: {카테고리, 메뉴명, 단가, 품절여부, 삭제 버튼}
+     */
     public static DefaultTableModel getTableModel() {
-        String[] columnNames = { "카테고리", "메뉴명", "가격", "품절여부", "" };
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
-            @Override public boolean isCellEditable(int row, int column) {
-                return column == 4; // 마지막 컬럼(삭제 버튼)만 편집 가능
+        String[] columns = { "카테고리", "메뉴명", "단가", "품절여부", "삭제" };
+        DefaultTableModel model = new DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // “삭제” 버튼 컬럼(인덱스 4)만 클릭 가능하도록 허용
+                return column == 4;
             }
         };
+
+        // Entity.menus 에 저장된 각 행 데이터를 꺼내서 모델에 추가
+        // Entity.menus의 각 요소: { category, menuName, priceStr, isSoldOut, imagePath }
         for (Object[] row : Entity.menus) {
-            Object[] rowData = Arrays.copyOf(row, row.length + 1);
-            rowData[rowData.length - 1] = ""; // 빈 값으로 버튼 자리 확보
+            Object[] rowData = new Object[5];
+            rowData[0] = row[0];    // 카테고리
+            rowData[1] = row[1];    // 메뉴명
+            rowData[2] = row[2];    // 단가         ex) “1,000원”
+            rowData[3] = row[3];    // 품절여부     ex) false 또는 true
+            rowData[4] = "삭제";     // 버튼 텍스트
             model.addRow(rowData);
         }
+
         return model;
     }
 
     /**
-     * ButtonRenderer 클래스
-     * - 테이블의 마지막 컬럼에 'X' 텍스트 버튼 렌더링
+     * 테이블에 “삭제” 버튼을 그려줄 렌더러
      */
     public static class ButtonRenderer extends JButton implements TableCellRenderer {
-        public ButtonRenderer() { setOpaque(true); }
-        @Override public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            setText("X");
+        public ButtonRenderer() {
+            setText("삭제");
+            setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             return this;
         }
     }
 
     /**
-     * ButtonEditor 클래스
-     * - 삭제 버튼 클릭 시 Entity.menus와 모델에서 해당 행 제거
+     * “삭제” 버튼 클릭 시 실제 행동을 수행할 에디터
      */
-    public static class ButtonEditor extends DefaultCellEditor {
-        private final JButton button;
-        private int selectedRow;
+    public static class ButtonEditor extends AbstractCellEditor implements TableCellEditor {
+        private final JButton button = new JButton("삭제");
+        private final DefaultTableModel model;
+        private final JTable table;
+        private int currentRow;      // 클릭된(편집 중인) 행 인덱스
+        private String currentName;  // 클릭된 행의 메뉴명
 
-        public ButtonEditor(JCheckBox checkBox, DefaultTableModel model) {
-            super(checkBox);
-            button = new JButton();
-            button.setOpaque(true);
-            button.addActionListener(_ -> {
-                int rowToDelete = selectedRow;
+        public ButtonEditor(DefaultTableModel model, JTable table) {
+            this.model = model;
+            this.table = table;
+            button.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+
+            // 버튼 클릭 시 실행되는 리스너
+            button.addActionListener(e -> {
                 fireEditingStopped();
                 SwingUtilities.invokeLater(() -> {
-                    if (rowToDelete >= 0 && rowToDelete < model.getRowCount()) {
-                        Entity.menus.remove(rowToDelete);
-                        model.removeRow(rowToDelete);
-                        JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                    // 테이블을 포함하고 있는 최상위 윈도우(Frame or Dialog)를 구함
+                    Window parentWindow = SwingUtilities.getWindowAncestor(table);
+                    int confirm = JOptionPane.showConfirmDialog(parentWindow, String.format("'%s' 메뉴를 정말 삭제하시겠습니까?", currentName), "메뉴 삭제 확인", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION)
+                        MenuControl.deleteMenu(currentName, model, currentRow);
                 });
             });
         }
 
-        @Override public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            button.setText("X");
-            selectedRow = row;
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            // 편집 시작 시 현재 행 및 메뉴명을 저장
+            this.currentRow = row;
+            this.currentName = (String) model.getValueAt(row, 1);
             return button;
         }
 
-        @Override public Object getCellEditorValue() {
-            return null;
+        @Override
+        public Object getCellEditorValue() {
+            return "삭제";
         }
-    }
 
-    /**
-     * 프레임 가시성 설정 시 F10 키 입력 감지 디스패처 등록
-     * - F10을 누르면 OrderTypeSelectionUI로 전환
-     */
-    @Override public void setVisible(boolean b) {
-        if (b) {
-            KioskUIUtils.KeyHoldActionDispatcher dispatcher = new KioskUIUtils.KeyHoldActionDispatcher(
-                    KeyEvent.VK_F10, 100, () -> {
-                new OrderTypeSelectionUI().setVisible(true);
-                dispose();
-            }
-            );
-            dispatcher.register();
+        public JTable getTable() {
+            return table;
         }
-        super.setVisible(b);
     }
 }

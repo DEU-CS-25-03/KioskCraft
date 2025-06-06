@@ -1,13 +1,18 @@
 package Boundary;
 
+import Control.MenuControl;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
 import java.sql.SQLException;
+
+import static DataAccessObject.MenuDAO.loadAllMenusToEntity;
 
 /**
  * RegistMenuUI 클래스
@@ -101,10 +106,9 @@ public class RegistMenuUI extends JDialog {
             Object[] newRow = new Object[]{category, name, priceStr, false, imgPath};
             Entity.menus.add(newRow);
 
-            // DB에 삽입
-            try {
-                new MenuDAO(DBManager.getConnection()); // DAO 초기화(연결 생성)
-                MenuDAO.insertMenu(category, name, price, false, imgPath);
+            try (Connection conn = DBManager.getConnection()) {
+                new MenuDAO(conn);
+                MenuControl.insertMenu(category, name, price, false, imgPath, conn);
                 // 테이블 모델에도 새 행 추가
                 parentModel.addRow(newRow);
                 JOptionPane.showMessageDialog(this, "메뉴가 등록되었습니다.");
@@ -113,6 +117,8 @@ public class RegistMenuUI extends JDialog {
                 priceField.setText("");
                 imgPathField.setText("");
                 categoryCombo.setSelectedIndex(0);
+                loadAllMenusToEntity();     // 삽입 후 Entity.menus를 다시 로드하여 최신화
+                DBManager.closeConnection(conn);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "메뉴 등록 중 오류 발생: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
