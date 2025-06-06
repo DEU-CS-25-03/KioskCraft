@@ -1,6 +1,9 @@
 package Boundary;
 
 import Controller.CategoryControl;
+import DataAccessObject.CategoryDAO;
+import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
@@ -8,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,7 +27,7 @@ public class ModifyCategoryUI extends JDialog {
      * @param title 다이얼로그 타이틀
      * @param modal 모달 여부
      */
-    public ModifyCategoryUI(JFrame owner, String title, boolean modal) {
+    public ModifyCategoryUI(JFrame owner, String title, boolean modal, DefaultTableModel adminModel) {
         super(owner, title, modal);
         setLayout(null);
         setSize(235, 360);
@@ -65,7 +69,7 @@ public class ModifyCategoryUI extends JDialog {
                 if (e.getClickCount() == 2) {
                     int row = table.getSelectedRow();
                     if (row != -1) {
-                        showEditDialog(row, model);
+                        showEditDialog(row, model, adminModel);
                     }
                 }
             }
@@ -84,7 +88,7 @@ public class ModifyCategoryUI extends JDialog {
      * @param rowIndex 수정할 카테고리의 테이블 행 인덱스
      * @param model    테이블의 DefaultTableModel 객체
      */
-    private void showEditDialog(int rowIndex, DefaultTableModel model) {
+    private void showEditDialog(int rowIndex, DefaultTableModel model, DefaultTableModel adminModel) {
         // 기존 카테고리명 가져오기
         String oldName = (String) model.getValueAt(rowIndex, 0);
 
@@ -123,35 +127,58 @@ public class ModifyCategoryUI extends JDialog {
 
         // 확인 버튼 클릭 시 입력 검증, 중복 검사, DB 및 모델 업데이트
         // showEditDialog 내부 (예시)
+// 카테고리 수정 버튼 클릭 시 호출되는 예시 액션 리스너
         confirmBtn.addActionListener(_ -> {
+            // 1) 기존 카테고리명(oldName)과 새 카테고리명(newName) 가져오기
+            String oldNamee = (String) model.getValueAt(rowIndex, 0);
             String newName = nameField.getText().trim();
+
             if (newName.isEmpty()) {
-                JOptionPane.showMessageDialog(editDlg, "카테고리 이름을 작성해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(editDlg,
+                        "카테고리 이름을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             // 중복 검사
             for (int i = 0; i < Entity.categories.size(); i++) {
                 if (i != rowIndex && newName.equals(Entity.categories.get(i))) {
-                    JOptionPane.showMessageDialog(editDlg, "중복된 카테고리가 존재합니다.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(editDlg,
+                            "중복된 카테고리가 존재합니다.", "중복 오류", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
             }
 
-            // 1) DB에서만 업데이트
-            try {
-                CategoryControl.modifyCategory(oldName, newName, rowIndex);
+            // 2) DB 연결 및 수정, Entity·DAO·모델 동기화
+            try (Connection conn = DBManager.getConnection()) {
+                // 2-1) DB에서 카테고리명 수정 (menuId 테이블과 categoryId 테이블 모두 업데이트)
+                CategoryControl.modifyCategory(oldNamee, newName, rowIndex);
+
+                // 2-2) CategoryDAO를 통해 Entity.categories 재로드
+                CategoryDAO.loadCategories();
+                // dialogModel에도 반영
+                model.setValueAt(newName, rowIndex, 0);
+                model.fireTableDataChanged();
+
+                // 2-3) AdminUI 쪽 테이블(adminModel)에서 동일 카테고리명 모두 새 이름으로 변경
+                for (int i = 0; i < adminModel.getRowCount(); i++) {
+                    Object cellValue = adminModel.getValueAt(i, 0);
+                    if (cellValue != null && cellValue.equals(oldNamee)) {
+                        adminModel.setValueAt(newName, i, 0);
+                    }
+                }
+                adminModel.fireTableDataChanged();
+
+                // 2-4) MenuDAO를 통해 Entity.menus 재로드 (menuId 테이블에서 category가 바뀐 부분 반영)
+                new MenuDAO(conn);
+                MenuDAO.loadAllMenusToEntity();
+
+                JOptionPane.showMessageDialog(editDlg, "카테고리가 수정되었습니다.", "수정 완료", JOptionPane.INFORMATION_MESSAGE);
+                editDlg.dispose();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(editDlg, "카테고리 수정 중 오류 발생:\n" + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(editDlg,
+                        "카테고리 수정 중 오류 발생:\n" + ex.getMessage(), "DB 오류", JOptionPane.ERROR_MESSAGE);
             }
-
-            // 2) Entity.categories 및 테이블 모델 업데이트
-            Entity.categories.set(rowIndex, newName);
-            model.setValueAt(newName, rowIndex, 0);
-
-            JOptionPane.showMessageDialog(editDlg, "카테고리가 수정되었습니다.", "수정 완료", JOptionPane.INFORMATION_MESSAGE);
-            editDlg.dispose();
         });
+
 
         editDlg.setVisible(true);
     }

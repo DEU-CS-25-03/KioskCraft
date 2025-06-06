@@ -2,10 +2,12 @@ package Controller;
 
 import DataAccessObject.CategoryDAO;
 import DataAccessObject.DBManager;
+import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.sql.Connection;
@@ -62,18 +64,31 @@ public class CategoryControl {
         private int row;
         private final CategoryTableModel model;
 
-        public ButtonEditor(JCheckBox checkBox, CategoryTableModel model) {
+        public ButtonEditor(JCheckBox checkBox, CategoryTableModel model, DefaultTableModel adminModel) {
             super(checkBox);
             this.model = model;
             button = new JButton("X");
             button.addActionListener(_ -> {
-                try {
+                try (Connection conn = DBManager.getConnection()){
+                    String target = model.data.get(row);
                     // DB에서만 삭제 처리
-                    deleteCategory(model.data.get(row));
-                    //업데이트
+                    deleteCategory(target);
                     CategoryDAO.loadCategories();
                     model.fireTableDataChanged();
+
+
+                    // 1) 뒤에서부터(for i = rowCount-1 → 0) 순회하면서 삭제
+                    for (int i = adminModel.getRowCount() - 1; i >= 0; i--) {
+                        Object cellValue = adminModel.getValueAt(i, 0); // 0번 컬럼이 카테고리명이라고 가정
+                        if (cellValue != null && cellValue.equals(target)) {
+                            adminModel.removeRow(i);
+                            // removeRow(i) 안에서 내부적으로 fireTableRowsDeleted(i,i)가 호출됩니다.
+                        }
+                    }
                     // 모델에서 리스트까지 한 번에 제거
+                    new MenuDAO(conn);
+                    MenuDAO.loadAllMenusToEntity();
+                    adminModel.fireTableDataChanged();
                     JOptionPane.showMessageDialog(null, "카테고리가 삭제되었습니다.");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "삭제 오류:\n" + e.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
@@ -113,17 +128,42 @@ public class CategoryControl {
 
     public static void deleteCategory(String categoryName) throws SQLException {
         try (Connection conn = DBManager.getConnection()) {
-            String deleteSql = "DELETE FROM test.categoryId WHERE categoryName = ?";
-            try (PreparedStatement ps = conn.prepareStatement(deleteSql)) {
-                ps.setString(1, categoryName);
-                int affected = ps.executeUpdate();
-                if (affected == 0) {
-                    throw new SQLException("삭제할 카테고리를 찾을 수 없습니다: " + categoryName);
+            conn.setAutoCommit(false);
+            try {
+                // 1) menuId 테이블에서 해당 카테고리의 모든 메뉴 삭제
+                String deleteMenusSql = "DELETE FROM test.menuId WHERE category = ?";
+                try (PreparedStatement psMenus = conn.prepareStatement(deleteMenusSql)) {
+                    psMenus.setString(1, categoryName);
+                    psMenus.executeUpdate();
                 }
+
+                // 2) categoryId 테이블에서 해당 카테고리 삭제
+                String deleteCategorySql = "DELETE FROM test.categoryId WHERE categoryName = ?";
+                try (PreparedStatement psCat = conn.prepareStatement(deleteCategorySql)) {
+                    psCat.setString(1, categoryName);
+                    int affected = psCat.executeUpdate();
+                    if (affected == 0) {
+                        conn.rollback();
+                        throw new SQLException("삭제할 카테고리를 찾을 수 없습니다: " + categoryName);
+                    }
+                }
+
+                conn.commit();
+            } catch (SQLException ex) {
+                conn.rollback();
+                throw ex;
+            } finally {
+                conn.setAutoCommit(true);
             }
         }
-    }
 
+        // 3) Entity 내부 리스트에서도 삭제
+        Entity.categories.removeIf(cat -> cat.equals(categoryName));
+        Entity.menus.removeIf(menuRow -> {
+            // 예시: menuRow[4]가 카테고리명이라고 가정
+            return categoryName.equals(menuRow[4]);
+        });
+    }
     /**
      * modifyCategory 메서드
      * - DB 카테고리 이름을 oldName → newName 업데이트
@@ -136,18 +176,39 @@ public class CategoryControl {
      */
     public static void modifyCategory(String oldName, String newName, int rowIndex) throws SQLException {
         try (Connection conn = DBManager.getConnection()) {
-            String updateSql = "UPDATE test.categoryId SET categoryName = ? WHERE categoryName = ?";
-            try (PreparedStatement ps = conn.prepareStatement(updateSql)) {
-                ps.setString(1, newName);
-                ps.setString(2, oldName);
-                int affected = ps.executeUpdate();
-                if (affected == 0) {
-                    throw new SQLException("수정할 카테고리를 찾을 수 없습니다: " + oldName);
+            // 트랜잭션 시작
+            conn.setAutoCommit(false);
+            try {
+                // 1) menuId 테이블에서 category 컬럼 업데이트
+                String updateMenusSql = "UPDATE test.menuId SET category = ? WHERE category = ?";
+                try (PreparedStatement psMenus = conn.prepareStatement(updateMenusSql)) {
+                    psMenus.setString(1, newName);
+                    psMenus.setString(2, oldName);
+                    psMenus.executeUpdate();
                 }
+
+                // 2) categoryId 테이블에서 카테고리명 업데이트
+                String updateCatSql = "UPDATE test.categoryId SET categoryName = ? WHERE categoryName = ?";
+                try (PreparedStatement psCat = conn.prepareStatement(updateCatSql)) {
+                    psCat.setString(1, newName);
+                    psCat.setString(2, oldName);
+                    int affected = psCat.executeUpdate();
+                    if (affected == 0) {
+                        conn.rollback();
+                        throw new SQLException("수정할 카테고리를 찾을 수 없습니다: " + oldName);
+                    }
+                }
+
+                conn.commit();
+            } catch (SQLException ex) {
+                conn.rollback();
+                throw ex;
+            } finally {
+                conn.setAutoCommit(true);
             }
-            //업데이트
-            CategoryDAO.loadCategories();
         }
-        // 엔티티 리스트 변경은 호출한 쪽에서 처리
+
+        // Entity.categories는 호출한 쪽에서 리스트 교체 처리한다고 가정
     }
+
 }
