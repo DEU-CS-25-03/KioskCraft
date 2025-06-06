@@ -1,6 +1,6 @@
 package Boundary;
 
-import Control.MenuControl;
+import Controller.MenuControl;
 import DataTransferObject.Entity;
 
 import javax.swing.*;

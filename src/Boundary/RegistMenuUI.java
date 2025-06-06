@@ -1,6 +1,6 @@
 package Boundary;
 
-import Control.MenuControl;
+import Controller.MenuControl;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;

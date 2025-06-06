@@ -1,6 +1,6 @@
 package Boundary;
 
-import Control.CategoryControl;
+import Controller.CategoryControl;
 import DataTransferObject.Entity;
 import javax.swing.*;
 import java.awt.*;

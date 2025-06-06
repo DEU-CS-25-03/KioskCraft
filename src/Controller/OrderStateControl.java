@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;

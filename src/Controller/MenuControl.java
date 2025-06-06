@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;

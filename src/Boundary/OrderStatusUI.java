@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
-import Control.OrderStateControl;
+import Controller.OrderStateControl;
 
 /**
  * OrderStatusUI 클래스

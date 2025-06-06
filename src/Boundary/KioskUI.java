@@ -7,9 +7,9 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Vector;
-import Control.KioskControl;
+import Controller.KioskControl;
 
-import static Control.KioskControl.showMenuByCategory;
+import static Controller.KioskControl.showMenuByCategory;
 
 /**
  * KioskUI 클래스
