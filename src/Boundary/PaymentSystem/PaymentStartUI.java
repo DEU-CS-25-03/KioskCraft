@@ -65,9 +65,9 @@ public class PaymentStartUI extends JFrame {
         gbc.gridy = 1;
         buttonPanel.add(couponInputBtn= new JButton("쿠폰입력"), gbc);
         couponInputBtn.setPreferredSize(new Dimension(200, 60));
-        // 포인트 정립 버튼
+        // 포인트 적립 버튼
         gbc.gridx = 1;
-        buttonPanel.add(pointsEarnBtn = new JButton("포인트 정립"), gbc);
+        buttonPanel.add(pointsEarnBtn = new JButton("포인트 적립"), gbc);
         pointsEarnBtn.setPreferredSize(new Dimension(200, 60));
         // 이전화면 버튼
         gbc.gridx = 0;
