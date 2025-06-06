@@ -1,6 +1,8 @@
 package Boundary;
 
 import Control.CategoryControl;
+import DataAccessObject.CategoryDAO;
+import DataAccessObject.DBManager;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
@@ -59,9 +61,7 @@ public class RegistCategoryUI extends JDialog {
                 CategoryControl.insertCategory(input);
                 categoryNameField.setText(""); // 입력 필드 초기화
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "카테고리 등록 중 오류 발생:\n" + ex.getMessage(),
-                        "오류", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "카테고리 등록 중 오류 발생:\n" + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
             }
         });
         add(confirmBtn);

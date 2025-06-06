@@ -1,97 +1,89 @@
 package DataAccessObject;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 /**
  * DBManager 클래스
- * - 싱글톤 패턴으로 DB 커넥션을 관리
- * - DAO 인스턴스는 지연 생성(Lazy Loading) 방식으로 관리
+ * - HikariCP 커넥션 풀을 사용하여 DB 커넥션을 관리
+ * - DAO 인스턴스는 지연 생성(Lazy Loading) 방식으로 제공
  */
 public class DBManager {
-    private static DBManager instance;         // 싱글톤 인스턴스
-    private static Connection connection;      // JDBC 커넥션
+    // HikariCP 커넥션 풀
+    private static HikariDataSource dataSource;
 
-    // DAO 인스턴스들 (지연 생성 예정)
-    public static DesignDAO designDAO;
-    public static CouponDAO couponDAO;
-    public static CategoryDAO categoryDAO;
-    public static MenuDAO menuDAO;
-    public static CartDAO cartDAO;
-    public static PaymentRecordDAO paymentRecordDAO;
-    public static OrderStatusDAO orderStatusDAO;
-    public static LanguageDAO languageDAO;
+    // DAO 인스턴스들 (필요 시 지연 생성)
+    private static DesignDAO designDAO;
+    private static CategoryDAO categoryDAO;
+    private static MenuDAO menuDAO;
+    // 필요한 DAO만 추가, 사용하지 않는 DAO는 제거 가능
 
-    private DBManager() {} // 생성자 비공개
-
-    /**
-     * 싱글톤 인스턴스 반환
-     * @return DBManager 인스턴스
-     */
-    public static synchronized DBManager getInstance() {
-        if (instance == null) {
-            instance = new DBManager();
-        }
-        return instance;
+    private DBManager() {
+        // 외부에서 인스턴스 생성 못하도록 생성자 비공개
     }
 
     /**
-     * DB 연결 초기화
-     * - 기존 연결이 유효하면 재사용
-     * - MySQL JDBC 드라이버 로드 후 TiDB(MySQL 호환) 연결 생성
-     * @throws SQLException 드라이버 로드 실패 또는 연결 중 오류 시
+     * HikariCP 커넥션 풀 초기화
+     * - dataSource가 이미 생성되어 있으면 재사용
+     * - TiDB(MySQL 호환) 서버에 커넥션 풀 생성
+     *
+     * @throws SQLException 초기화 중 오류 발생 시 예외 던짐
      */
     public static void connectDB() throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            return; // 이미 연결이 되어 있으면 패스
+        // 이미 풀 초기화 완료된 상태라면 그대로 반환
+        if (dataSource != null && !dataSource.isClosed()) {
+            return;
         }
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL JDBC Driver not found", e);
-        }
-        String url      = "jdbc:mysql://gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db";
-        String user     = "3tXLfN5hUF3WufM.root";
-        String password = "XzG2jb79smpUZ34s";
-        connection = DriverManager.getConnection(url, user, password);
-        System.out.println("DB Connection Successful");
-        // DAO 인스턴스는 지연 생성
-        designDAO        = null;
-        couponDAO        = null;
-        categoryDAO      = null;
-        menuDAO          = null;
-        cartDAO          = null;
-        paymentRecordDAO = null;
-        orderStatusDAO   = null;
-        languageDAO      = null;
+
+        // HikariCP 설정
+        HikariConfig config = new HikariConfig();
+        // 1) JDBC URL 설정 (TiDB / MySQL 호환)
+        config.setJdbcUrl("jdbc:mysql://gateway01.us-west-2.prod.aws.tidbcloud.com:4000/kiosk_db");
+        // 2) DB 사용자 계정 및 비밀번호
+        config.setUsername("3tXLfN5hUF3WufM.root");
+        config.setPassword("XzG2jb79smpUZ34s");
+        // 3) 풀 옵션 조정 (필요 시 변경)
+        config.setMaximumPoolSize(10);
+        config.setMinimumIdle(2);
+        config.setConnectionTimeout(30000);  // 30초
+        config.setIdleTimeout(600000);       // 10분
+        config.setMaxLifetime(1800000);      // 30분
+        config.setPoolName("KioskDBPool");   // 풀 이름 지정 (로깅 및 모니터링 용)
+
+        // 4) HikariDataSource 생성으로 풀 초기화
+        dataSource = new HikariDataSource(config);
+        System.out.println("HikariCP Connection Pool Initialized");
+
+        // DAO 인스턴스 초기화 (지연 생성 대상)
+        designDAO   = null;
+        categoryDAO = null;
+        menuDAO     = null;
     }
 
     /**
      * 커넥션 반환
-     * - 연결이 없거나 닫혀 있으면 connectDB() 호출하여 새 연결 생성
-     * @return Connection 객체
-     * @throws SQLException 연결 중 오류 시
+     * - dataSource가 없거나 닫혀 있으면 connectDB() 호출하여 초기화
+     *
+     * @return Connection 객체 (풀에서 가져온 커넥션)
+     * @throws SQLException 커넥션 획득 중 오류 발생 시 예외 던짐
      */
     public static Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) {
+        if (dataSource == null || dataSource.isClosed()) {
             connectDB();
         }
-        return connection;
+        return dataSource.getConnection();
     }
 
     /**
-     * DB 연결 종료
-     * - 연결이 열려 있으면 닫고 메시지 출력
+     * 커넥션 풀 전체 종료
+     * - 애플리케이션 종료 시 호출하여 풀 자원(스레드, 커넥션 등) 해제
      */
-    public static void closeConnection(Connection connection) {
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-                System.out.println("DB Connection Closed");
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+    public static void closeDataSource() {
+        if (dataSource != null && !dataSource.isClosed()) {
+            dataSource.close();
+            System.out.println("HikariCP Connection Pool Closed");
         }
     }
 
@@ -100,9 +92,10 @@ public class DBManager {
     // ────────────────────────────────────────────────────────────────────────
 
     /**
-     * DesignDAO 인스턴스 반환
+     * DesignDAO 인스턴스 반환 (지연 생성)
+     *
      * @return DesignDAO 인스턴스
-     * @throws SQLException 연결 중 오류 시
+     * @throws SQLException 커넥션 획득 중 오류 발생 시 예외 던짐
      */
     public static synchronized DesignDAO getDesignDAO() throws SQLException {
         if (designDAO == null) {
@@ -112,82 +105,28 @@ public class DBManager {
     }
 
     /**
-     * CouponDAO 인스턴스 반환
-     * @return CouponDAO 인스턴스
-     * @throws SQLException 연결 중 오류 시
+     * CategoryDAO 인스턴스 반환 (지연 생성)
+     *
+     * @return CategoryDAO 인스턴스
+     * @throws SQLException 커넥션 획득 중 오류 발생 시 예외 던짐
      */
-    public synchronized CouponDAO getCouponDAO() throws SQLException {
-        if (couponDAO == null) {
-            couponDAO = new CouponDAO(getConnection());
-        }
-        return couponDAO;
-    }
-
-    /**
-     * CategoryDAO 인스턴스 생성 (반환 없음)
-     * @throws SQLException 연결 중 오류 시
-     */
-    public static synchronized void getCategoryDAO() throws SQLException {
+    public static synchronized CategoryDAO getCategoryDAO() throws SQLException {
         if (categoryDAO == null) {
             categoryDAO = new CategoryDAO(getConnection());
         }
+        return categoryDAO;
     }
 
     /**
-     * MenuDAO 인스턴스 생성 (반환 없음)
-     * @throws SQLException 연결 중 오류 시
+     * MenuDAO 인스턴스 반환 (지연 생성)
+     *
+     * @return MenuDAO 인스턴스
+     * @throws SQLException 커넥션 획득 중 오류 발생 시 예외 던짐
      */
-    public static synchronized void getMenuDAO() throws SQLException {
+    public static synchronized MenuDAO getMenuDAO() throws SQLException {
         if (menuDAO == null) {
             menuDAO = new MenuDAO(getConnection());
         }
-    }
-
-    /**
-     * CartDAO 인스턴스 반환
-     * @return CartDAO 인스턴스
-     * @throws SQLException 연결 중 오류 시
-     */
-    public synchronized CartDAO getCartDAO() throws SQLException {
-        if (cartDAO == null) {
-            cartDAO = new CartDAO(getConnection());
-        }
-        return cartDAO;
-    }
-
-    /**
-     * PaymentRecordDAO 인스턴스 반환
-     * @return PaymentRecordDAO 인스턴스
-     * @throws SQLException 연결 중 오류 시
-     */
-    public synchronized PaymentRecordDAO getPaymentRecordDAO() throws SQLException {
-        if (paymentRecordDAO == null) {
-            paymentRecordDAO = new PaymentRecordDAO(getConnection());
-        }
-        return paymentRecordDAO;
-    }
-
-    /**
-     * OrderStatusDAO 인스턴스 반환
-     * @return OrderStatusDAO 인스턴스
-     * @throws SQLException 연결 중 오류 시
-     */
-    public synchronized OrderStatusDAO getOrderStatusDAO() throws SQLException {
-        if (orderStatusDAO == null) {
-            orderStatusDAO = new OrderStatusDAO(getConnection());
-        }
-        return orderStatusDAO;
-    }
-
-    /**
-     * LanguageDAO 인스턴스 반환
-     * @return LanguageDAO 인스턴스
-     * @throws SQLException 연결 중 오류 시
-     */
-    public synchronized LanguageDAO getLanguageDAO() throws SQLException {
-        if (languageDAO == null) {
-            languageDAO = new LanguageDAO(getConnection());
-        }
-        return languageDAO;
+        return menuDAO;
     }
 }
