@@ -1,6 +1,8 @@
 package Boundary.PaymentSystem;
 
 import Boundary.OrderTypeSelectionUI;
+import DataTransferObject.Entity;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,10 +57,11 @@ public class PaymentWaitingUI extends JFrame {
         // 버튼 클릭 시 결제 완료 후 초기화면으로 이동
         imageButton.addActionListener(e -> {
             if (countdownTimer != null && countdownTimer.isRunning()) {
-                countdownTimer.stop(); // 타이머 멈춤
+                countdownTimer.stop();
             }
-            JOptionPane.showMessageDialog(this, "결제가 완료되었습니다.");
-            new OrderTypeSelectionUI(); // 초기화면(키오스크 메인)으로 이동
+            Entity.cartList.clear();
+            dispose();
+            new OrderTypeSelectionUI().setVisible(true); // 초기화면(주문 유형 선택)으로 이동
         });
         panel.add(imageButton);
 
@@ -70,6 +73,12 @@ public class PaymentWaitingUI extends JFrame {
         backButton.setForeground(Color.WHITE);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(backButton);
+        // 이전 화면 버튼 이벤트 (샘플 액션)
+        backButton.addActionListener(e -> {
+            if (countdownTimer != null) countdownTimer.stop();
+            dispose(); // 현재 창 닫기
+            // 이전 화면으로 전환 코드 위치
+        });
         // 크기 키우기 (예: 가로 300, 세로 60)
         backButton.setPreferredSize(new Dimension(300, 60));
         panel.add(backButton);
@@ -86,12 +95,7 @@ public class PaymentWaitingUI extends JFrame {
         // 타이머 시작
         countLeftSecond();
 
-        // 이전 화면 버튼 이벤트 (샘플 액션)
-        backButton.addActionListener(e -> {
-            if (countdownTimer != null) countdownTimer.stop();
-            dispose(); // 현재 창 닫기
-            // 이전 화면으로 전환 코드 위치
-        });
+
     }
 
     public void checkInputCreditCard() {
