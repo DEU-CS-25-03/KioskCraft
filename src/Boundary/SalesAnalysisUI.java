@@ -165,7 +165,6 @@ public class SalesAnalysisUI extends JDialog {
 
             // 실제 차트 그릴 영역 (약간 여유 두기)
             int margin = 40;
-            int x0 = margin;
             int y0 = h - margin;
             int x1 = w - margin;
             int y1 = margin + 30; // 제목 아래 여백
@@ -173,9 +172,9 @@ public class SalesAnalysisUI extends JDialog {
             // 축 그리기 (X축, Y축)
             g2.setColor(Color.LIGHT_GRAY);
             // Y축
-            g2.drawLine(x0, y0, x0, y1);
+            g2.drawLine(margin, y0, margin, y1);
             // X축
-            g2.drawLine(x0, y0, x1, y0);
+            g2.drawLine(margin, y0, x1, y0);
 
             // 예시 데이터 포인트 (임의)
             // 예: 11일(20), 12일(30), 13일(25), 14일(35), 오늘(37)
@@ -184,16 +183,16 @@ public class SalesAnalysisUI extends JDialog {
             int points = data.length;
 
             // 데이터 그리기
-            int chartWidth = x1 - x0;
+            int chartWidth = x1 - margin;
             int chartHeight = y0 - y1;
             int gapX = chartWidth / (points - 1);
             int maxValue = 40; // y축 최대값 (예시)
-            int prevX = x0;
+            int prevX = margin;
             int prevY = y0 - (data[0] * chartHeight / maxValue);
 
             g2.setColor(new Color(34, 139, 34));
             for (int i = 1; i < points; i++) {
-                int cx = x0 + gapX * i;
+                int cx = margin + gapX * i;
                 int cy = y0 - (data[i] * chartHeight / maxValue);
                 g2.drawLine(prevX, prevY, cx, cy);
                 prevX = cx;
@@ -204,7 +203,7 @@ public class SalesAnalysisUI extends JDialog {
             g2.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
             g2.setColor(Color.DARK_GRAY);
             for (int i = 0; i < points; i++) {
-                int lx = x0 + gapX * i;
+                int lx = margin + gapX * i;
                 int ly = y0 + 20;
                 String lbl = labels[i];
                 int strW = g2.getFontMetrics().stringWidth(lbl);
@@ -216,10 +215,10 @@ public class SalesAnalysisUI extends JDialog {
                 int ry = y0 - (v * chartHeight / maxValue);
                 String vy = String.valueOf(v);
                 int strH = g2.getFontMetrics().getHeight();
-                g2.drawString(vy, x0 - g2.getFontMetrics().stringWidth(vy) - 5, ry + strH / 2 - 3);
+                g2.drawString(vy, margin - g2.getFontMetrics().stringWidth(vy) - 5, ry + strH / 2 - 3);
                 // 가로 보조선
                 g2.setColor(Color.LIGHT_GRAY);
-                g2.drawLine(x0, ry, x1, ry);
+                g2.drawLine(margin, ry, x1, ry);
                 g2.setColor(Color.DARK_GRAY);
             }
         }

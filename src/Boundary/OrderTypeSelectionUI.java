@@ -9,8 +9,6 @@ import java.awt.event.*;
 public class OrderTypeSelectionUI extends JFrame {
     // F10 키 꾹 누름 감지용 디스패처
     private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher;
-
-
     // 포장 여부 선택 결과값 (매장: false, 포장: true)
     public boolean isTakeOut;
     public OrderTypeSelectionUI() {
@@ -86,18 +84,12 @@ public class OrderTypeSelectionUI extends JFrame {
     @Override
     public void setVisible(boolean b) {
         if (b) {
-            keyDispatcher = new KioskUIUtils.KeyHoldActionDispatcher(
-                    KeyEvent.VK_F10,   // 트리거 키: F10
-                    100,               // 누르는 시간: 100ms 이상
-                    () -> {            // 동작: 관리자 페이지로 진입
-                        new AdminUI().setVisible(true);
-                        dispose();
-                    }
-            );
+            keyDispatcher = new KioskUIUtils.KeyHoldActionDispatcher(KeyEvent.VK_F10, 100, () -> {
+                new AdminUI().setVisible(true);
+                dispose();
+            });
             keyDispatcher.register();
-        } else {
-            unregisterKeyDispatcher();
-        }
+        } else unregisterKeyDispatcher();
         super.setVisible(b);
     }
 

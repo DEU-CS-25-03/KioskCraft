@@ -10,32 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴목록 불러오기 추가">
-      <change afterPath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/AdminControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/CategoryControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/DesignControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/KioskControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/LanguageChangeControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/MenuControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Control/OrderStateControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5/storage_v2/_src_/schema/mydb.Kl8zAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5/storage_v2/_src_/schema/mydb.Kl8zAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/KioskUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/KioskUIUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LanguageChangeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/LanguageChangeUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderStatusUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SalesAnalysisUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/SalesAnalysisUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/SalesAnalysisUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/SalesAnalysisUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/CategoryControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,10 +139,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="애플리케이션.Main" />
-        <item itemvalue="데이터베이스 스크립트.DESIGN_TBL.sql" />
-        <item itemvalue="JAR 애플리케이션.KioskCraft.jar" />
         <item itemvalue="JAR 애플리케이션.flatlaf-demo-3.6.jar" />
-        <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="JAR 애플리케이션.KioskCraft.jar" />
       </list>
     </recent_temporary>
   </component>
