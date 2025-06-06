@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import Boundary.MenuCardPanel;
 import DataTransferObject.Entity;

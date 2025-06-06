@@ -1,7 +1,7 @@
 package Boundary;
 
-import Control.KioskUIUtils;
-import Control.AdminControl;
+import Controller.KioskUIUtils;
+import Controller.AdminControl;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
