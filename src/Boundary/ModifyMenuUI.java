@@ -1,6 +1,5 @@
 package Boundary;
 
-import Control.MenuControl;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
 import DataTransferObject.Entity;
@@ -96,7 +95,7 @@ public class ModifyMenuUI extends JDialog {
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton closeBtn = new JButton("닫기");
         closeBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-        closeBtn.addActionListener(e -> dispose());
+        closeBtn.addActionListener(_ -> dispose());
         bottom.add(closeBtn);
         add(bottom, BorderLayout.SOUTH);
     }
@@ -176,7 +175,7 @@ public class ModifyMenuUI extends JDialog {
 
         JButton imgBtn = new JButton("...");
         imgBtn.setBounds(330, 220, 70, 30);
-        imgBtn.addActionListener(e -> {
+        imgBtn.addActionListener(_ -> {
             JFileChooser chooser = new JFileChooser();
             chooser.setFileFilter(new FileNameExtensionFilter("이미지 파일(JPG, PNG, JPEG)", "jpg", "jpeg", "png"));
             int result = chooser.showOpenDialog(editDlg);
@@ -196,11 +195,11 @@ public class ModifyMenuUI extends JDialog {
         JButton cancelBtn = new JButton("취소");
         cancelBtn.setBounds(260, 280, 100, 40);
         cancelBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-        cancelBtn.addActionListener(e -> editDlg.dispose());
+        cancelBtn.addActionListener(_ -> editDlg.dispose());
         editDlg.add(cancelBtn);
 
         // --- 확인 버튼 리스너: 입력 검증 및 DB, Entity, 모델 업데이트 ---
-        confirmBtn.addActionListener(e -> {
+        confirmBtn.addActionListener(_ -> {
             String newName = nameField.getText().trim();
             String priceInput = priceField.getText().trim();
             boolean newSoldOut = soldOutCheck.isSelected();

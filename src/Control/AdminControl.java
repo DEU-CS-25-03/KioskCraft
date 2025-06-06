@@ -72,7 +72,7 @@ public class AdminControl {
             button.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 
             // 버튼 클릭 시 실행되는 리스너
-            button.addActionListener(e -> {
+            button.addActionListener(_ -> {
                 fireEditingStopped();
                 SwingUtilities.invokeLater(() -> {
                     // 테이블을 포함하고 있는 최상위 윈도우(Frame or Dialog)를 구함
