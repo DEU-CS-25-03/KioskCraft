@@ -4,14 +4,9 @@ import Control.CategoryControl;
 import DataTransferObject.Entity;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.util.List;
 
 public class RemoveCategoryUI extends JDialog {
-    private final CategoryControl.CategoryTableModel model;
-
     public RemoveCategoryUI(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         setTitle(title);
@@ -20,7 +15,7 @@ public class RemoveCategoryUI extends JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        model = new CategoryControl.CategoryTableModel(Entity.categories);
+        CategoryControl.CategoryTableModel model = new CategoryControl.CategoryTableModel(Entity.categories);
         JTable table = new JTable(model);
 
         // 버튼 렌더러/에디터 설정
