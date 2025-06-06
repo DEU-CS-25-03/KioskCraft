@@ -9,13 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Edit: control -&gt; Controller">
-      <change afterPath="$PROJECT_DIR$/src/Boundary/Customer/PaymentStartUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Boundary/Customer/PaymentWaitingUI.java" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : Payment code 정리">
+      <change afterPath="$PROJECT_DIR$/Payment_QR.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuData.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Customer/PaymentStartUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/Customer/PaymentWaitingUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Boundary/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/KioskUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/PaymentStartUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/PaymentSystem/PaymentStartUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/PaymentWaitingUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/PaymentSystem/PaymentWaitingUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +121,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src\Boundary" />
       <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src\Boundary\Customer" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Boundary.Customer" />
     </key>
   </component>
   <component name="RunManager" selected="애플리케이션.Main">
@@ -508,7 +512,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749229252529</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="ADD : PaymentStartUI, PayementWaitingUI 초기 handling">
+      <option name="closed" value="true" />
+      <created>1749232061552</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1749232061552</updated>
+    </task>
+    <task id="LOCAL-00042" summary="ADD : PaymentStartUI, PayementWaitingUI 초기 handling">
+      <option name="closed" value="true" />
+      <created>1749232121468</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1749232121468</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,8 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="디자인UI 약간 수정" />
-    <MESSAGE value="메뉴 등록 수정" />
     <MESSAGE value="카테고리 등록 수정" />
     <MESSAGE value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
     <MESSAGE value="Add : JAR Files &amp; Database-related files push" />
@@ -567,7 +585,9 @@
     <MESSAGE value="DB 연결 HikariCP 방식으로 변경" />
     <MESSAGE value="add: RegistCategoryUI 등록 완료 팝업창" />
     <MESSAGE value="Edit: control -&gt; Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit: control -&gt; Controller" />
+    <MESSAGE value="ADD : PaymentStartUI, PayementWaitingUI 초기 handling" />
+    <MESSAGE value="EDIT : Payment code 정리" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDIT : Payment code 정리" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
