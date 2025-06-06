@@ -17,7 +17,7 @@ public class Main {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            dbManager.closeConnection();
+            DBManager.closeConnection();
         }
         SwingUtilities.invokeLater(() -> {
             try {
