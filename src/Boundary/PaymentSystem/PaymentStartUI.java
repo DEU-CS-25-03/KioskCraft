@@ -1,4 +1,6 @@
-package Boundary;
+package Boundary.PaymentSystem;
+import Boundary.KioskUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;

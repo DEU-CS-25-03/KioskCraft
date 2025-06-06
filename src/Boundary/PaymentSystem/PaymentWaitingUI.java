@@ -1,4 +1,6 @@
-package Boundary;
+package Boundary.PaymentSystem;
+
+import Boundary.OrderTypeSelectionUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,14 +43,23 @@ public class PaymentWaitingUI extends JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 30)));
 
         // 이미지 버튼 (둥근 형태 흉내)
-        JButton imageButton = new JButton("이미지");
-        imageButton.setPreferredSize(new Dimension(100, 100));
+        ImageIcon qrIcon = new ImageIcon("Payment_QR.png"); // 이미지 경로에 맞게 수정
+        Image img = qrIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+        JButton imageButton = new JButton(new ImageIcon(img));
+        imageButton.setPreferredSize(new Dimension(300, 300));
         imageButton.setMaximumSize(new Dimension(300, 300));
-        imageButton.setBackground(Color.BLUE);
-        imageButton.setForeground(Color.WHITE);
+        imageButton.setBackground(Color.MAGENTA);
         imageButton.setFocusPainted(false);
         imageButton.setBorder(BorderFactory.createEmptyBorder());
         imageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // 버튼 클릭 시 결제 완료 후 초기화면으로 이동
+        imageButton.addActionListener(e -> {
+            if (countdownTimer != null && countdownTimer.isRunning()) {
+                countdownTimer.stop(); // 타이머 멈춤
+            }
+            JOptionPane.showMessageDialog(this, "결제가 완료되었습니다.");
+            new OrderTypeSelectionUI(); // 초기화면(키오스크 메인)으로 이동
+        });
         panel.add(imageButton);
 
         panel.add(Box.createVerticalGlue());
@@ -58,6 +69,9 @@ public class PaymentWaitingUI extends JFrame {
         backButton.setBackground(Color.BLUE);
         backButton.setForeground(Color.WHITE);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(backButton);
+        // 크기 키우기 (예: 가로 300, 세로 60)
+        backButton.setPreferredSize(new Dimension(300, 60));
         panel.add(backButton);
 
         // ★ 클릭 시 PaymentStartUII로 이동
