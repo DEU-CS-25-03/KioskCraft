@@ -9,18 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="메뉴 수정 폼 디자인 변경">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="DB 연결 HikariCP 방식으로 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KioskCraft.iml" beforeDir="false" afterPath="$PROJECT_DIR$/KioskCraft.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/DesignUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/AdminControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/AdminControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Control/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/CategoryControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Control/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/MenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/KioskUIUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/LanguageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/LanguageDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +85,6 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
@@ -472,7 +466,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749206345356</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="DB 연결 HikariCP 방식으로 변경">
+      <option name="closed" value="true" />
+      <created>1749213350400</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1749213350400</updated>
+    </task>
+    <task id="LOCAL-00038" summary="DB 연결 HikariCP 방식으로 변경">
+      <option name="closed" value="true" />
+      <created>1749213383559</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1749213383559</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +516,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="이미지 변경" />
     <MESSAGE value="modal 설정" />
     <MESSAGE value="홈버튼 추가" />
     <MESSAGE value="디자인UI 약간 수정" />
@@ -531,7 +540,8 @@
     <MESSAGE value="메뉴 삭제, 수정 기능 추가 및 connection 컨트롤 수정" />
     <MESSAGE value="메뉴 관련 코드 간소화" />
     <MESSAGE value="메뉴 수정 폼 디자인 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="메뉴 수정 폼 디자인 변경" />
+    <MESSAGE value="DB 연결 HikariCP 방식으로 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB 연결 HikariCP 방식으로 변경" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

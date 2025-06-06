@@ -63,9 +63,7 @@ public class KioskUIUtils {
          */
         public void register() {
             dispatcher = e -> {
-                if (e.getID() == KeyEvent.KEY_PRESSED
-                        && e.getKeyCode() == triggerKey
-                        && !keyHeld) {
+                if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == triggerKey && !keyHeld) {
                     keyHeld = true;
                     keyPressedTime = System.currentTimeMillis();
                     holdTimer = new Timer(holdMillis, _ -> {
@@ -76,8 +74,7 @@ public class KioskUIUtils {
                     });
                     holdTimer.setRepeats(false);
                     holdTimer.start();
-                } else if (e.getID() == KeyEvent.KEY_RELEASED
-                        && e.getKeyCode() == triggerKey) {
+                } else if (e.getID() == KeyEvent.KEY_RELEASED && e.getKeyCode() == triggerKey) {
                     keyHeld = false;
                     keyPressedTime = 0L;
                     if (holdTimer != null) {
