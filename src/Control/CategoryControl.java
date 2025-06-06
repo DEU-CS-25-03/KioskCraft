@@ -52,9 +52,7 @@ public class CategoryControl {
     public static class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() { setText("X"); }
         @Override
-        public Component getTableCellRendererComponent(JTable table, Object value,
-                                                       boolean isSelected, boolean hasFocus,
-                                                       int row, int column) {
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             return this;
         }
     }
@@ -71,7 +69,7 @@ public class CategoryControl {
             button.addActionListener(_ -> {
                 try {
                     // DB에서만 삭제 처리
-                    deleteCategory(model.data.get(row), row);
+                    deleteCategory(model.data.get(row));
                     //업데이트
                     CategoryDAO.loadCategories();
                     model.fireTableDataChanged();
@@ -113,7 +111,7 @@ public class CategoryControl {
         JOptionPane.showMessageDialog(null, "카테고리가 등록되었습니다.");
     }
 
-    public static void deleteCategory(String categoryName, int rowIndex) throws SQLException {
+    public static void deleteCategory(String categoryName) throws SQLException {
         try (Connection conn = DBManager.getConnection()) {
             String deleteSql = "DELETE FROM test.categoryId WHERE categoryName = ?";
             try (PreparedStatement ps = conn.prepareStatement(deleteSql)) {

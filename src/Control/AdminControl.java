@@ -78,8 +78,7 @@ public class AdminControl {
                     // 테이블을 포함하고 있는 최상위 윈도우(Frame or Dialog)를 구함
                     Window parentWindow = SwingUtilities.getWindowAncestor(table);
                     int confirm = JOptionPane.showConfirmDialog(parentWindow, String.format("'%s' 메뉴를 정말 삭제하시겠습니까?", currentName), "메뉴 삭제 확인", JOptionPane.YES_NO_OPTION);
-                    if (confirm == JOptionPane.YES_OPTION)
-                        MenuControl.deleteMenu(currentName, model, currentRow);
+                    if (confirm == JOptionPane.YES_OPTION) MenuControl.deleteMenu(currentName, model, currentRow);
                 });
             });
         }

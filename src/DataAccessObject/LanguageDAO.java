@@ -7,6 +7,5 @@ public class LanguageDAO {
 
     public LanguageDAO(Connection conn) {
         this.conn = conn;
-
     }
 }
