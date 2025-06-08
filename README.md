@@ -16,7 +16,7 @@
 * 25.05.08 요구사항 명세서 최종본
 * 25.05.16 클래스 다이어그램 병합
 * 25.05.31 MySQL (TiDB) connect
-* 25.06.08 Main Branch FULL RQ
+* 25.06.08 Main Branch FULL 
 ---
 ### DBMS
 _2025/05/31 기준 DDL 작성과 Design_TBL 5번까지 insert 했습니다._
