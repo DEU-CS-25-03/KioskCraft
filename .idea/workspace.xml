@@ -9,14 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : Payment code 정리">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Create : Payment 종료시 초기 화면 orderTypeSelectionUI로 복귀까지 구현&#10;QRcode 이미지 출력 및 결제 완료 이미지와 QR 버튼 클릭시 결제 완료로 연결">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/PaymentSystem/PaymentWaitingUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/PaymentSystem/PaymentWaitingUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +58,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
-    &quot;accountId&quot;: &quot;50ee990d-d72a-4bee-911d-2b9bb64dcfc1&quot;
+    &quot;accountId&quot;: &quot;b7612f82-750f-461a-a563-39d1508daf9e&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -91,7 +88,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop에 #6개&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/jyj36/github_IdeaProjects&quot;,
@@ -165,8 +162,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
       </set>
     </attachedChunks>
   </component>
@@ -191,6 +188,7 @@
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
       <workItem from="1749182421046" duration="17781000" />
+      <workItem from="1749316559297" duration="1136000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
