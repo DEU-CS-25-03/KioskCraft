@@ -2,7 +2,6 @@ package Boundary.PaymentSystem;
 
 import Boundary.OrderTypeSelectionUI;
 import DataTransferObject.Entity;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
