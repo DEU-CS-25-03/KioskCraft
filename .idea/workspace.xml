@@ -9,10 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="Edit : DesignControl -&gt; LanguageControl">
-      <change afterPath="$PROJECT_DIR$/src/DataTransferObject/LanguageEntity.java" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : Payment code 정리">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CategoryTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LanguageControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LanguageControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/LanguageEntity.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,7 +60,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
-    &quot;accountId&quot;: &quot;10689ce0-e505-429d-9570-8821a7cdfb81&quot;
+    &quot;accountId&quot;: &quot;50ee990d-d72a-4bee-911d-2b9bb64dcfc1&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -65,7 +68,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -87,7 +90,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop에 #6개&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/jyj36/github_IdeaProjects&quot;,
@@ -187,10 +190,6 @@
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
       <workItem from="1749182421046" duration="17781000" />
-      <workItem from="1749316559297" duration="1136000" />
-      <workItem from="1749438223131" duration="2565000" />
-      <workItem from="1749443360585" duration="2831000" />
-      <workItem from="1749446284049" duration="1885000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -536,23 +535,7 @@
       <option name="project" value="LOCAL" />
       <updated>1749233590176</updated>
     </task>
-    <task id="LOCAL-00044" summary="결제기능 구현(DB연동 완료)">
-      <option name="closed" value="true" />
-      <created>1749435389075</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1749435389075</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Edit : DesignControl -&gt; LanguageControl">
-      <option name="closed" value="true" />
-      <created>1749455905398</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1749455905398</updated>
-    </task>
-    <option name="localTasksCounter" value="46" />
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,6 +569,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="카테고리 등록 수정" />
+    <MESSAGE value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
     <MESSAGE value="Add : JAR Files &amp; Database-related files push" />
     <MESSAGE value="Add : README.MD 내용 추가" />
     <MESSAGE value="언어변경 목업 추가" />
@@ -609,9 +594,7 @@
     <MESSAGE value="Edit: control -&gt; Controller" />
     <MESSAGE value="ADD : PaymentStartUI, PayementWaitingUI 초기 handling" />
     <MESSAGE value="EDIT : Payment code 정리" />
-    <MESSAGE value="결제기능 구현(DB연동 완료)" />
-    <MESSAGE value="Edit : DesignControl -&gt; LanguageControl" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit : DesignControl -&gt; LanguageControl" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDIT : Payment code 정리" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

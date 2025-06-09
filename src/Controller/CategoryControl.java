@@ -209,5 +209,4 @@ public class CategoryControl {
         }
         // Entity.categories는 호출한 쪽에서 리스트 교체 처리한다고 가정
     }
-
 }
