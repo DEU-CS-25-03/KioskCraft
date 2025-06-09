@@ -9,13 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="EDIT : Payment code 정리">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="언어 목록 entity로 병합">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CategoryTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LanguageControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LanguageControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/LanguageEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KioskUIUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +68,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -190,6 +190,7 @@
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
       <workItem from="1749182421046" duration="17781000" />
+      <workItem from="1749477445489" duration="1018000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -535,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749233590176</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="언어 목록 entity로 병합">
+      <option name="closed" value="true" />
+      <created>1749474645987</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1749474645987</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +578,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="카테고리 등록 수정" />
     <MESSAGE value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
     <MESSAGE value="Add : JAR Files &amp; Database-related files push" />
     <MESSAGE value="Add : README.MD 내용 추가" />
@@ -594,7 +602,8 @@
     <MESSAGE value="Edit: control -&gt; Controller" />
     <MESSAGE value="ADD : PaymentStartUI, PayementWaitingUI 초기 handling" />
     <MESSAGE value="EDIT : Payment code 정리" />
-    <option name="LAST_COMMIT_MESSAGE" value="EDIT : Payment code 정리" />
+    <MESSAGE value="언어 목록 entity로 병합" />
+    <option name="LAST_COMMIT_MESSAGE" value="언어 목록 entity로 병합" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

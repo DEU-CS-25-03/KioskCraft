@@ -1,5 +1,6 @@
 package Boundary;
 
+import Controller.BackgroundControl;
 import Controller.KioskUIUtils;
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +12,8 @@ import java.awt.event.*;
  * - F10 키 홀드 시 관리자 페이지(AdminUI)로 전환
  */
 public class OrderTypeSelectionUI extends JFrame {
-    private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher; // F10 키 디스패처
     public static boolean isTakeOut; // 포장 여부
+    private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher; // F10 키 디스패처
 
     public OrderTypeSelectionUI() {
         setTitle("키오스크 시스템");
@@ -22,7 +23,7 @@ public class OrderTypeSelectionUI extends JFrame {
         setResizable(false);
 
         // 배경 패널 적용 (이미지 리사이즈 포함)
-        KioskUIUtils.BackgroundPanel bgPanel = new KioskUIUtils.BackgroundPanel("background.png");
+        BackgroundControl.BackgroundPanel bgPanel = new BackgroundControl.BackgroundPanel("background.png");
         bgPanel.setLayout(null);
 
         // "매장" 버튼: 클릭 시 isTakeOut=false, KioskUI 열고 현재 창 닫기
