@@ -6,8 +6,6 @@ import DataTransferObject.Entity;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 import Controller.KioskControl;
 
@@ -129,19 +127,12 @@ public class KioskUI extends JFrame {
             if (Entity.cartList.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "장바구니가 비어있습니다.\n메뉴를 선택해주세요.");
             } else {
-                // 1. 장바구니 데이터 Map으로 변환
-                Map<String, Integer> selectedMenus = new HashMap<>();
                 int totalPrice = 0;
-                for (Object[] row : Entity.cartList) {
-                    String name = (String) row[0];
-                    int qty = (int) row[2];
-                    int itemTotal = (int) row[3];
-                    selectedMenus.put(name, qty);
-                    totalPrice += itemTotal;
-                }
+                for (Object[] row : Entity.cartList)
+                    totalPrice += (int) row[3];
 
                 // 2. PaymentStartUI 실행
-                new PaymentStartUI(selectedMenus, totalPrice);
+                new PaymentStartUI(totalPrice);
 
                 // 3. (선택) 현재 KioskUI 닫기
                 dispose();
