@@ -34,9 +34,9 @@ public class KioskControl {
             if (!cat.equals(category)) continue; // 카테고리가 다르면 건너뜀
 
             // 이미지 경로 설정: 해당 이름의 PNG 파일이 없으면 기본 이미지 사용
-            String imagePath = "images/" + name + ".png";
+            String imagePath = "img/" + name + ".png";
             boolean imageExists = new File(imagePath).exists();
-            if (!imageExists) imagePath = "images/default.png";
+            if (!imageExists) imagePath = "img/default.png";
 
             // MenuCardPanel 생성: 클릭 시 addToCart 실행
             MenuCardPanel card = new MenuCardPanel(name, priceStr, imagePath, !imageExists, soldOut, () -> addToCart(name, priceStr, cartModel));

@@ -154,7 +154,7 @@
     <schema id="16" parent="1" name="KioskDB">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-06-09.14:36:41</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-06-09.14:52:04</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_bin</CollationName>
     </schema>
     <schema id="17" parent="1" name="PERFORMANCE_SCHEMA">
@@ -340,7 +340,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="56" parent="31" name="detailId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>15</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
@@ -389,7 +389,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="66" parent="32" name="paymentId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>5</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>

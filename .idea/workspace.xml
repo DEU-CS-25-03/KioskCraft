@@ -9,16 +9,159 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="KioskUIUtils -&gt; BackgroundControl">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="스키마 변경 test -&gt; KioskDB">
+      <change afterPath="$PROJECT_DIR$/img/고구마스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/그린티스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/녹차라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/더블샷라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/더치커피.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/도넛.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/돌체라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기라임에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기바나나.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기요거트스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기주스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/딸기케이크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/라임스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/라임에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/라즈베리스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/레몬스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/레몬에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/레몬차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/레몬청에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/롤케이크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/롱블랙.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/루이보스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/리스트레토.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/마들렌.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/마카롱.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/말차라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/망고스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/망고에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/망고요거트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/망고주스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/머핀.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/메론소다.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/멜론스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/멜론에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/모카치노.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/무화과타르트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/민트초코스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/밀크티.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/바나나스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/바나나케이크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/바닐라라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/바닐라스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/밤빵.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/보리차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/복숭아복분자에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/복숭아스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/복숭아아이스티.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/복숭아에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/복숭아주스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/브라우니.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/블랙체리스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/블루레몬에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/블루베리스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/블루베리타르트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/비엔나커피.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/사이다에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/생강차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/샤인라임에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/샤인머스캣스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/샤인머스캣에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/석류에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/수박에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/슈크림빵.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/스트로베리치즈.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/스페셜블렌드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/아메리카노.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/아몬드라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/아인슈페너.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/애플망고스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/애플에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/애플주스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/얼그레이.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/에그타르트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/에스프레소.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/에클레어.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/연유라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/오렌지망고에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/오렌지스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/오렌지에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/오렌지주스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/와플.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/요거트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/요거트스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/유자차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/유자청에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/자두복숭아에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/자두에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/자몽에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/자몽오렌지에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/자몽차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/작설차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/젤라또.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/찹쌀떡.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/청귤에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/청포도스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/청포도에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/청포도주스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/청포도키위에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/체리스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/체리에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/초코라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/초코쉐이크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/초코스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/초코우유.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/초코케이크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/치즈케이크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카라멜라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카라멜마끼아또.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카라멜푸딩.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카스테라.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카페라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카페모카.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/카푸치노.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/캐모마일.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/코코넛라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/코코넛스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/코코넛워터.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/콘라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/콜드브루.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/콜드브루라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/콜라에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/쿠키.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/크레이프.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/크루아상.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/크림밀크티.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/크림브륄레.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/키위스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/키위에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/타로밀크티.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/토피넛라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/티라미수.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/티라미수롤.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/파인애플스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/팥빙수.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/플랫화이트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/피스타치오라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/피칸파이.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/허니레몬에이드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/헛개차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/헤이즐넛라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/헤이즐넛스무디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/홍차.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/흑당라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/흑당밀크티.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/흑임자라떼.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/흑임자스무디.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PaymentControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaymentControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/KioskControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KioskControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +212,9 @@
     &quot;accountId&quot;: &quot;50ee990d-d72a-4bee-911d-2b9bb64dcfc1&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Controller/CategoryControl.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -84,44 +230,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JAR 애플리케이션.KioskCraft.jar.executor&quot;: &quot;Run&quot;,
-    &quot;JAR 애플리케이션.flatlaf-demo-3.6.jar.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jyj36/github_IdeaProjects&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/J/Desktop/KioskPackage/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;라이브러리&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JAR 애플리케이션.KioskCraft.jar.executor": "Run",
+    "JAR 애플리케이션.flatlaf-demo-3.6.jar.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/J/Desktop/KioskCraft/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/J/Desktop/KioskPackage/src/Main.java",
+    "project.structure.last.edited": "라이브러리",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.Main.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 파생 언어&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 파생 언어": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jyj36\github_IdeaProjects\KioskCraft\src\Boundary" />
@@ -196,7 +342,10 @@
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
       <workItem from="1749182421046" duration="17781000" />
-      <workItem from="1749477445489" duration="3215000" />
+      <workItem from="1749477445489" duration="3492000" />
+      <workItem from="1749481282277" duration="69000" />
+      <workItem from="1749481479703" duration="46000" />
+      <workItem from="1749481658408" duration="701000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -558,7 +707,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749478728362</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="스키마 변경 test -&gt; KioskDB">
+      <option name="closed" value="true" />
+      <created>1749480704341</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1749480704341</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +749,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add : JAR Files &amp; Database-related files push" />
     <MESSAGE value="Add : README.MD 내용 추가" />
     <MESSAGE value="언어변경 목업 추가" />
     <MESSAGE value="DB주소 변경" />
@@ -617,7 +773,8 @@
     <MESSAGE value="EDIT : Payment code 정리" />
     <MESSAGE value="언어 목록 entity로 병합" />
     <MESSAGE value="KioskUIUtils -&gt; BackgroundControl" />
-    <option name="LAST_COMMIT_MESSAGE" value="KioskUIUtils -&gt; BackgroundControl" />
+    <MESSAGE value="스키마 변경 test -&gt; KioskDB" />
+    <option name="LAST_COMMIT_MESSAGE" value="스키마 변경 test -&gt; KioskDB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
