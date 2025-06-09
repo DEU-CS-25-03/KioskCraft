@@ -2,6 +2,8 @@
   <library name="HikariCP-6.3.0">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/HikariCP-6.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-2.1.0-alpha1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-nop-2.1.0-alpha1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

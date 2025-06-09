@@ -20,5 +20,6 @@
     <orderEntry type="library" name="HikariCP-6.3.0" level="project" />
     <orderEntry type="library" name="slf4j-api-2.1.0-alpha1" level="project" />
     <orderEntry type="library" name="slf4j-nop-2.1.0-alpha1" level="project" />
+    <orderEntry type="library" name="HikariCP-6.3.0" level="project" />
   </component>
 </module>

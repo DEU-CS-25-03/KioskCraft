@@ -2,25 +2,27 @@ package Boundary.PaymentSystem;
 
 import Boundary.OrderTypeSelectionUI;
 import DataTransferObject.Entity;
+import Controller.PaymentControl;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PaymentWaitingUI extends JFrame {
 
     // 필드 정의
+    int totalPrice;
     public int leftSecond = 10;
     public JLabel leftSecondLabel;
 
     private Timer countdownTimer;
 
-    public PaymentWaitingUI() {
+    public PaymentWaitingUI(int totalPrice) {
         setTitle("카드 대기 화면");
         setSize(600, 800);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 중앙 정렬
+        this.totalPrice = totalPrice;
 
         // 메인 패널
         JPanel panel = new JPanel();
@@ -54,9 +56,11 @@ public class PaymentWaitingUI extends JFrame {
         imageButton.setBorder(BorderFactory.createEmptyBorder());
         imageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         // 버튼 클릭 시 결제 완료 후 초기화면으로 이동
-        imageButton.addActionListener(e -> {
+        imageButton.addActionListener(_ -> {
             if (countdownTimer != null && countdownTimer.isRunning()) {
                 countdownTimer.stop();
+                checkInputCreditCard();
+                PaymentControl.saveOrderToDB(totalPrice);
             }
             Entity.cartList.clear();
             dispose();
@@ -73,7 +77,7 @@ public class PaymentWaitingUI extends JFrame {
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(backButton);
         // 이전 화면 버튼 이벤트 (샘플 액션)
-        backButton.addActionListener(e -> {
+        backButton.addActionListener(_ -> {
             if (countdownTimer != null) countdownTimer.stop();
             dispose(); // 현재 창 닫기
             // 이전 화면으로 전환 코드 위치
@@ -82,9 +86,9 @@ public class PaymentWaitingUI extends JFrame {
         backButton.setPreferredSize(new Dimension(300, 60));
         panel.add(backButton);
 
-        // ★ 클릭 시 PaymentStartUII로 이동
-        backButton.addActionListener(e -> {
-            new PaymentStartUI(); // 새 창 실행
+        // ★ 클릭 시 PaymentStartUI로 이동
+        backButton.addActionListener(_ -> {
+            new PaymentStartUI(totalPrice); // 새 창 실행
             dispose(); // 현재 창 닫기
         });
 
@@ -93,8 +97,6 @@ public class PaymentWaitingUI extends JFrame {
 
         // 타이머 시작
         countLeftSecond();
-
-
     }
 
     public void checkInputCreditCard() {
@@ -103,17 +105,15 @@ public class PaymentWaitingUI extends JFrame {
     }
 
     public void countLeftSecond() {
-        countdownTimer = new Timer(1000, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                leftSecond--;
-                leftSecondLabel.setText("대기시간: " + leftSecond + "초");
-                if (leftSecond <= 0) {
-                    countdownTimer.stop();
-                    JOptionPane.showMessageDialog(null, "시간 초과");
-                    // 필요시 자동 취소 처리
-                    new PaymentStartUI();
-                    dispose();
-                }
+        countdownTimer = new Timer(1000, _ -> {
+            leftSecond--;
+            leftSecondLabel.setText("대기시간: " + leftSecond + "초");
+            if (leftSecond <= 0) {
+                countdownTimer.stop();
+                JOptionPane.showMessageDialog(null, "시간 초과");
+                // 필요시 자동 취소 처리
+                new PaymentStartUI(totalPrice);
+                dispose();
             }
         });
         countdownTimer.start();
