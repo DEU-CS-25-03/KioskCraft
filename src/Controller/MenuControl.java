@@ -29,8 +29,8 @@ public class MenuControl {
         String onlyDigits = priceStr.replaceAll("[^0-9]", "");
         int priceInt = Integer.parseInt(onlyDigits);
 
-        // 2) SQL 쿼리: test.menuId 테이블에 category, menuName, price, imagePath, isSoldOut 컬럼 순으로 삽입
-        String sql = "INSERT INTO test.menuId (categoryName, menuName, price, imagePath, isSoldOut) VALUES (?, ?, ?, ?, ?)";
+        // 2) SQL 쿼리: KioskDB.menuId 테이블에 category, menuName, price, imagePath, isSoldOut 컬럼 순으로 삽입
+        String sql = "INSERT INTO KioskDB.menuId (categoryName, menuName, price, imagePath, isSoldOut) VALUES (?, ?, ?, ?, ?)";
 
         // 3) PreparedStatement 생성 및 파라미터 바인딩
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -58,7 +58,7 @@ public class MenuControl {
     public static void deleteMenu(String menuName, DefaultTableModel model, int rowIndex) {
         // 1) DB 연결 후 직접 DELETE SQL 실행
         try (Connection conn = DBManager.getConnection()) {
-            String sql = "DELETE FROM test.menuId WHERE menuName = ?";
+            String sql = "DELETE FROM KioskDB.menuId WHERE menuName = ?";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, menuName);
                 int affected = ps.executeUpdate();
@@ -104,7 +104,7 @@ public class MenuControl {
     public static void modifyMenu(String oldName, String newCategory, String newName, String priceInput, String newImagePath, boolean newSoldOut, int rowIndex, DefaultTableModel editModel, DefaultTableModel adminModel) throws SQLException {
         // 1) DB 업데이트
         try (Connection conn = DBManager.getConnection()) {
-            String updateSql = "UPDATE test.menuId " + "SET category = ?, menuName = ?, price = ?, imagePath = ?, isSoldOut = ? " + "WHERE menuName = ?";
+            String updateSql = "UPDATE KioskDB.menuId " + "SET categoryName = ?, menuName = ?, price = ?, imagePath = ?, isSoldOut = ? " + "WHERE menuName = ?";
             try (PreparedStatement ps = conn.prepareStatement(updateSql)) {
                 int priceInt = Integer.parseInt(priceInput);
                 ps.setString(1, newCategory);

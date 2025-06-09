@@ -21,7 +21,7 @@ public class PaymentControl {
             conn.setAutoCommit(false);  // 트랜잭션 시작
 
             // 1. PaymentHistory insert
-            String sqlHistory = "INSERT INTO test.PaymentHistory (paymentTime, totalAmount) VALUES (NOW(), ?)";
+            String sqlHistory = "INSERT INTO KioskDB.PaymentHistory (paymentTime, totalAmount) VALUES (NOW(), ?)";
             psHistory = conn.prepareStatement(sqlHistory, Statement.RETURN_GENERATED_KEYS);
             psHistory.setInt(1, totalAmount);
             psHistory.executeUpdate();
@@ -33,7 +33,7 @@ public class PaymentControl {
             }
 
             // 2. PaymentDetails insert
-            String sqlDetail = "INSERT INTO test.PaymentDetails (paymentId, menuName, unitPrice, quantity, total) VALUES (?, ?, ?, ?, ?)";
+            String sqlDetail = "INSERT INTO KioskDB.PaymentDetails (paymentId, menuName, unitPrice, quantity, total) VALUES (?, ?, ?, ?, ?)";
             psDetail = conn.prepareStatement(sqlDetail);
 
             for (Object[] item : Entity.cartList) {
