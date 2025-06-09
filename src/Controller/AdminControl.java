@@ -27,7 +27,7 @@ public class AdminControl {
         };
 
         // Entity.menus 에 저장된 각 행 데이터를 꺼내서 모델에 추가
-        // Entity.menus의 각 요소: { category, menuName, priceStr, isSoldOut, imagePath }
+        // Entity.menus의 각 요소: { categoryName, menuName, priceStr, isSoldOut, imagePath }
         for (Object[] row : Entity.menus) {
             Object[] rowData = new Object[5];
             rowData[0] = row[0];    // 카테고리

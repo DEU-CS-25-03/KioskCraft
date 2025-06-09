@@ -6,6 +6,8 @@ import Controller.PaymentControl;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class PaymentWaitingUI extends JFrame {
 
@@ -61,6 +63,23 @@ public class PaymentWaitingUI extends JFrame {
                 countdownTimer.stop();
                 checkInputCreditCard();
                 PaymentControl.saveOrderToDB(totalPrice);
+                StringBuilder recipt = new StringBuilder();
+                int result = JOptionPane.showConfirmDialog(null, "영수증을 받으시겠습니까?", "확인", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (result == JOptionPane.YES_OPTION) {
+                    if(OrderTypeSelectionUI.isTakeOut)
+                        recipt.append("[포장]\n");
+                    else
+                        recipt.append("[매장]\n");
+                    recipt.append("결제 시각: ").append(LocalDateTime.now()).append("\n");
+                    recipt.append("결제 목록: ").append("\n");
+                    for(Object[] row: Entity.cartList){
+                        recipt.append(Arrays.toString(row)).append("\n");
+                    }
+                    recipt.append("총 결제금액: ").append(totalPrice);
+                    
+                    JOptionPane.showMessageDialog(null, recipt.toString());
+                }
+                JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.\n주문번호는 2039 입니다.");
             }
             Entity.cartList.clear();
             dispose();

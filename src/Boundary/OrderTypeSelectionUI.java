@@ -12,7 +12,7 @@ import java.awt.event.*;
  */
 public class OrderTypeSelectionUI extends JFrame {
     private KioskUIUtils.KeyHoldActionDispatcher keyDispatcher; // F10 키 디스패처
-    public boolean isTakeOut; // 포장 여부
+    public static boolean isTakeOut; // 포장 여부
 
     public OrderTypeSelectionUI() {
         setTitle("키오스크 시스템");

@@ -53,7 +53,6 @@ public class PaymentControl {
             psDetail.executeBatch();
 
             conn.commit();  // 성공시 커밋
-            JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
         } catch (Exception e) {
             try { if (conn != null) conn.rollback(); } catch (Exception ignored) {}
             System.out.println(e.getMessage());
