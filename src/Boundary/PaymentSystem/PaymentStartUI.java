@@ -59,6 +59,7 @@ public class PaymentStartUI extends JFrame {
             new PointActionUI(totalPrice).setVisible(true);
             dispose();
         });
+
         pointsEarnBtn.setPreferredSize(new Dimension(200, 60));
         // 이전화면 버튼
         gbc.gridx = 0;
