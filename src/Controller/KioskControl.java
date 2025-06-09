@@ -30,11 +30,12 @@ public class KioskControl {
             String name = (String) item[1];      // 메뉴명
             String priceStr = (String) item[2];  // 가격 문자열(예: "3,000원")
             boolean soldOut = (boolean) item[3]; // 품절 여부
+            String imgPath = (String) item[4]; // 이미지 경로
 
             if (!cat.equals(category)) continue; // 카테고리가 다르면 건너뜀
 
             // 이미지 경로 설정: 해당 이름의 PNG 파일이 없으면 기본 이미지 사용
-            String imagePath = "img/" + name + ".png";
+            String imagePath = imgPath;
             boolean imageExists = new File(imagePath).exists();
             if (!imageExists) imagePath = "img/default.png";
 

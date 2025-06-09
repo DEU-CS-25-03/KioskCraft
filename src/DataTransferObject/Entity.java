@@ -43,4 +43,21 @@ public class Entity {
 
     //언어목록 리스트
     public static final List<String> languages = Arrays.asList("한국어", "일본어", "중국어", "영어");
+
+
+    /**
+     * Order 클래스
+     * - 예시용 주문 데이터 객체 (orderId, customerCode, status)
+     */
+    public static class Order {
+        public String orderId;        // 주문 번호
+        public String customerCode;   // 고객 코드 혹은 이름
+        public String status;         // 주문 상태
+
+        public Order(String orderId, String customerCode, String status) {
+            this.orderId = orderId;
+            this.customerCode = customerCode;
+            this.status = status;
+        }
+    }
 }
