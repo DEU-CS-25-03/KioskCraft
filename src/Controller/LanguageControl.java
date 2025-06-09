@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
  * - 언어 변경 UI에서 사용될 테이블 모델을 제공
  * - 수정 불가능한 언어 목록을 반환
  */
-public class DesignControl {
+public class LanguageControl {
 
     /**
      * getTableModel 메서드

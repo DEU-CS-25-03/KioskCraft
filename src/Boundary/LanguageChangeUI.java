@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-import static Controller.DesignControl.getTableModel;
+import static Controller.LanguageControl.getTableModel;
 
 /**
  * LanguageChangeUI 클래스
