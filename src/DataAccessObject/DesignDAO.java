@@ -29,8 +29,8 @@ public class DesignDAO {
      * @throws SQLException   SQL 실행 중 오류 발생 시
      */
     public static void updateDefaultDesign(Connection conn, String selectedDesign) throws SQLException {
-        String clearSql = "UPDATE test.themeId SET isDefault = FALSE";
-        String setSql   = "UPDATE test.themeId SET isDefault = TRUE WHERE themeName = ?";
+        String clearSql = "UPDATE KioskDB.themeId SET isDefault = FALSE";
+        String setSql   = "UPDATE KioskDB.themeId SET isDefault = TRUE WHERE themeName = ?";
         boolean originalAutoCommit = conn.getAutoCommit();
 
         try {
@@ -63,7 +63,7 @@ public class DesignDAO {
      * @throws SQLException  조회 중 오류 발생 시
      */
     public static void loadDesigns() throws SQLException {
-        String sql = "SELECT themeName, description, isDefault FROM test.themeId";
+        String sql = "SELECT themeName, description, isDefault FROM KioskDB.themeId";
         ArrayList<Object[]> temp = new ArrayList<>();
 
         try (PreparedStatement ps = con.prepareStatement(sql);

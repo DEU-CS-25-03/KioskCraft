@@ -16,7 +16,7 @@ public class CategoryDAO {
     }
 
     public static void loadCategories() {
-        String sql = "SELECT categoryName FROM test.categoryId";
+        String sql = "SELECT categoryName FROM KioskDB.categoryId";
         Entity.categories.clear();  // 기존 값을 비우고
         try (PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

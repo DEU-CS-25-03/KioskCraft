@@ -115,7 +115,7 @@ public class CategoryControl {
 
     public static void insertCategory(String categoryName) throws SQLException {
         try (Connection conn = DBManager.getConnection()) {
-            String insertSql = "INSERT INTO test.categoryId (categoryName) VALUES (?)";
+            String insertSql = "INSERT INTO KioskDB.categoryId (categoryName) VALUES (?)";
             try (PreparedStatement ps = conn.prepareStatement(insertSql)) {
                 ps.setString(1, categoryName);
                 ps.executeUpdate();
@@ -131,14 +131,14 @@ public class CategoryControl {
             conn.setAutoCommit(false);
             try {
                 // 1) menuId 테이블에서 해당 카테고리의 모든 메뉴 삭제
-                String deleteMenusSql = "DELETE FROM test.menuId WHERE category = ?";
+                String deleteMenusSql = "DELETE FROM KioskDB.menuId WHERE categoryName = ?";
                 try (PreparedStatement psMenus = conn.prepareStatement(deleteMenusSql)) {
                     psMenus.setString(1, categoryName);
                     psMenus.executeUpdate();
                 }
 
                 // 2) categoryId 테이블에서 해당 카테고리 삭제
-                String deleteCategorySql = "DELETE FROM test.categoryId WHERE categoryName = ?";
+                String deleteCategorySql = "DELETE FROM KioskDB.categoryId WHERE categoryName = ?";
                 try (PreparedStatement psCat = conn.prepareStatement(deleteCategorySql)) {
                     psCat.setString(1, categoryName);
                     int affected = psCat.executeUpdate();
@@ -180,7 +180,7 @@ public class CategoryControl {
             conn.setAutoCommit(false);
             try {
                 // 1) menuId 테이블에서 category 컬럼 업데이트
-                String updateMenusSql = "UPDATE test.menuId SET categoryName = ? WHERE categoryName = ?";
+                String updateMenusSql = "UPDATE KioskDB.menuId SET categoryName = ? WHERE categoryName = ?";
                 try (PreparedStatement psMenus = conn.prepareStatement(updateMenusSql)) {
                     psMenus.setString(1, newName);
                     psMenus.setString(2, oldName);
@@ -188,7 +188,7 @@ public class CategoryControl {
                 }
 
                 // 2) categoryId 테이블에서 카테고리명 업데이트
-                String updateCatSql = "UPDATE test.categoryId SET categoryName = ? WHERE categoryName = ?";
+                String updateCatSql = "UPDATE KioskDB.categoryId SET categoryName = ? WHERE categoryName = ?";
                 try (PreparedStatement psCat = conn.prepareStatement(updateCatSql)) {
                     psCat.setString(1, newName);
                     psCat.setString(2, oldName);

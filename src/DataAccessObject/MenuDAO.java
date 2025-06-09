@@ -33,7 +33,7 @@ public class MenuDAO {
         Entity.menus.clear(); // 기존 메뉴 목록 모두 삭제
 
         // 메뉴 정보를 가져오는 SQL: category, menuName, price, imagePath, isSoldOut 컬럼 조회
-        String sql = "SELECT categoryName, menuName, price, imagePath, isSoldOut FROM test.menuId";
+        String sql = "SELECT categoryName, menuName, price, imagePath, isSoldOut FROM KioskDB.menuId";
 
         try (PreparedStatement ps = connection.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

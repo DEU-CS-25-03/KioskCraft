@@ -9,13 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="언어 목록 entity로 병합">
+    <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="KioskUIUtils -&gt; BackgroundControl">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fc6e7977-6dac-4408-9821-ed9422717ef5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderTypeSelectionUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/KioskUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KioskUIUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MenuControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PaymentControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaymentControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +52,9 @@
     &quot;assignee&quot;: &quot;Grrrrra&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="c2e3832e-6601-4081-9319-37b07b96bcec" />
+  </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
       <list>
@@ -190,7 +196,7 @@
       <workItem from="1748958776256" duration="55000" />
       <workItem from="1748958878788" duration="8733000" />
       <workItem from="1749182421046" duration="17781000" />
-      <workItem from="1749477445489" duration="1018000" />
+      <workItem from="1749477445489" duration="3215000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />
@@ -544,7 +550,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749474645987</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="KioskUIUtils -&gt; BackgroundControl">
+      <option name="closed" value="true" />
+      <created>1749478728362</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1749478728362</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Edit : TiDB Connect /MySQL DBConnect jar dependencies apply" />
     <MESSAGE value="Add : JAR Files &amp; Database-related files push" />
     <MESSAGE value="Add : README.MD 내용 추가" />
     <MESSAGE value="언어변경 목업 추가" />
@@ -603,7 +616,8 @@
     <MESSAGE value="ADD : PaymentStartUI, PayementWaitingUI 초기 handling" />
     <MESSAGE value="EDIT : Payment code 정리" />
     <MESSAGE value="언어 목록 entity로 병합" />
-    <option name="LAST_COMMIT_MESSAGE" value="언어 목록 entity로 병합" />
+    <MESSAGE value="KioskUIUtils -&gt; BackgroundControl" />
+    <option name="LAST_COMMIT_MESSAGE" value="KioskUIUtils -&gt; BackgroundControl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
