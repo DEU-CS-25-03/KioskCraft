@@ -1,6 +1,7 @@
 package Controller;
 
-import DataTransferObject.LanguageEntity;
+import DataTransferObject.Entity;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,9 +17,9 @@ public class LanguageControl {
     public static DefaultTableModel getTableModel() {
         // LanguageEntity에서 언어 목록을 가져와 Object 배열로 변환
         String[] columnNames = { "언어 목록" };
-        Object[][] rowData = new Object[LanguageEntity.languages.size()][1];
-        for (int i = 0; i < LanguageEntity.languages.size(); i++) {
-            rowData[i][0] = LanguageEntity.languages.get(i);
+        Object[][] rowData = new Object[Entity.languages.size()][1];
+        for (int i = 0; i < Entity.languages.size(); i++) {
+            rowData[i][0] = Entity.languages.get(i);
         }
 
         // 테이블 모델 생성 및 셀 편집 불가 설정

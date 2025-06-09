@@ -1,6 +1,7 @@
 package DataTransferObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -39,4 +40,7 @@ public class Entity {
      * - 각 행은 Object[]{ themeName(String), description(String), isDefault(boolean) }
      */
     public static Object[][] designs;
+
+    //언어목록 리스트
+    public static final List<String> languages = Arrays.asList("한국어", "일본어", "중국어", "영어");
 }
