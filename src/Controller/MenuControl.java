@@ -30,7 +30,7 @@ public class MenuControl {
         int priceInt = Integer.parseInt(onlyDigits);
 
         // 2) SQL 쿼리: test.menuId 테이블에 category, menuName, price, imagePath, isSoldOut 컬럼 순으로 삽입
-        String sql = "INSERT INTO test.menuId (category, menuName, price, imagePath, isSoldOut) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO test.menuId (categoryName, menuName, price, imagePath, isSoldOut) VALUES (?, ?, ?, ?, ?)";
 
         // 3) PreparedStatement 생성 및 파라미터 바인딩
         try (PreparedStatement ps = conn.prepareStatement(sql)) {

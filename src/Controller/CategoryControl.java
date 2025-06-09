@@ -180,7 +180,7 @@ public class CategoryControl {
             conn.setAutoCommit(false);
             try {
                 // 1) menuId 테이블에서 category 컬럼 업데이트
-                String updateMenusSql = "UPDATE test.menuId SET category = ? WHERE category = ?";
+                String updateMenusSql = "UPDATE test.menuId SET categoryName = ? WHERE categoryName = ?";
                 try (PreparedStatement psMenus = conn.prepareStatement(updateMenusSql)) {
                     psMenus.setString(1, newName);
                     psMenus.setString(2, oldName);
