@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
 import Controller.OrderStateControl;
+import DataTransferObject.Entity;
 
 /**
  * OrderStatusUI 클래스
@@ -19,10 +20,10 @@ public class OrderStatusUI extends JDialog {
         setLayout(new BorderLayout());
 
         // 예시 주문 데이터 (OrderStateControl.Order 객체 생성)
-        List<OrderStateControl.Order> orderList = new ArrayList<>();
-        orderList.add(new OrderStateControl.Order("001", "A001", "접수"));
-        orderList.add(new OrderStateControl.Order("002", "A002", "처리중"));
-        orderList.add(new OrderStateControl.Order("003", "A003", "완료"));
+        List<Entity.Order> orderList = new ArrayList<>();
+        orderList.add(new Entity.Order("001", "A001", "접수"));
+        orderList.add(new Entity.Order("002", "A002", "처리중"));
+        orderList.add(new Entity.Order("003", "A003", "완료"));
 
         // OrderTableModel을 사용한 JTable 생성
         OrderStateControl.OrderTableModel tableModel = new OrderStateControl.OrderTableModel(orderList);
