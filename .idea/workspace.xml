@@ -10,8 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="442abcc2-83e8-4607-9dd3-b9b6a837cae8" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/DesignUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/DesignUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/KioskUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/KioskUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/ModifyMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/OrderStatusUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/PaymentSystem/PaymentWaitingUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/PaymentSystem/PaymentWaitingUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RegistMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary/RemoveCategoryUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/KioskControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KioskControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LanguageControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LanguageControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderStateControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderStateControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PaymentControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaymentControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/DesignDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObject/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataTransferObject/Entity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +66,6 @@
     &quot;assignee&quot;: &quot;Grrrrra&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="c2e3832e-6601-4081-9319-37b07b96bcec" />
-  </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
       <list>
@@ -59,7 +77,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/DEU-CS-25-03/KioskCraft.git&quot;,
-    &quot;accountId&quot;: &quot;50ee990d-d72a-4bee-911d-2b9bb64dcfc1&quot;
+    &quot;accountId&quot;: &quot;b7612f82-750f-461a-a563-39d1508daf9e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -80,44 +98,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JAR 애플리케이션.KioskCraft.jar.executor&quot;: &quot;Run&quot;,
-    &quot;JAR 애플리케이션.flatlaf-demo-3.6.jar.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/J/Desktop/KioskCraft/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/J/Desktop/KioskPackage/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;라이브러리&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JAR 애플리케이션.KioskCraft.jar.executor": "Run",
+    "JAR 애플리케이션.flatlaf-demo-3.6.jar.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/J/Desktop/KioskCraft/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/J/Desktop/KioskPackage/src/Main.java",
+    "project.structure.last.edited": "라이브러리",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.Main.executor": "Debug"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 파생 언어&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 파생 언어": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\J\Desktop\KioskCraft\img" />
@@ -169,8 +187,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
       </set>
     </attachedChunks>
   </component>
@@ -201,6 +219,8 @@
       <workItem from="1749481658408" duration="1537000" />
       <workItem from="1749483240906" duration="245000" />
       <workItem from="1749483507121" duration="2818000" />
+      <workItem from="1749658362053" duration="2443000" />
+      <workItem from="1749741093301" duration="3545000" />
     </task>
     <task id="LOCAL-00001" summary="EDIT :CSV 경로(자동화 예정), 추후 업데이트 소식 추가">
       <option name="closed" value="true" />

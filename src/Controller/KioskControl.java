@@ -1,7 +1,8 @@
 package Controller;
 
 import Boundary.MenuCardPanel;
-import DataTransferObject.Entity;
+import DataTransferObject.CartItem;
+import DataTransferObject.Menu;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +26,7 @@ public class KioskControl {
      */
     public static void showMenuByCategory(String category, JPanel gridPanel, DefaultTableModel cartModel) {
         gridPanel.removeAll(); // 이전 카드를 모두 제거
-        for (Object[] item : Entity.menus) {
+        for (Object[] item : Menu.menus) {
             String cat = (String) item[0];       // 메뉴의 카테고리
             String name = (String) item[1];      // 메뉴명
             String priceStr = (String) item[2];  // 가격 문자열(예: "3,000원")
@@ -60,7 +61,7 @@ public class KioskControl {
 
         boolean found = false;
         // 1) Entity.cartList에서 동일 메뉴가 있는지 확인
-        for (Object[] cartItem : Entity.cartList) {
+        for (Object[] cartItem : CartItem.cartList) {
             String existingName = (String) cartItem[0];
             if (existingName.equals(name)) {
                 int prevQty = (int) cartItem[2];       // 이전 수량
@@ -74,7 +75,7 @@ public class KioskControl {
         if (!found) {
             // 2) 없으면 새로 추가: {name, unitPrice, 1, unitPrice}
             Object[] newItem = new Object[]{ name, unitPrice, 1, unitPrice };
-            Entity.cartList.add(newItem);
+            CartItem.cartList.add(newItem);
         }
 
         // 3) 테이블 모델 갱신
@@ -83,7 +84,7 @@ public class KioskControl {
             String existingName = (String) cartModel.getValueAt(i, 0);
             if (existingName.equals(name)) {
                 // 이미 테이블에 있으면 수량(2번 인덱스), 총액(3번 인덱스)만 업데이트
-                for (Object[] cartItem : Entity.cartList) {
+                for (Object[] cartItem : CartItem.cartList) {
                     if (cartItem[0].equals(name)) {
                         int updatedQty = (int) cartItem[2];
                         int updatedTotal = (int) cartItem[3];
@@ -114,7 +115,7 @@ public class KioskControl {
      * @return 단가(정수), 없으면 0 반환
      */
     private static int getUnitPriceByName(String name) {
-        for (Object[] item : Entity.menus) {
+        for (Object[] item : Menu.menus) {
             if (item[1].equals(name)) {
                 return Integer.parseInt(((String) item[2]).replace(",", "").replace("원", ""));
             }
@@ -171,8 +172,8 @@ public class KioskControl {
 
             if (isDecrease) {
                 // 수량 감소 로직
-                for (int i = 0; i < Entity.cartList.size(); i++) {
-                    Object[] cartItem = Entity.cartList.get(i);
+                for (int i = 0; i < CartItem.cartList.size(); i++) {
+                    Object[] cartItem = CartItem.cartList.get(i);
                     if (cartItem[0].equals(name)) {
                         int prevQty = (int) cartItem[2];
                         if (prevQty > 1) {
@@ -183,7 +184,7 @@ public class KioskControl {
                             cartModel.setValueAt(unitPrice * newQty, editingRow, 3);
                         } else {
                             // 수량이 1일 때 해당 행 삭제
-                            Entity.cartList.remove(i);
+                            CartItem.cartList.remove(i);
                             cartModel.removeRow(editingRow);
                         }
                         break;
@@ -191,10 +192,10 @@ public class KioskControl {
                 }
             } else {
                 // 행 삭제 로직 (삭제 버튼 클릭 시)
-                for (int i = 0; i < Entity.cartList.size(); i++) {
-                    Object[] cartItem = Entity.cartList.get(i);
+                for (int i = 0; i < CartItem.cartList.size(); i++) {
+                    Object[] cartItem = CartItem.cartList.get(i);
                     if (cartItem[0].equals(name)) {
-                        Entity.cartList.remove(i);
+                        CartItem.cartList.remove(i);
                         cartModel.removeRow(editingRow);
                         break;
                     }

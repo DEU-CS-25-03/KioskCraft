@@ -2,7 +2,7 @@ package Boundary;
 
 import DataAccessObject.DBManager;
 import DataAccessObject.DesignDAO;
-import DataTransferObject.Entity;
+import DataTransferObject.Design;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
@@ -24,7 +24,7 @@ public class DesignUI extends JDialog {
         SwingUtilities.invokeLater(this::requestFocusInWindow);
 
         // Entity.designs 캐시 확인 후 없으면 DB 로딩 시도
-        if (Entity.designs == null) {
+        if (Design.designs == null) {
             try {
                 DesignDAO.loadDesigns();
             } catch (Exception ex) {
@@ -41,7 +41,7 @@ public class DesignUI extends JDialog {
         boolean anyDefaultSelected = false;
 
         // Entity.designs에 담긴 {테마명, 설명, 기본 여부} 순회하며 라디오 버튼 생성
-        for (Object[] design : Entity.designs) {
+        for (Object[] design : Design.designs) {
             String themeName = design[0].toString();
             String description = design[1].toString();
             boolean isDefault = (Boolean) design[2];
@@ -104,7 +104,7 @@ public class DesignUI extends JDialog {
             try (Connection conn = DBManager.getConnection()) {
                 DesignDAO.updateDefaultDesign(conn, selectedDesign);
                 // 캐시 동기화: 선택된 디자인만 isDefault=true로 설정
-                for (Object[] design : Entity.designs) {
+                for (Object[] design : Design.designs) {
                     design[2] = design[0].equals(selectedDesign);
                 }
                 JOptionPane.showMessageDialog(this, "디자인이 변경되었습니다: " + selectedDesign, "성공", JOptionPane.INFORMATION_MESSAGE);

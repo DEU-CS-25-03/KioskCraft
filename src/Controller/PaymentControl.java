@@ -1,7 +1,7 @@
 package Controller;
 
 import DataAccessObject.DBManager;
-import DataTransferObject.Entity;
+import DataTransferObject.CartItem;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -36,7 +36,7 @@ public class PaymentControl {
             String sqlDetail = "INSERT INTO KioskDB.PaymentDetails (paymentId, menuName, unitPrice, quantity, total) VALUES (?, ?, ?, ?, ?)";
             psDetail = conn.prepareStatement(sqlDetail);
 
-            for (Object[] item : Entity.cartList) {
+            for (Object[] item : CartItem.cartList) {
                 // Object[] 구조: [메뉴명, 단가, 수량, 총단가] 라고 가정
                 String menuName = (String) item[0];
                 int unitPrice = (int) item[1];

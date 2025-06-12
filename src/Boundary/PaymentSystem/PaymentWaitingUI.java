@@ -1,7 +1,7 @@
 package Boundary.PaymentSystem;
 
 import Boundary.OrderTypeSelectionUI;
-import DataTransferObject.Entity;
+import DataTransferObject.CartItem;
 import Controller.PaymentControl;
 
 import javax.swing.*;
@@ -72,7 +72,7 @@ public class PaymentWaitingUI extends JFrame {
                         recipt.append("[매장]\n");
                     recipt.append("결제 시각: ").append(LocalDateTime.now()).append("\n");
                     recipt.append("결제 목록: ").append("\n");
-                    for(Object[] row: Entity.cartList){
+                    for(Object[] row: CartItem.cartList){
                         recipt.append(Arrays.toString(row)).append("\n");
                     }
                     recipt.append("총 결제금액: ").append(totalPrice);
@@ -81,7 +81,7 @@ public class PaymentWaitingUI extends JFrame {
                 }
                 JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.\n주문번호는 2039 입니다.");
             }
-            Entity.cartList.clear();
+            CartItem.cartList.clear();
             dispose();
             new OrderTypeSelectionUI().setVisible(true); // 초기화면(주문 유형 선택)으로 이동
         });

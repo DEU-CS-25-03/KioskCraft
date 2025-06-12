@@ -1,6 +1,6 @@
 package Controller;
 
-import DataTransferObject.Entity;
+import DataTransferObject.Menu;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -28,7 +28,7 @@ public class AdminControl {
 
         // Entity.menus 에 저장된 각 행 데이터를 꺼내서 모델에 추가
         // Entity.menus의 각 요소: { categoryName, menuName, priceStr, isSoldOut, imagePath }
-        for (Object[] row : Entity.menus) {
+        for (Object[] row : Menu.menus) {
             Object[] rowData = new Object[5];
             rowData[0] = row[0];    // 카테고리
             rowData[1] = row[1];    // 메뉴명

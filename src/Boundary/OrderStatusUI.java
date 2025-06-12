@@ -1,17 +1,12 @@
 package Boundary;
 
+import DataTransferObject.Order;
+import Controller.OrderStateControl;
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 import java.util.ArrayList;
-import Controller.OrderStateControl;
-import DataTransferObject.Entity;
+import java.util.List;
 
-/**
- * OrderStatusUI 클래스
- * - OrderStateControl에서 제공하는 주문 리스트를 테이블로 표시
- * - 닫기 버튼을 눌러 다이얼로그 종료
- */
 public class OrderStatusUI extends JDialog {
     public OrderStatusUI(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -19,19 +14,22 @@ public class OrderStatusUI extends JDialog {
         setLocationRelativeTo(owner);
         setLayout(new BorderLayout());
 
-        // 예시 주문 데이터 (OrderStateControl.Order 객체 생성)
-        List<Entity.Order> orderList = new ArrayList<>();
-        orderList.add(new Entity.Order("001", "A001", "접수"));
-        orderList.add(new Entity.Order("002", "A002", "처리중"));
-        orderList.add(new Entity.Order("003", "A003", "완료"));
+        // 엔티티 클래스 Order에서 주문 데이터를 가져온다
+        List<Order> orderList = new ArrayList<>(Order.orders);
 
-        // OrderTableModel을 사용한 JTable 생성
+        // 예시 데이터가 필요하다면 추가
+        if (orderList.isEmpty()) {
+            orderList.add(new Order("001", "A001", "접수"));
+            orderList.add(new Order("002", "A002", "처리중"));
+            orderList.add(new Order("003", "A003", "완료"));
+            Order.orders.addAll(orderList); // (선택) 엔티티에도 추가
+        }
+
         OrderStateControl.OrderTableModel tableModel = new OrderStateControl.OrderTableModel(orderList);
         JTable orderTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(orderTable);
         add(scrollPane, BorderLayout.CENTER);
 
-        // 닫기 버튼 생성 및 이벤트 등록
         JButton closeButton = new JButton("닫기");
         closeButton.addActionListener(_ -> dispose());
         JPanel btnPanel = new JPanel();

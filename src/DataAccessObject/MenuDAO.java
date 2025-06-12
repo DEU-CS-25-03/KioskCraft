@@ -1,6 +1,7 @@
 package DataAccessObject;
 
-import DataTransferObject.Entity;
+import DataTransferObject.Menu;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class MenuDAO {
      * @throws SQLException SQL 실행 실패 시 예외 발생
      */
     public static void loadAllMenusToEntity() throws SQLException {
-        Entity.menus.clear(); // 기존 메뉴 목록 모두 삭제
+        Menu.menus.clear(); // 기존 메뉴 목록 모두 삭제
 
         // 메뉴 정보를 가져오는 SQL: category, menuName, price, imagePath, isSoldOut 컬럼 조회
         String sql = "SELECT categoryName, menuName, price, imagePath, isSoldOut FROM KioskDB.menuId";
@@ -49,7 +50,7 @@ public class MenuDAO {
 
                 // Entity.menus에 담을 Object 배열: {카테고리, 메뉴명, "가격원", 품절여부, 이미지경로}
                 Object[] row = new Object[]{ category, menuName, priceStr, isSoldOut, imagePath };
-                Entity.menus.add(row);
+                Menu.menus.add(row);
             }
         }
     }

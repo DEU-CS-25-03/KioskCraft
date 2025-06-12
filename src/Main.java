@@ -1,6 +1,8 @@
 import Boundary.OrderTypeSelectionUI;
 import DataAccessObject.DBManager;
-import DataTransferObject.Entity;
+
+import DataTransferObject.Design;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
@@ -48,10 +50,10 @@ public class Main {
                 SwingUtilities.invokeLater(() -> {
                     try {
                         // FlatLAF 테마 적용
-                        for (int i = 0; i < Entity.designs.length; i++) {
-                            Object flag = Entity.designs[i][2];
+                        for (int i = 0; i < Design.designs.length; i++) {
+                            Object flag = Design.designs[i][2];
                             if (flag instanceof Boolean && (Boolean) flag) {
-                                String themeClass = "com.formdev.flatlaf.intellijthemes." + Entity.designs[i][0].toString();
+                                String themeClass = "com.formdev.flatlaf.intellijthemes." + Design.designs[i][0].toString();
                                 UIManager.setLookAndFeel(themeClass);
                                 break;
                             }

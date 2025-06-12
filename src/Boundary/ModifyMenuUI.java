@@ -1,7 +1,8 @@
 package Boundary;
 
 import Controller.MenuControl;
-import DataTransferObject.Entity;
+import DataTransferObject.Menu;
+import DataTransferObject.Category;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -45,7 +46,7 @@ public class ModifyMenuUI extends JDialog {
         };
 
         // Entity.menus로부터 값 채우기
-        for (Object[] row : Entity.menus) {
+        for (Object[] row : Menu.menus) {
             Object[] rowData = new Object[5];
             rowData[0] = row[0];    // 카테고리
             rowData[1] = row[1];    // 메뉴명
@@ -137,7 +138,7 @@ public class ModifyMenuUI extends JDialog {
         categoryLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         editDlg.add(categoryLabel);
 
-        JComboBox<String> categoryCombo = new JComboBox<>(Entity.categories.toArray(new String[0]));
+        JComboBox<String> categoryCombo = new JComboBox<>(Category.categories.toArray(new String[0]));
         categoryCombo.setBounds(110, 50, 190, 30);
         categoryCombo.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         categoryCombo.setSelectedItem(oldCategory);
@@ -221,7 +222,7 @@ public class ModifyMenuUI extends JDialog {
                 return;
             }
             // 중복 메뉴명 체크
-            for (Object[] menu : Entity.menus) {
+            for (Object[] menu : Menu.menus) {
                 if (newName.equals(menu[1]) && !newName.equals(oldName)) {
                     JOptionPane.showMessageDialog(editDlg, "중복된 메뉴가 존재합니다.", "입력 오류", JOptionPane.WARNING_MESSAGE);
                     return;

@@ -3,7 +3,8 @@ package Boundary;
 import Controller.MenuControl;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
-import DataTransferObject.Entity;
+import DataTransferObject.Category;
+import DataTransferObject.Menu;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -43,7 +44,7 @@ public class RegistMenuUI extends JDialog {
         JLabel categoryLabel = new JLabel("카테고리:");
         categoryLabel.setBounds(10, 50, 80, 30);
         add(categoryLabel);
-        JComboBox<String> categoryCombo = new JComboBox<>(Entity.categories.toArray(new String[0]));
+        JComboBox<String> categoryCombo = new JComboBox<>(Category.categories.toArray(new String[0]));
         categoryCombo.setBounds(90, 50, 190, 30);
         add(categoryCombo);
 
@@ -94,7 +95,7 @@ public class RegistMenuUI extends JDialog {
                 return;
             }
             // 중복 메뉴명 체크
-            for (Object[] menu : Entity.menus) {
+            for (Object[] menu : Menu.menus) {
                 if (name.equals(menu[1])) {
                     JOptionPane.showMessageDialog(this, "중복된 메뉴가 존재합니다.");
                     return;
@@ -104,7 +105,7 @@ public class RegistMenuUI extends JDialog {
             String priceStr = String.format("%,d원", Integer.parseInt(price));
             // Entity.menus에 추가할 배열 생성: {카테고리, 메뉴명, 단가, 품절여부(false), 이미지경로}
             Object[] newRow = new Object[]{category, name, priceStr, false, imgPath};
-            Entity.menus.add(newRow);
+            Menu.menus.add(newRow);
 
             try (Connection conn = DBManager.getConnection()) {
                 new MenuDAO(conn);

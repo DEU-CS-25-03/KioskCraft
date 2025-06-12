@@ -1,6 +1,6 @@
 package DataAccessObject;
 
-import DataTransferObject.Entity;
+import DataTransferObject.Design;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -73,9 +73,9 @@ public class DesignDAO {
             }
         }
 
-        Entity.designs = new Object[temp.size()][3];
+        Design.designs = new Object[temp.size()][3];
         for (int i = 0; i < temp.size(); i++) {
-            Entity.designs[i] = temp.get(i);
+            Design.designs[i] = temp.get(i);
         }
     }
 }

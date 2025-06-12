@@ -4,7 +4,7 @@ import Controller.CategoryControl;
 import DataAccessObject.CategoryDAO;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
-import DataTransferObject.Entity;
+import DataTransferObject.Category;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -46,7 +46,7 @@ public class ModifyCategoryUI extends JDialog {
         };
 
         // Entity.categories 리스트에서 카테고리명 가져와 모델에 추가
-        List<String> categories = Entity.categories;
+        List<String> categories = Category.categories;
         for (String cat : categories) {
             model.addRow(new Object[]{ cat });
         }
@@ -139,8 +139,8 @@ public class ModifyCategoryUI extends JDialog {
                 return;
             }
             // 중복 검사
-            for (int i = 0; i < Entity.categories.size(); i++) {
-                if (i != rowIndex && newName.equals(Entity.categories.get(i))) {
+            for (int i = 0; i < Category.categories.size(); i++) {
+                if (i != rowIndex && newName.equals(Category.categories.get(i))) {
                     JOptionPane.showMessageDialog(editDlg,
                             "중복된 카테고리가 존재합니다.", "중복 오류", JOptionPane.WARNING_MESSAGE);
                     return;

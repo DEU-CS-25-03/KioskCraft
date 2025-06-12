@@ -1,7 +1,7 @@
 package Boundary;
 
 import Controller.CategoryControl;
-import DataTransferObject.Entity;
+import DataTransferObject.Category;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -48,7 +48,7 @@ public class RegistCategoryUI extends JDialog {
                 return;
             }
             // 3-2) Entity.categories 리스트에서 중복 여부 검사
-            for (String category : Entity.categories) {
+            for (String category : Category.categories) {
                 if (input.equals(category)) {
                     JOptionPane.showMessageDialog(this, "중복된 카테고리가 존재합니다.");
                     return;

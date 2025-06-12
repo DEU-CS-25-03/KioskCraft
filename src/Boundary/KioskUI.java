@@ -1,7 +1,9 @@
 package Boundary;
 
 import Boundary.PaymentSystem.PaymentStartUI;
-import DataTransferObject.Entity;
+import DataTransferObject.CartItem;
+import DataTransferObject.Category;
+
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -46,8 +48,8 @@ public class KioskUI extends JFrame {
         };
 
         // 1) 카테고리 버튼 생성
-        for (int i = 0; i < Entity.categories.size(); i++) {
-            String category = Entity.categories.get(i);
+        for (int i = 0; i < Category.categories.size(); i++) {
+            String category = Category.categories.get(i);
             JButton categoryBtn = new JButton(category);
             categoryBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
             categoryBtn.setBounds(10 + i * 130, 10, 120, 40);
@@ -64,7 +66,7 @@ public class KioskUI extends JFrame {
         goHome.addActionListener(_ -> {
             new OrderTypeSelectionUI().setVisible(true);
             dispose();
-            Entity.cartList.clear();
+            CartItem.cartList.clear();
         });
         add(goHome);
 
@@ -77,7 +79,7 @@ public class KioskUI extends JFrame {
         add(scrollPane);
 
         // 3) Entity.cartList에 저장된 장바구니 항목을 테이블에 초기 로딩
-        for (Object[] item : Entity.cartList) {
+        for (Object[] item : CartItem.cartList) {
             String name      = (String) item[0];
             int unitPrice    = (int) item[1];
             int quantity     = (int) item[2];
@@ -124,11 +126,11 @@ public class KioskUI extends JFrame {
         payBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         payBtn.setBounds(1100, 690, 375, 60);
         payBtn.addActionListener(_ -> {
-            if (Entity.cartList.isEmpty()) {
+            if (CartItem.cartList.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "장바구니가 비어있습니다.\n메뉴를 선택해주세요.");
             } else {
                 int totalPrice = 0;
-                for (Object[] row : Entity.cartList)
+                for (Object[] row : CartItem.cartList)
                     totalPrice += (int) row[3];
 
                 // 2. PaymentStartUI 실행
@@ -141,8 +143,8 @@ public class KioskUI extends JFrame {
         add(payBtn);
 
         // 7) 최초 카테고리 선택 시 첫 번째 카테고리 보여주기
-        if (!Entity.categories.isEmpty()) {
-            showMenuByCategory(Entity.categories.getFirst(), gridPanel, cartModel);
+        if (!Category.categories.isEmpty()) {
+            showMenuByCategory(Category.categories.getFirst(), gridPanel, cartModel);
         }
 
         setVisible(true);

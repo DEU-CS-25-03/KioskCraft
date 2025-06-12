@@ -3,7 +3,8 @@ package Controller;
 import DataAccessObject.CategoryDAO;
 import DataAccessObject.DBManager;
 import DataAccessObject.MenuDAO;
-import DataTransferObject.Entity;
+import DataTransferObject.Category;
+import DataTransferObject.Menu;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -27,13 +28,13 @@ public class CategoryControl {
 
         public void removeRow(int row) {
             if (row < 0 || row >= data.size()) return;
-            Entity.categories.remove(row);
+            Category.categories.remove(row);
             data.remove(row);
             fireTableRowsDeleted(row, row);
         }
 
         public void addRow(String categoryName) {
-            Entity.categories.add(categoryName);
+            Category.categories.add(categoryName);
             data.add(categoryName);
             int newIndex = data.size() - 1;
             fireTableRowsInserted(newIndex, newIndex);
@@ -158,8 +159,8 @@ public class CategoryControl {
         }
 
         // 3) Entity 내부 리스트에서도 삭제
-        Entity.categories.removeIf(cat -> cat.equals(categoryName));
-        Entity.menus.removeIf(menuRow -> {
+        Category.categories.removeIf(cat -> cat.equals(categoryName));
+        Menu.menus.removeIf(menuRow -> {
             // 예시: menuRow[4]가 카테고리명이라고 가정
             return categoryName.equals(menuRow[4]);
         });

@@ -1,7 +1,7 @@
 package Boundary;
 
 import Controller.CategoryControl;
-import DataTransferObject.Entity;
+import DataTransferObject.Category;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -21,7 +21,7 @@ public class RemoveCategoryUI extends JDialog {
         setResizable(false);
 
         // CategoryControl 에서 제공하는 카테고리 테이블 모델 생성 (Entity.categories 사용)
-        CategoryControl.CategoryTableModel model = new CategoryControl.CategoryTableModel(Entity.categories);
+        CategoryControl.CategoryTableModel model = new CategoryControl.CategoryTableModel(Category.categories);
         JTable table = new JTable(model);
 
         // 테이블 스타일 설정
